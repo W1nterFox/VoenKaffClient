@@ -123,6 +123,8 @@
             // 
             // FIOName
             // 
+            this.FIOName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.FIOName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.FIOName.FormattingEnabled = true;
             this.FIOName.Location = new System.Drawing.Point(434, 100);
             this.FIOName.Name = "FIOName";
@@ -131,6 +133,8 @@
             // 
             // vzvodName
             // 
+            this.vzvodName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.vzvodName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.vzvodName.FormattingEnabled = true;
             this.vzvodName.Location = new System.Drawing.Point(248, 100);
             this.vzvodName.Name = "vzvodName";
@@ -139,6 +143,8 @@
             // 
             // testName
             // 
+            this.testName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.testName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.testName.FormattingEnabled = true;
             this.testName.Location = new System.Drawing.Point(62, 100);
             this.testName.Name = "testName";
