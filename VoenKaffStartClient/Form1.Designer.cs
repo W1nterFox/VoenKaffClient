@@ -73,9 +73,11 @@
             this.buttonInstruction.TabIndex = 9;
             this.buttonInstruction.Text = "Инструкция";
             this.buttonInstruction.UseVisualStyleBackColor = true;
+            this.buttonInstruction.Click += new System.EventHandler(this.buttonInstruction_Click);
             // 
             // startButton
             // 
+            this.startButton.Enabled = false;
             this.startButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.startButton.Font = new System.Drawing.Font("Century Gothic", 11.25F);
             this.startButton.Location = new System.Drawing.Point(257, 215);
@@ -102,7 +104,7 @@
             this.radioButtonTestModeStudy.AutoSize = true;
             this.radioButtonTestModeStudy.Location = new System.Drawing.Point(41, 49);
             this.radioButtonTestModeStudy.Name = "radioButtonTestModeStudy";
-            this.radioButtonTestModeStudy.Size = new System.Drawing.Size(153, 24);
+            this.radioButtonTestModeStudy.Size = new System.Drawing.Size(144, 24);
             this.radioButtonTestModeStudy.TabIndex = 1;
             this.radioButtonTestModeStudy.TabStop = true;
             this.radioButtonTestModeStudy.Text = "Режим обучения";
@@ -113,7 +115,7 @@
             this.radioButtonTestModeTest.AutoSize = true;
             this.radioButtonTestModeTest.Location = new System.Drawing.Point(41, 19);
             this.radioButtonTestModeTest.Name = "radioButtonTestModeTest";
-            this.radioButtonTestModeTest.Size = new System.Drawing.Size(186, 24);
+            this.radioButtonTestModeTest.Size = new System.Drawing.Size(174, 24);
             this.radioButtonTestModeTest.TabIndex = 0;
             this.radioButtonTestModeTest.TabStop = true;
             this.radioButtonTestModeTest.Text = "Режим тестирования";
@@ -149,7 +151,7 @@
             this.label4.Font = new System.Drawing.Font("Century Gothic", 11.25F);
             this.label4.Location = new System.Drawing.Point(439, 77);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(165, 20);
+            this.label4.Size = new System.Drawing.Size(152, 20);
             this.label4.TabIndex = 6;
             this.label4.Text = "Выберите стедуента";
             // 
@@ -159,7 +161,7 @@
             this.label3.Font = new System.Drawing.Font("Century Gothic", 11.25F);
             this.label3.Location = new System.Drawing.Point(274, 77);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(126, 20);
+            this.label3.Size = new System.Drawing.Size(124, 20);
             this.label3.TabIndex = 4;
             this.label3.Text = "Выберите взвод";
             // 
@@ -169,7 +171,7 @@
             this.label2.Font = new System.Drawing.Font("Century Gothic", 11.25F);
             this.label2.Location = new System.Drawing.Point(92, 77);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(119, 20);
+            this.label2.Size = new System.Drawing.Size(112, 20);
             this.label2.TabIndex = 2;
             this.label2.Text = "Выберите тест";
             // 

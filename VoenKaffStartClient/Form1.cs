@@ -13,6 +13,10 @@ namespace VoenKaffStartClient
     public partial class Form1 : Form
     {
         List<String> listPanelsTasks;
+        public string currentTest;
+        public string currentVzvod;
+        public string currentStudent;
+
         public Form1()
         {
             InitializeComponent();
@@ -22,6 +26,11 @@ namespace VoenKaffStartClient
             vzvodName.SelectedIndexChanged += new System.EventHandler(nameVzvod_SelectedIndexChanged);
 
 
+            testName.SelectedIndexChanged += new System.EventHandler(startButtonEnabled);
+            vzvodName.SelectedIndexChanged += new System.EventHandler(startButtonEnabled);
+            FIOName.SelectedIndexChanged += new System.EventHandler(startButtonEnabled);
+
+            radioButtonTestModeTest.Checked = true;
             listPanelsTasks = new List<String>();
             //nameFIO.Items.AddRange(new string[] {""});
         }
@@ -29,8 +38,21 @@ namespace VoenKaffStartClient
         private void nameVzvod_SelectedIndexChanged(object sender, System.EventArgs e)
         {
             string selectedVzvod = (string)vzvodName.SelectedItem;
+            FIOName.SelectedItem = null;
             FIOName.Items.Clear();
             FIOName.Items.AddRange(getStudentsByVzvod(selectedVzvod));
+        }
+
+        private void startButtonEnabled(object sender, System.EventArgs e)
+        {
+            if (testName.SelectedItem != null && vzvodName.SelectedItem!=null && FIOName.SelectedItem != null)
+            {
+                startButton.Enabled = true;
+            }
+            else
+            {
+                startButton.Enabled = false;
+            }
         }
 
         private string[] getStudentsByVzvod(string selectedVzvod)
@@ -45,12 +67,37 @@ namespace VoenKaffStartClient
         private void startButton_Click(object sender, EventArgs e)
         {
             this.Visible = false;
-            FormTest formTest = new FormTest();
 
-            formTest.Text = testName.SelectedItem.ToString() + ". " + vzvodName.SelectedItem.ToString() + " взвод. " + "Студент " + FIOName.SelectedItem.ToString();
-            formTest.Visible = true;
+            currentTest = testName.SelectedItem.ToString();
+            currentVzvod = vzvodName.SelectedItem.ToString();
+            currentStudent = FIOName.SelectedItem.ToString();
 
 
+            if (radioButtonTestModeTest.Checked)
+            {
+                FormTest formTest = new FormTest(currentTest, currentVzvod, currentStudent);
+
+                formTest.Text = "ТЕСТ." + currentTest + ". " + currentVzvod + " взвод. " + "Студент " + currentStudent;
+                formTest.Visible = true;
+            }
+
+            if (radioButtonTestModeStudy.Checked)
+            {
+                FormStudy formStudy = new FormStudy(currentTest, currentVzvod, currentStudent);
+
+                formStudy.Text = "ОБУЧЕНИЕ. " + currentTest + ". " + currentVzvod + " взвод. " + "Студент " + currentStudent;
+                formStudy.Visible = true;
+            }
+
+
+
+        }
+
+        private void buttonInstruction_Click(object sender, EventArgs e)
+        {
+            FormInstruction formInstruction = new FormInstruction();
+            formInstruction.Visible = true;
+            formInstruction.Text = "Инструкция";
         }
     }
 }

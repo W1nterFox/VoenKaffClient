@@ -19,3 +19,5 @@ D:\Новая папка (3)\VoenKaffStartClient\VoenKaffStartClient\obj\Debug\V
 D:\Новая папка (3)\VoenKaffStartClient\VoenKaffStartClient\obj\Debug\VoenKaffStartClient.FormTest.resources
 D:\Новая папка (3)\VoenKaffStartClient\VoenKaffStartClient\obj\Debug\VoenKaffStartClient.Properties.Resources.resources
 D:\Новая папка (3)\VoenKaffStartClient\VoenKaffStartClient\obj\Debug\VoenKaffStartClient.csproj.GenerateResource.Cache
+D:\Новая папка (3)\VoenKaffStartClient\VoenKaffStartClient\obj\Debug\VoenKaffStartClient.FormInstruction.resources
+D:\Новая папка (3)\VoenKaffStartClient\VoenKaffStartClient\obj\Debug\VoenKaffStartClient.FormStudy.resources
