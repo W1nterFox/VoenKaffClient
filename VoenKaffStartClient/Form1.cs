@@ -39,14 +39,18 @@ namespace VoenKaffStartClient
             if (selectedVzvod.Equals("141")) return new string[] { "Дмитриев", "Целищев" };
             if (selectedVzvod.Equals("142")) return new string[] { "Минаев", "НеМинаев" };
 
-            return null;
+            return new string[] { "temp1", "temp2", "temp3" };
         }
 
         private void startButton_Click(object sender, EventArgs e)
         {
             this.Visible = false;
             FormTest formTest = new FormTest();
+
+            formTest.Text = testName.SelectedItem.ToString() + ". " + vzvodName.SelectedItem.ToString() + " взвод. " + "Студент " + FIOName.SelectedItem.ToString();
             formTest.Visible = true;
+
+
         }
     }
 }
