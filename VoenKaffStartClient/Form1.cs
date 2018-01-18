@@ -17,6 +17,8 @@ namespace VoenKaffStartClient
         public string currentVzvod;
         public string currentStudent;
 
+        List<FormDefaultTest> listOfFormDefaultTest = new List<FormDefaultTest> { };
+
         public Form1()
         {
             InitializeComponent();
@@ -33,6 +35,7 @@ namespace VoenKaffStartClient
             radioButtonTestModeTest.Checked = true;
             listPanelsTasks = new List<String>();
             //nameFIO.Items.AddRange(new string[] {""});
+            
         }
 
         private void nameVzvod_SelectedIndexChanged(object sender, System.EventArgs e)
@@ -98,6 +101,11 @@ namespace VoenKaffStartClient
             FormInstruction formInstruction = new FormInstruction();
             formInstruction.Visible = true;
             formInstruction.Text = "Инструкция";
+        }
+
+        private void загрузитьТестыToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //Тут должно быть заполнение коллекции listOfFormDefaultTest тестами из файла
         }
     }
 }

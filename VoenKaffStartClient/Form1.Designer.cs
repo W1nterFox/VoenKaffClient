@@ -41,8 +41,13 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.загрузитьТестыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.закрытьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.закрытьToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.chooseMode.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -58,9 +63,9 @@
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(13, 13);
+            this.panel1.Location = new System.Drawing.Point(13, 27);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(666, 333);
+            this.panel1.Size = new System.Drawing.Size(666, 319);
             this.panel1.TabIndex = 0;
             // 
             // buttonInstruction
@@ -191,19 +196,55 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Тестирование нормативов";
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.загрузитьТестыToolStripMenuItem,
+            this.закрытьToolStripMenuItem,
+            this.закрытьToolStripMenuItem1});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(691, 24);
+            this.menuStrip1.TabIndex = 1;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // загрузитьТестыToolStripMenuItem
+            // 
+            this.загрузитьТестыToolStripMenuItem.Name = "загрузитьТестыToolStripMenuItem";
+            this.загрузитьТестыToolStripMenuItem.Size = new System.Drawing.Size(107, 20);
+            this.загрузитьТестыToolStripMenuItem.Text = "Загрузить тесты";
+            this.загрузитьТестыToolStripMenuItem.Click += new System.EventHandler(this.загрузитьТестыToolStripMenuItem_Click);
+            // 
+            // закрытьToolStripMenuItem
+            // 
+            this.закрытьToolStripMenuItem.Name = "закрытьToolStripMenuItem";
+            this.закрытьToolStripMenuItem.Size = new System.Drawing.Size(195, 20);
+            this.закрытьToolStripMenuItem.Text = "Добавить/Редактировать взвода";
+            // 
+            // закрытьToolStripMenuItem1
+            // 
+            this.закрытьToolStripMenuItem1.Name = "закрытьToolStripMenuItem1";
+            this.закрытьToolStripMenuItem1.Size = new System.Drawing.Size(65, 20);
+            this.закрытьToolStripMenuItem1.Text = "Закрыть";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(691, 358);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.Text = "Form1";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.chooseMode.ResumeLayout(false);
             this.chooseMode.PerformLayout();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -222,6 +263,10 @@
         private System.Windows.Forms.RadioButton radioButtonTestModeTest;
         private System.Windows.Forms.Button buttonInstruction;
         private System.Windows.Forms.Button startButton;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem загрузитьТестыToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem закрытьToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem закрытьToolStripMenuItem1;
     }
 }
 
