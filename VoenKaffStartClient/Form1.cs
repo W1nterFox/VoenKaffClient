@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using VoenKaffStartClient.Wrappers;
 
 namespace VoenKaffStartClient
 {
@@ -17,13 +18,16 @@ namespace VoenKaffStartClient
         public string currentVzvod;
         public string currentStudent;
 
-        List<FormDefaultTest> listOfFormDefaultTest = new List<FormDefaultTest> { };
+        List<Test> listOfFormDefaultTest = new List<Test> { };
 
         public Form1()
         {
             InitializeComponent();
             testName.Items.AddRange(new string[] { "Номенклатура карт", "Дальность до цели" });
             vzvodName.Items.AddRange(new string[] { "121", "122", "123", "131", "132", "133", "141", "142", "143" });
+
+            var testLoader = new TestLoader();
+            listOfFormDefaultTest = testLoader.LoadTestsFromFolder("C:\\projects\\Sanya");
 
             vzvodName.SelectedIndexChanged += new System.EventHandler(nameVzvod_SelectedIndexChanged);
 
