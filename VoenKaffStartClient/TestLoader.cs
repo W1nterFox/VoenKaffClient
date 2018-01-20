@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Newtonsoft.Json;
@@ -8,20 +9,34 @@ namespace VoenKaffStartClient
 {
     public class TestLoader
     {
-        public List<Test> LoadTestsFromFile(string pathToTest)
+        public Tests LoadTestsFromFile(string pathToTest)
         {
             var json = System.IO.File.ReadAllText(pathToTest);
-            return JsonConvert.DeserializeObject<List<Test>>(json);
+            return JsonConvert.DeserializeObject<Tests>(json);
         }
 
-        public List<Test> LoadTestsFromFolder(string pathToFolder)
+        public Tests LoadTestsFromFolder(string pathToFolder)
         {
 
-            var result = new List<Test>();
+            var result = new Tests();
 
             foreach (var pathToTest in GetTestFilePaths(pathToFolder))
             {
-                result.AddRange(LoadTestsFromFile(pathToTest));
+                Tests test = LoadTestsFromFile(pathToTest);
+                foreach (var testResult in test.PlatoonList)
+                {
+                    try
+                    {
+                        result.PlatoonList.Add(testResult.Key, testResult.Value);
+                    }
+                    catch (ArgumentException)
+                    {
+                        result.PlatoonList.Remove(testResult.Key);
+                        result.PlatoonList.Add(testResult.Key,testResult.Value);
+                    } 
+                }
+
+                result.TestList.AddRange(test.TestList);
             }
 
             return result;

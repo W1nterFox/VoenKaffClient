@@ -3,9 +3,13 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Windows.Forms;
+using SerializablePicutre;
+using VoenKaffStartClient.Binders;
 using VoenKaffStartClient.Wrappers;
 
 namespace VoenKaffStartClient
@@ -17,12 +21,13 @@ namespace VoenKaffStartClient
         public string currentVzvod;
         public string currentStudent;
 
-        List<Test> listOfFormDefaultTest = new List<Test> { };
+        Tests listOfFormDefaultTest;
         List<FormTest> listFormTests = new List<FormTest> { };
         List<FormStudy> listFormStudy = new List<FormStudy> { };
 
         FormTest _formTest;
         FormStudy _formStudy;
+        private string _pathForTest = "E:\\";
 
         
 
@@ -31,9 +36,9 @@ namespace VoenKaffStartClient
             InitializeComponent();
 
             var testLoader = new TestLoader();
-            listOfFormDefaultTest = testLoader.LoadTestsFromFolder("D:\\");
+            listOfFormDefaultTest = testLoader.LoadTestsFromFolder(_pathForTest);
 
-            foreach (Test test in listOfFormDefaultTest)
+            foreach (Test test in listOfFormDefaultTest.TestList)
             {
                 testName.Items.Add(test.Name);
                 //listFormTests.Add(new FormTest(null, null, null));
@@ -47,12 +52,12 @@ namespace VoenKaffStartClient
 
             
 
-            vzvodName.SelectedIndexChanged += new System.EventHandler(nameVzvod_SelectedIndexChanged);
+            vzvodName.SelectedIndexChanged += nameVzvod_SelectedIndexChanged;
 
 
-            testName.SelectedIndexChanged += new System.EventHandler(startButtonEnabled);
-            vzvodName.SelectedIndexChanged += new System.EventHandler(startButtonEnabled);
-            FIOName.SelectedIndexChanged += new System.EventHandler(startButtonEnabled);
+            testName.SelectedIndexChanged += startButtonEnabled;
+            vzvodName.SelectedIndexChanged += startButtonEnabled;
+            FIOName.SelectedIndexChanged += startButtonEnabled;
 
             radioButtonTestModeTest.Checked = true;
             listPanelsTasks = new List<String>();
@@ -101,14 +106,15 @@ namespace VoenKaffStartClient
 
             //Test currentTestInLists = new Test();
             int index = 0;
-            for ( int i=0; i< listOfFormDefaultTest.Count; i++  )
+            for ( int i=0; i< listOfFormDefaultTest.TestList.Count; i++  )
             {
-                if (listOfFormDefaultTest[i].Name.Equals(currentTest))
+                if (listOfFormDefaultTest.TestList[i].Name.Equals(currentTest))
                 {
                     index = i;
                 }
             }
             
+            initTest(listOfFormDefaultTest[index]);
             
             
             if (radioButtonTestModeTest.Checked)
