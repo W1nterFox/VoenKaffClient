@@ -25,8 +25,12 @@ namespace VoenKaffStartClient
         public Dictionary<Task, List<PictureBox>> _PBInTask = new Dictionary<Task, List<PictureBox>> { };
         public Dictionary<Task, List<TextBox>> _TBInTask = new Dictionary<Task, List<TextBox>> { };
         public List<Panel> _listPanelTasks = new List<Panel> { };
+
         Button btnNextTask;
         Button btnEndTest;
+
+        int textBoxNumber = 1;
+        public Dictionary<Task, List<Label>> _listTBLabels = new Dictionary<Task, List<Label>> { };
 
 
         public FormTest(string currentTest, string currentVzvod, string currentStudent)
@@ -35,11 +39,12 @@ namespace VoenKaffStartClient
             _currentTest = currentTest;
             _currentVzvod = currentVzvod;
             _currentStudent = currentStudent;
-            
 
             
 
-            
+
+
+
 
         }
 
@@ -78,6 +83,7 @@ namespace VoenKaffStartClient
                 _RTBInTask.Add(paneltask, new List<Label> { });
                 _PBInTask.Add(paneltask, new List<PictureBox> { });
                 _TBInTask.Add(paneltask, new List<TextBox> { });
+                _listTBLabels.Add(paneltask, new List<Label> { });
 
                 _listTasksInTest.Add(paneltask);
 
@@ -125,7 +131,18 @@ namespace VoenKaffStartClient
                             Name = taskElem.Name,
                             Location = taskElem.Point,
                             Tag = taskElem.Answer,
+                            
                         });
+                        _listTBLabels[paneltask].Add(new Label
+                        {
+                            Location = new Point(taskElem.Point.X, taskElem.Point.Y - 20),
+                            Text = "Поле №" + textBoxNumber,
+                            Font = new System.Drawing.Font("Century Gothic", 10.25F),
+                        });
+
+                        textBoxNumber++;
+
+
                     }
                 }
             }
@@ -179,7 +196,7 @@ namespace VoenKaffStartClient
                         Font = new System.Drawing.Font("Century Gothic", 9.25F),
 
                         Location = new System.Drawing.Point(perem * panelAnswerFoo.Controls.Count, 10),
-                        Text = "Правильный ответ #" + (i + 1) + ": " + _TBInTask[task][i].Tag,
+                        Text = "Правильный ответ №" + (i + 1) + ": " + _TBInTask[task][i].Tag,
                     });
 
                     perem = panelAnswerFoo.Controls[panelAnswerFoo.Controls.Count - 1].Width;
@@ -224,6 +241,10 @@ namespace VoenKaffStartClient
                 foreach (TextBox tb in _TBInTask[task])
                 {
                     panelQestionFoo.Controls.Add(tb);
+                }
+                foreach (Label label in _listTBLabels[task])
+                {
+                    panelQestionFoo.Controls.Add(label);
                 }
 
             }
