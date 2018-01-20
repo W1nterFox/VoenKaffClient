@@ -17,7 +17,7 @@ namespace VoenKaffStartClient
         string _currentStudent;
 
         public List<Task> _listTasksInTest = new List<Task> { };
-        public Dictionary<Task, List<RichTextBox>> _RTBInTask = new Dictionary<Task, List<RichTextBox>> { };
+        public Dictionary<Task, List<Label>> _RTBInTask = new Dictionary<Task, List<Label>> { };
         public Dictionary<Task, List<PictureBox>> _PBInTask = new Dictionary<Task, List<PictureBox>> { };
         public Dictionary<Task, List<TextBox>> _TBInTask = new Dictionary<Task, List<TextBox>> { };
         public List<Panel> _listPanelTasks = new List<Panel> { };
