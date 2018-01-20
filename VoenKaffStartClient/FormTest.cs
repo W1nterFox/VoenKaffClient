@@ -15,79 +15,25 @@ namespace VoenKaffStartClient
         string _currentTest;
         string _currentVzvod;
         string _currentStudent;
-        Test _objectsInCurrentTest;
         //Коллекция тасков в тесте
-        List<Task> _listTasksInTest=new List<Task> { };
+        public List<Task> _listTasksInTest=new List<Task> { };
         public Dictionary<Task, List<RichTextBox>> _RTBInTask = new Dictionary<Task, List<RichTextBox>> { };
         public Dictionary<Task, List<PictureBox>> _PBInTask = new Dictionary<Task, List<PictureBox>> { };
         public Dictionary<Task, List<TextBox>> _TBInTask = new Dictionary<Task, List<TextBox>> { };
+        public List<Panel> _listPanelTasks = new List<Panel> { };
 
-        public FormTest(string currentTest, string currentVzvod, string currentStudent, Test objectsInCurrentTest)
+
+        public FormTest(string currentTest, string currentVzvod, string currentStudent)
         {
             InitializeComponent();
             _currentTest = currentTest;
             _currentVzvod = currentVzvod;
             _currentStudent = currentStudent;
+            
 
-            _objectsInCurrentTest = objectsInCurrentTest;
+            
 
-            foreach (Task paneltask in objectsInCurrentTest.Tasks)
-            {
-                _RTBInTask.Add(paneltask, new List<RichTextBox> { });
-                _PBInTask.Add(paneltask, new List<PictureBox> { });
-                _TBInTask.Add(paneltask, new List<TextBox> { });
-
-                _listTasksInTest.Add(paneltask);
-
-                foreach (TaskElement taskElem in paneltask.TaskElements)
-                {
-                    if ( taskElem.Type.Equals("System.Windows.Forms.RichTextBox"))
-                    {
-                        _RTBInTask[paneltask].Add(new RichTextBox
-                        {
-                            Height = taskElem.Height,
-                            Width = taskElem.Width,
-                            Name = taskElem.Name,
-                            Location = taskElem.Point,
-                            Text = taskElem.Text
-                            
-                        });
-                    }
-
-                    if (taskElem.Type.Equals("System.Windows.Forms.PictureBox"))
-                    {
-                        _PBInTask[paneltask].Add(new PictureBox
-                        {
-                            Image = new Bitmap(taskElem.Media),
-                            Height = taskElem.Height,
-                            Width = taskElem.Width,
-                            Name = taskElem.Name,
-                            Location = taskElem.Point
-                        });
-                        
-
-                    }
-
-                    if (taskElem.Type.Equals("System.Windows.Forms.TextBox"))
-                    {
-                        _TBInTask[paneltask].Add(new TextBox
-                        {
-                            Height = taskElem.Height,
-                            Width = taskElem.Width,
-                            Name = taskElem.Name,
-                            Location = taskElem.Point,
-                            Tag = taskElem.Answer,
-                            
-                            
-
-                        });
-                    }
-                }
-            }
-
-
-
-
+            
 
         }
 
