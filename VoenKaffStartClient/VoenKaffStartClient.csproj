@@ -58,7 +58,20 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormLSInputMany.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormLSInputMany.Designer.cs">
+      <DependentUpon>FormLSInputMany.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormPlatoon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPlatoon.Designer.cs">
+      <DependentUpon>FormPlatoon.cs</DependentUpon>
+    </Compile>
     <Compile Include="TestLoader.cs" />
+    <Compile Include="VzvodAndLs.cs" />
     <Compile Include="Wrappers\Marks.cs" />
     <Compile Include="Wrappers\Test.cs" />
     <Compile Include="FormInstruction.cs">

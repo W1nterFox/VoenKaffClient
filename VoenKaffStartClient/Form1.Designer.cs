@@ -220,6 +220,7 @@
             this.закрытьToolStripMenuItem.Name = "закрытьToolStripMenuItem";
             this.закрытьToolStripMenuItem.Size = new System.Drawing.Size(195, 20);
             this.закрытьToolStripMenuItem.Text = "Добавить/Редактировать взвода";
+            this.закрытьToolStripMenuItem.Click += new System.EventHandler(this.добавитьВзводаToolStripMenuItem_Click);
             // 
             // закрытьToolStripMenuItem1
             // 

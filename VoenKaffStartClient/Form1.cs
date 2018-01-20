@@ -29,7 +29,7 @@ namespace VoenKaffStartClient
         FormTest _formTest;
         FormStudy _formStudy;
 
-        
+        FormPlatoon formPlaton;
 
         public Form1()
         {
@@ -37,6 +37,8 @@ namespace VoenKaffStartClient
 
             this.MinimumSize = this.Size;
             this.MaximumSize = this.Size;
+
+            formPlaton = new FormPlatoon(this);
 
             var testLoader = new TestLoader();
             listOfFormDefaultTest = testLoader.LoadTestsFromFolder(Resources.PathForTest);
@@ -47,7 +49,12 @@ namespace VoenKaffStartClient
                 //listFormTests.Add(new FormTest(null, null, null));
             }
 
-
+            foreach (KeyValuePair<string, List<string>> keyValue in listOfFormDefaultTest.PlatoonList)
+            {
+                VzvodAndLs.Get().Add(keyValue.Key, keyValue.Value);
+                ((ListBox)(formPlaton.Controls.Find("listBoxVzvoda", true)[0])).Items.Add(keyValue.Key);
+            }
+            
 
 
             //testName.Items.AddRange(new string[] { "Номенклатура карт", "Дальность до цели" });
@@ -164,6 +171,13 @@ namespace VoenKaffStartClient
             {
                 Close();
             }
+        }
+
+        private void добавитьВзводаToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            this.Visible = false;
+            formPlaton.Visible = true;
         }
     }
 }
