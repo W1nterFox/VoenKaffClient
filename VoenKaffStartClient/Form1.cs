@@ -24,6 +24,8 @@ namespace VoenKaffStartClient
         FormTest _formTest;
         FormStudy _formStudy;
 
+        
+
         public Form1()
         {
             InitializeComponent();
@@ -141,6 +143,9 @@ namespace VoenKaffStartClient
             List<Panel> _listPanelTasks = new List<Panel> { };
             Panel panelMain = (Panel)formTest.Controls.Find("panelMain", true)[0];
 
+            Button btnNextTask;
+            Button btnEndTest;
+
             foreach (Task paneltask in objectsInCurrentTest.Tasks)
             {
                 _RTBInTask.Add(paneltask, new List<RichTextBox> { });
@@ -224,7 +229,6 @@ namespace VoenKaffStartClient
                 {
                     BackColor = System.Drawing.Color.Linen,
                     //Controls.Add(this.buttonEndTest);
-                    //  Controls.Add(this.textBox1);
                     //Controls.Add(this.buttonNextTask);
                     Location = new System.Drawing.Point(0, 520),
                     Name = "panelAnswers",
@@ -250,6 +254,32 @@ namespace VoenKaffStartClient
                     perem = panelAnswerFoo.Controls[panelAnswerFoo.Controls.Count - 1].Width;
                 }
 
+                //Следующее задание
+                btnNextTask = new Button {
+                FlatStyle = System.Windows.Forms.FlatStyle.Flat,
+                Font = new System.Drawing.Font("Century Gothic", 11.25F),
+                Location = new System.Drawing.Point(450, 50),
+                Name = "btnNextTask" + (_listPanelTasks.Count - 1),
+                Size = new System.Drawing.Size(162, 45),
+                Text = "Следующее задание",
+                };
+                btnNextTask.Click += nextTask;
+                panelAnswerFoo.Controls.Add(btnNextTask);
+
+                //Закончить тест
+                btnEndTest = new Button
+                {
+                    FlatStyle = System.Windows.Forms.FlatStyle.Flat,
+                    Font = new System.Drawing.Font("Century Gothic", 11.25F),
+                    Location = new System.Drawing.Point(450, 50),
+                    Name = "btnEndTest" + (_listPanelTasks.Count - 1),
+                    Size = new System.Drawing.Size(162, 45),
+                    Text = "Закончить тест",
+                };
+                btnEndTest.Click += endTask;
+                panelAnswerFoo.Controls.Add(btnEndTest);
+
+                
 
                 foreach (RichTextBox rtb in _RTBInTask[task])
                 {
@@ -274,15 +304,39 @@ namespace VoenKaffStartClient
             formTest._PBInTask = _PBInTask;
             formTest._TBInTask = _TBInTask;
             formTest._listPanelTasks = _listPanelTasks;
+            formTest._listPanelTasks[formTest._listPanelTasks.Count - 1].Controls.Find("btnNextTask" + (formTest._listPanelTasks.Count - 1), true)[0].Visible = false;
+            formTest._listPanelTasks[formTest._listPanelTasks.Count - 1].Controls.Find("btnEndTest" + (formTest._listPanelTasks.Count - 1), true)[0].Visible = true;
 
             formStudy._listTasksInTest = _listTasksInTest;
             formStudy._RTBInTask = _RTBInTask;
             formStudy._PBInTask = _PBInTask;
             formStudy._TBInTask = _TBInTask;
             formStudy._listPanelTasks = _listPanelTasks;
+            formStudy._listPanelTasks[formStudy._listPanelTasks.Count - 1].Controls.Find("btnNextTask" + (formStudy._listPanelTasks.Count - 1), true)[0].Visible = false;
+            formStudy._listPanelTasks[formStudy._listPanelTasks.Count - 1].Controls.Find("btnEndTest" + (formStudy._listPanelTasks.Count - 1), true)[0].Visible = true;
 
 
 
+        }
+
+        private void nextTask(object sender, EventArgs e)
+        {
+            string tempString = ((Control)sender).Name;
+            int index = Int32.Parse(tempString.Substring(tempString.Length - 1));
+            if (index != _formTest._listPanelTasks.Count-1)
+            {
+                _formTest._listPanelTasks[index].Visible = false;
+                _formTest._listPanelTasks[index + 1].Visible = true;
+            }
+            
+        }
+
+        private void endTask(object sender, EventArgs e)
+        {
+            string tempString = ((Control)sender).Name;
+            int index = Int32.Parse(tempString.Substring(tempString.Length - 1));
+            
+            _formTest._listPanelTasks[index].Visible = false;
         }
 
         private void buttonInstruction_Click(object sender, EventArgs e)

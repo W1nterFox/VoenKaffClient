@@ -23,6 +23,7 @@ namespace VoenKaffStartClient
         public List<Panel> _listPanelTasks = new List<Panel> { };
 
 
+
         public FormTest(string currentTest, string currentVzvod, string currentStudent)
         {
             InitializeComponent();
