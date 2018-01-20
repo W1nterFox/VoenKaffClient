@@ -16,9 +16,11 @@ namespace VoenKaffStartClient
 {
     public partial class FormTest : Form
     {
-        string _currentTest;
-        string _currentVzvod;
-        string _currentStudent;
+        public string _currentTest;
+        public string _currentVzvod;
+        public string _currentStudent;
+
+        public Marks _marks = new Marks();
         //Коллекция тасков в тесте
         public List<Task> _listTasksInTest=new List<Task> { };
         public Dictionary<Task, List<Label>> _RTBInTask = new Dictionary<Task, List<Label>> { };
@@ -28,10 +30,15 @@ namespace VoenKaffStartClient
 
         Button btnNextTask;
         Button btnEndTest;
+        Button btnCheckAnswers;
 
         int textBoxNumber = 1;
         public Dictionary<Task, List<Label>> _listTBLabels = new Dictionary<Task, List<Label>> { };
 
+
+        public int countRightAnswers = 0;
+
+        int currentTaskNum = 1;
 
         public FormTest(string currentTest, string currentVzvod, string currentStudent)
         {
@@ -40,11 +47,10 @@ namespace VoenKaffStartClient
             _currentVzvod = currentVzvod;
             _currentStudent = currentStudent;
 
+            this.MinimumSize = this.Size;
+            this.MaximumSize = this.Size;
+
             
-
-
-
-
 
         }
 
@@ -60,10 +66,10 @@ namespace VoenKaffStartClient
 
         private void buttonEndTest_Click(object sender, EventArgs e)
         {
-            FormResults formResults = new FormResults(_currentTest, _currentVzvod, _currentStudent);
+            //FormResults formResults = new FormResults(_currentTest, _currentVzvod, _currentStudent);
             this.Visible = false;
-            formResults.Text = "ТЕСТ. " + _currentTest + ". " + _currentVzvod + " взвод. " + "Студент " + _currentStudent;
-            formResults.Visible = true;
+            //formResults.Text = "ТЕСТ. " + _currentTest + ". " + _currentVzvod + " взвод. " + "Студент " + _currentStudent;
+            //formResults.Visible = true;
         }
 
 
@@ -75,11 +81,12 @@ namespace VoenKaffStartClient
 
         public void initTest(Test objectsInCurrentTest)
         {
-            
-            
+
+            _marks = objectsInCurrentTest.Marks;
 
             foreach (Task paneltask in objectsInCurrentTest.Tasks)
-            {
+            { 
+
                 _RTBInTask.Add(paneltask, new List<Label> { });
                 _PBInTask.Add(paneltask, new List<PictureBox> { });
                 _TBInTask.Add(paneltask, new List<TextBox> { });
@@ -228,6 +235,18 @@ namespace VoenKaffStartClient
                 btnEndTest.Click += endTask;
                 panelAnswerFoo.Controls.Add(btnEndTest);
 
+                //Показать ответы
+                btnCheckAnswers = new Button
+                {
+                    FlatStyle = System.Windows.Forms.FlatStyle.Flat,
+                    Font = new System.Drawing.Font("Century Gothic", 11.25F),
+                    Location = new System.Drawing.Point(450, 550),
+                    Name = "btnCheckAnswers" + (_listPanelTasks.Count - 1),
+                    Size = new System.Drawing.Size(162, 45),
+                    Text = "Ответить",
+                };
+                btnCheckAnswers.Click += checkAnswers;
+                _listPanelTasks[_listPanelTasks.Count - 1].Controls.Add(btnCheckAnswers);
 
 
                 foreach (Label rtb in _RTBInTask[task])
@@ -253,10 +272,14 @@ namespace VoenKaffStartClient
             _listPanelTasks[_listPanelTasks.Count - 1].Controls.Find("btnNextTask" + (_listPanelTasks.Count - 1), true)[0].Visible = false;
             _listPanelTasks[_listPanelTasks.Count - 1].Controls.Find("btnEndTest" + (_listPanelTasks.Count - 1), true)[0].Visible = true;
 
-           
+            for (int i=0;i< _listPanelTasks.Count; i++)
+            {
+                _listPanelTasks[i].Controls.Find("panelAnswers", true)[0].Visible = false;
+            }
 
-
-
+            toolStripProgressBar1.Value = 100 / _listTasksInTest.Count;
+            toolStripProgressBar1.Step = 100 / _listTasksInTest.Count;
+            toolStripStatusLabelTaskNumberAndTaskCount.Text = "Выполняется задание: " + currentTaskNum + " из " + _listTasksInTest.Count;
         }
 
         private void nextTask(object sender, EventArgs e)
@@ -268,7 +291,9 @@ namespace VoenKaffStartClient
                 _listPanelTasks[index].Visible = false;
                 _listPanelTasks[index + 1].Visible = true;
             }
-
+            currentTaskNum++;
+            toolStripStatusLabelTaskNumberAndTaskCount.Text = "Выполняется задание: " + currentTaskNum + " из " + _listTasksInTest.Count;
+            toolStripProgressBar1.PerformStep();
         }
 
         private void endTask(object sender, EventArgs e)
@@ -277,14 +302,46 @@ namespace VoenKaffStartClient
             int index = Int32.Parse(tempString.Substring(tempString.Length - 1));
 
             _listPanelTasks[index].Visible = false;
+
+            FormResults formResults = new FormResults(this);
+            formResults.Text = "ТЕСТ. " + _currentTest + ". " + _currentVzvod + " взвод. " + "Студент " + _currentStudent;
+            this.Visible = false;
+            formResults.Visible = true;
         }
 
+        private void checkAnswers(object sender, EventArgs e)
+        {
+            string tempString = ((Control)sender).Name;
+            int index = Int32.Parse(tempString.Substring(tempString.Length - 1));
+            bool thisTaskSuccess = true;
 
 
+            //в текстбоксах в tag Хранятся правильные ответы, их нужно сравнивать с введенным тестом
 
+            for (int i = 0; i < _listPanelTasks[index].Controls.Find("panelQuestion", true)[0].Controls.Count; i++)
+            {
 
+                Control buf = _listPanelTasks[index].Controls.Find("panelQuestion", true)[0].Controls[i];
+                if (buf.Name.Length >= 27 )
+                {
+                    string asdasd = buf.Name.Substring(0, 28);
+                    if (asdasd == "System.Windows.Forms.TextBox")
+                    {
+                        if (buf.Tag.ToString() != buf.Text)
+                        {
+                            thisTaskSuccess=false;
+                        }
+                    }
+                    
+                }
+            }
 
+            if (thisTaskSuccess) countRightAnswers++;
 
+            //System.Windows.Forms.TextBox, Text: 1
+            _listPanelTasks[index].Controls.Find("panelAnswers", true)[0].Visible = true;
+        }
 
+        
     }
 }

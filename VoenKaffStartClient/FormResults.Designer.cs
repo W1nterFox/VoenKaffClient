@@ -29,177 +29,223 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.buttonCloseTest = new System.Windows.Forms.Button();
-            this.labelTasksPercent = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.labelTasksRight = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.labelTasksCount = new System.Windows.Forms.Label();
+            this.labelFinalMark = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.labelFIOName = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.labelVzvodName = new System.Windows.Forms.Label();
+            this.labelTasksCount = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.labelTasksPercent = new System.Windows.Forms.Label();
+            this.labelTasksRight = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.labelTestName = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.labelTestName = new System.Windows.Forms.Label();
+            this.labelVzvodName = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.labelFIOName = new System.Windows.Forms.Label();
+            this.buttonCloseTest = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panel1.Controls.Add(this.labelFinalMark);
+            this.panel1.Controls.Add(this.label7);
+            this.panel1.Controls.Add(this.groupBox2);
+            this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Controls.Add(this.buttonCloseTest);
-            this.panel1.Controls.Add(this.labelTasksPercent);
-            this.panel1.Controls.Add(this.label6);
-            this.panel1.Controls.Add(this.labelTasksRight);
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.labelTasksCount);
-            this.panel1.Controls.Add(this.label8);
-            this.panel1.Controls.Add(this.labelFIOName);
-            this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.labelVzvodName);
-            this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.labelTestName);
-            this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(12, 13);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(666, 333);
+            this.panel1.Size = new System.Drawing.Size(666, 399);
             this.panel1.TabIndex = 0;
+            // 
+            // labelFinalMark
+            // 
+            this.labelFinalMark.AutoSize = true;
+            this.labelFinalMark.Font = new System.Drawing.Font("Century Gothic", 17.75F);
+            this.labelFinalMark.ForeColor = System.Drawing.Color.Red;
+            this.labelFinalMark.Location = new System.Drawing.Point(332, 287);
+            this.labelFinalMark.Name = "labelFinalMark";
+            this.labelFinalMark.Size = new System.Drawing.Size(117, 30);
+            this.labelFinalMark.TabIndex = 16;
+            this.labelFinalMark.Text = "Отлично";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Century Gothic", 17.75F);
+            this.label7.Location = new System.Drawing.Point(225, 287);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(108, 30);
+            this.label7.TabIndex = 13;
+            this.label7.Text = "Оценка:";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.label8);
+            this.groupBox2.Controls.Add(this.labelTasksCount);
+            this.groupBox2.Controls.Add(this.label3);
+            this.groupBox2.Controls.Add(this.labelTasksPercent);
+            this.groupBox2.Controls.Add(this.labelTasksRight);
+            this.groupBox2.Controls.Add(this.label6);
+            this.groupBox2.Location = new System.Drawing.Point(157, 166);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(357, 104);
+            this.groupBox2.TabIndex = 15;
+            this.groupBox2.TabStop = false;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Century Gothic", 11.25F);
+            this.label8.Location = new System.Drawing.Point(6, 16);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(111, 20);
+            this.label8.TabIndex = 7;
+            this.label8.Text = "Всего заданий";
+            // 
+            // labelTasksCount
+            // 
+            this.labelTasksCount.AutoSize = true;
+            this.labelTasksCount.Font = new System.Drawing.Font("Century Gothic", 11.25F);
+            this.labelTasksCount.Location = new System.Drawing.Point(181, 16);
+            this.labelTasksCount.Name = "labelTasksCount";
+            this.labelTasksCount.Size = new System.Drawing.Size(25, 20);
+            this.labelTasksCount.TabIndex = 8;
+            this.labelTasksCount.Text = "20";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Century Gothic", 11.25F);
+            this.label3.Location = new System.Drawing.Point(6, 36);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(61, 20);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "Верных";
+            // 
+            // labelTasksPercent
+            // 
+            this.labelTasksPercent.AutoSize = true;
+            this.labelTasksPercent.Font = new System.Drawing.Font("Century Gothic", 11.25F);
+            this.labelTasksPercent.Location = new System.Drawing.Point(181, 56);
+            this.labelTasksPercent.Name = "labelTasksPercent";
+            this.labelTasksPercent.Size = new System.Drawing.Size(37, 20);
+            this.labelTasksPercent.TabIndex = 12;
+            this.labelTasksPercent.Text = "75%";
+            // 
+            // labelTasksRight
+            // 
+            this.labelTasksRight.AutoSize = true;
+            this.labelTasksRight.Font = new System.Drawing.Font("Century Gothic", 11.25F);
+            this.labelTasksRight.Location = new System.Drawing.Point(181, 36);
+            this.labelTasksRight.Name = "labelTasksRight";
+            this.labelTasksRight.Size = new System.Drawing.Size(25, 20);
+            this.labelTasksRight.TabIndex = 10;
+            this.labelTasksRight.Text = "15";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Century Gothic", 11.25F);
+            this.label6.Location = new System.Drawing.Point(6, 56);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(122, 20);
+            this.label6.TabIndex = 11;
+            this.label6.Text = "Процент верных";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.labelTestName);
+            this.groupBox1.Controls.Add(this.labelVzvodName);
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Controls.Add(this.labelFIOName);
+            this.groupBox1.Location = new System.Drawing.Point(157, 40);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(357, 120);
+            this.groupBox1.TabIndex = 14;
+            this.groupBox1.TabStop = false;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Century Gothic", 11.25F);
+            this.label4.Location = new System.Drawing.Point(16, 46);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(53, 20);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "Взвод";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 11.25F);
+            this.label2.Location = new System.Drawing.Point(16, 26);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(41, 20);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Тест";
+            // 
+            // labelTestName
+            // 
+            this.labelTestName.AutoSize = true;
+            this.labelTestName.Font = new System.Drawing.Font("Century Gothic", 11.25F);
+            this.labelTestName.Location = new System.Drawing.Point(188, 26);
+            this.labelTestName.Name = "labelTestName";
+            this.labelTestName.Size = new System.Drawing.Size(146, 20);
+            this.labelTestName.TabIndex = 2;
+            this.labelTestName.Text = "Номенклатура карт";
+            // 
+            // labelVzvodName
+            // 
+            this.labelVzvodName.AutoSize = true;
+            this.labelVzvodName.Font = new System.Drawing.Font("Century Gothic", 11.25F);
+            this.labelVzvodName.Location = new System.Drawing.Point(188, 46);
+            this.labelVzvodName.Name = "labelVzvodName";
+            this.labelVzvodName.Size = new System.Drawing.Size(33, 20);
+            this.labelVzvodName.TabIndex = 4;
+            this.labelVzvodName.Text = "141";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Century Gothic", 11.25F);
+            this.label5.Location = new System.Drawing.Point(16, 66);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(66, 20);
+            this.label5.TabIndex = 5;
+            this.label5.Text = "Студент";
+            // 
+            // labelFIOName
+            // 
+            this.labelFIOName.AutoSize = true;
+            this.labelFIOName.Font = new System.Drawing.Font("Century Gothic", 11.25F);
+            this.labelFIOName.Location = new System.Drawing.Point(188, 66);
+            this.labelFIOName.Name = "labelFIOName";
+            this.labelFIOName.Size = new System.Drawing.Size(104, 20);
+            this.labelFIOName.TabIndex = 6;
+            this.labelFIOName.Text = "Дмитриев АО";
             // 
             // buttonCloseTest
             // 
             this.buttonCloseTest.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonCloseTest.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            this.buttonCloseTest.Location = new System.Drawing.Point(255, 272);
+            this.buttonCloseTest.Location = new System.Drawing.Point(250, 351);
             this.buttonCloseTest.Name = "buttonCloseTest";
             this.buttonCloseTest.Size = new System.Drawing.Size(162, 45);
             this.buttonCloseTest.TabIndex = 13;
             this.buttonCloseTest.Text = "Закрыть тест";
             this.buttonCloseTest.UseVisualStyleBackColor = true;
             this.buttonCloseTest.Click += new System.EventHandler(this.buttonCloseTest_Click);
-            // 
-            // labelTasksPercent
-            // 
-            this.labelTasksPercent.AutoSize = true;
-            this.labelTasksPercent.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            this.labelTasksPercent.Location = new System.Drawing.Point(339, 232);
-            this.labelTasksPercent.Name = "labelTasksPercent";
-            this.labelTasksPercent.Size = new System.Drawing.Size(37, 20);
-            this.labelTasksPercent.TabIndex = 12;
-            this.labelTasksPercent.Text = "75%";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            this.label6.Location = new System.Drawing.Point(164, 232);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(122, 20);
-            this.label6.TabIndex = 11;
-            this.label6.Text = "Процент верных";
-            // 
-            // labelTasksRight
-            // 
-            this.labelTasksRight.AutoSize = true;
-            this.labelTasksRight.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            this.labelTasksRight.Location = new System.Drawing.Point(339, 212);
-            this.labelTasksRight.Name = "labelTasksRight";
-            this.labelTasksRight.Size = new System.Drawing.Size(25, 20);
-            this.labelTasksRight.TabIndex = 10;
-            this.labelTasksRight.Text = "15";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            this.label3.Location = new System.Drawing.Point(164, 212);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(61, 20);
-            this.label3.TabIndex = 9;
-            this.label3.Text = "Верных";
-            // 
-            // labelTasksCount
-            // 
-            this.labelTasksCount.AutoSize = true;
-            this.labelTasksCount.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            this.labelTasksCount.Location = new System.Drawing.Point(339, 192);
-            this.labelTasksCount.Name = "labelTasksCount";
-            this.labelTasksCount.Size = new System.Drawing.Size(25, 20);
-            this.labelTasksCount.TabIndex = 8;
-            this.labelTasksCount.Text = "20";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            this.label8.Location = new System.Drawing.Point(164, 192);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(111, 20);
-            this.label8.TabIndex = 7;
-            this.label8.Text = "Всего заданий";
-            // 
-            // labelFIOName
-            // 
-            this.labelFIOName.AutoSize = true;
-            this.labelFIOName.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            this.labelFIOName.Location = new System.Drawing.Point(336, 111);
-            this.labelFIOName.Name = "labelFIOName";
-            this.labelFIOName.Size = new System.Drawing.Size(104, 20);
-            this.labelFIOName.TabIndex = 6;
-            this.labelFIOName.Text = "Дмитриев АО";
-            this.labelFIOName.Click += new System.EventHandler(this.label7_Click);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            this.label5.Location = new System.Drawing.Point(164, 111);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(66, 20);
-            this.label5.TabIndex = 5;
-            this.label5.Text = "Студент";
-            // 
-            // labelVzvodName
-            // 
-            this.labelVzvodName.AutoSize = true;
-            this.labelVzvodName.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            this.labelVzvodName.Location = new System.Drawing.Point(336, 91);
-            this.labelVzvodName.Name = "labelVzvodName";
-            this.labelVzvodName.Size = new System.Drawing.Size(33, 20);
-            this.labelVzvodName.TabIndex = 4;
-            this.labelVzvodName.Text = "141";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            this.label4.Location = new System.Drawing.Point(164, 91);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(53, 20);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "Взвод";
-            // 
-            // labelTestName
-            // 
-            this.labelTestName.AutoSize = true;
-            this.labelTestName.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            this.labelTestName.Location = new System.Drawing.Point(336, 71);
-            this.labelTestName.Name = "labelTestName";
-            this.labelTestName.Size = new System.Drawing.Size(146, 20);
-            this.labelTestName.TabIndex = 2;
-            this.labelTestName.Text = "Номенклатура карт";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            this.label2.Location = new System.Drawing.Point(164, 71);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(41, 20);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Тест";
             // 
             // label1
             // 
@@ -216,12 +262,17 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(691, 358);
+            this.ClientSize = new System.Drawing.Size(691, 424);
+            this.ControlBox = false;
             this.Controls.Add(this.panel1);
             this.Name = "FormResults";
             this.Text = "FormResults";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -243,5 +294,9 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label labelTasksRight;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label labelFinalMark;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }

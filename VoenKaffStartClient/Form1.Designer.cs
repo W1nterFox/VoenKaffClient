@@ -226,12 +226,14 @@
             this.закрытьToolStripMenuItem1.Name = "закрытьToolStripMenuItem1";
             this.закрытьToolStripMenuItem1.Size = new System.Drawing.Size(65, 20);
             this.закрытьToolStripMenuItem1.Text = "Закрыть";
+            this.закрытьToolStripMenuItem1.Click += new System.EventHandler(this.закрытьToolStripMenuItem1_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(691, 358);
+            this.ControlBox = false;
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;

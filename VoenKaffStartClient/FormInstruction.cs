@@ -15,6 +15,9 @@ namespace VoenKaffStartClient
         public FormInstruction()
         {
             InitializeComponent();
+
+            this.MinimumSize = this.Size;
+            this.MaximumSize = this.Size;
         }
     }
 }

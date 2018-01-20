@@ -25,6 +25,11 @@ namespace VoenKaffStartClient
         public FormStudy(string currentTest, string currentVzvod, string currentStudent)
         {
             InitializeComponent();
+
+            this.MinimumSize = this.Size;
+            this.MaximumSize = this.Size;
+
+
             _currentTest = currentTest;
             _currentVzvod = currentVzvod;
             _currentStudent = currentStudent;
@@ -37,10 +42,10 @@ namespace VoenKaffStartClient
 
         private void buttonEndTest_Click(object sender, EventArgs e)
         {
-            FormResults formResults = new FormResults(_currentTest, _currentVzvod, _currentStudent);
+            //FormResults formResults = new FormResults(this);
             this.Visible = false;
-            formResults.Text = "ОБУЧЕНИЕ. " + _currentTest + ". " + _currentVzvod + " взвод. " + "Студент " + _currentStudent;
-            formResults.Visible = true;
+            //formResults.Text = "ОБУЧЕНИЕ. " + _currentTest + ". " + _currentVzvod + " взвод. " + "Студент " + _currentStudent;
+            //formResults.Visible = true;
         }
     }
 }

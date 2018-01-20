@@ -35,6 +35,9 @@ namespace VoenKaffStartClient
         {
             InitializeComponent();
 
+            this.MinimumSize = this.Size;
+            this.MaximumSize = this.Size;
+
             var testLoader = new TestLoader();
             listOfFormDefaultTest = testLoader.LoadTestsFromFolder(Resources.PathForTest);
 
@@ -125,7 +128,7 @@ namespace VoenKaffStartClient
                 _formTest.Visible = true;
                 //_formTest._listPanelTasks[0].Visible = true;
 
-                _formTest.Text = "ТЕСТ." + currentTest + ". " + currentVzvod + " взвод. " + "Студент " + currentStudent;
+                _formTest.Text = "ТЕСТ. " + currentTest + ". " + currentVzvod + " взвод. " + "Студент " + currentStudent;
             }
 
             if (radioButtonTestModeStudy.Checked)
@@ -151,6 +154,16 @@ namespace VoenKaffStartClient
         private void загрузитьТестыToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //Тут должно быть заполнение коллекции listOfFormDefaultTest тестами из файла
+        }
+
+        private void закрытьToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            var rz = MessageBox.Show("Завершить программу?", "Завершение", MessageBoxButtons.YesNo);
+
+            if (rz == DialogResult.Yes)
+            {
+                Close();
+            }
         }
     }
 }
