@@ -3,9 +3,13 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Windows.Forms;
+using SerializablePicutre;
+using VoenKaffStartClient.Properties;
 using VoenKaffStartClient.Wrappers;
 
 namespace VoenKaffStartClient
@@ -94,17 +98,20 @@ namespace VoenKaffStartClient
 
                     if (taskElem.Type.Equals("System.Windows.Forms.PictureBox"))
                     {
-                        var image = new Bitmap(taskElem.Media);
-                        _PBInTask[paneltask].Add(new PictureBox
+                        using (var stream = File.Open(Resources.PathForTest+"\\"+taskElem.Media, FileMode.Open))
                         {
-                            Size = image.Size,
-                            Image = image,
-                            //Height = taskElem.Height,
-                            //Width = taskElem.Width,
-                            Name = taskElem.Name,
-                            Location = taskElem.Point
-                        });
-
+                            var binaryFormatter = new BinaryFormatter();
+                            var image = ((SerializablePicture) binaryFormatter.Deserialize(stream)).Picture;
+                            _PBInTask[paneltask].Add(new PictureBox
+                            {
+                                Size = image.Size,
+                                Image = image,
+                                //Height = taskElem.Height,
+                                //Width = taskElem.Width,
+                                Name = taskElem.Name,
+                                Location = taskElem.Point
+                            });
+                        }
 
                     }
 

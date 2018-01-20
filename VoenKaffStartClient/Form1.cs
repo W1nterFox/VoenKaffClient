@@ -10,6 +10,7 @@ using System.Text;
 using System.Windows.Forms;
 using SerializablePicutre;
 using VoenKaffStartClient.Binders;
+using VoenKaffStartClient.Properties;
 using VoenKaffStartClient.Wrappers;
 
 namespace VoenKaffStartClient
@@ -27,7 +28,6 @@ namespace VoenKaffStartClient
 
         FormTest _formTest;
         FormStudy _formStudy;
-        private string _pathForTest = "D:\\";
 
         
 
@@ -36,7 +36,7 @@ namespace VoenKaffStartClient
             InitializeComponent();
 
             var testLoader = new TestLoader();
-            listOfFormDefaultTest = testLoader.LoadTestsFromFolder(_pathForTest);
+            listOfFormDefaultTest = testLoader.LoadTestsFromFolder(Resources.PathForTest);
 
             foreach (Test test in listOfFormDefaultTest.TestList)
             {
