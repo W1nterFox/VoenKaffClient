@@ -91,9 +91,10 @@ namespace VoenKaffStartClient
                             Width = taskElem.Width,
                             Name = taskElem.Name,
                             Location = taskElem.Point,
-                            Text = taskElem.Text
+                            Text = taskElem.Text,
+                            Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204))),
 
-                        });
+                    });
                     }
 
                     if (taskElem.Type.Equals("System.Windows.Forms.PictureBox"))
