@@ -27,7 +27,7 @@ namespace VoenKaffStartClient
 
         FormTest _formTest;
         FormStudy _formStudy;
-        private string _pathForTest = "E:\\";
+        private string _pathForTest = "D:\\";
 
         
 
@@ -114,14 +114,14 @@ namespace VoenKaffStartClient
                 }
             }
             
-            initTest(listOfFormDefaultTest[index]);
+            
             
             
             if (radioButtonTestModeTest.Checked)
             {
                 _formTest = new FormTest(currentTest, currentVzvod, currentStudent);
                 listFormTests.Add(_formTest);
-                _formTest.initTest(listOfFormDefaultTest[index]);
+                _formTest.initTest(listOfFormDefaultTest.TestList[index]);
                 _formTest.Visible = true;
                 //_formTest._listPanelTasks[0].Visible = true;
 
