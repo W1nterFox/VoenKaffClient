@@ -19,15 +19,31 @@ namespace VoenKaffStartClient
         public string currentStudent;
 
         List<Test> listOfFormDefaultTest = new List<Test> { };
+        List<FormTest> listFormTests;
 
         public Form1()
         {
             InitializeComponent();
-            testName.Items.AddRange(new string[] { "Номенклатура карт", "Дальность до цели" });
-            vzvodName.Items.AddRange(new string[] { "121", "122", "123", "131", "132", "133", "141", "142", "143" });
 
             var testLoader = new TestLoader();
-            listOfFormDefaultTest = testLoader.LoadTestsFromFolder("C:\\projects\\Sanya");
+            listOfFormDefaultTest = testLoader.LoadTestsFromFolder("D:\\");
+
+            foreach (Test test in listOfFormDefaultTest)
+            {
+                testName.Items.Add(test.Name);
+
+                //FormTest formTest = new FormTest(test.Name);
+
+                //listFormTests.Add(null);
+            }
+
+
+
+
+            //testName.Items.AddRange(new string[] { "Номенклатура карт", "Дальность до цели" });
+            vzvodName.Items.AddRange(new string[] { "121", "122", "123", "131", "132", "133", "141", "142", "143" });
+
+            
 
             vzvodName.SelectedIndexChanged += new System.EventHandler(nameVzvod_SelectedIndexChanged);
 
@@ -80,9 +96,28 @@ namespace VoenKaffStartClient
             currentStudent = FIOName.SelectedItem.ToString();
 
 
+
+            //Test currentTestInLists = new Test();
+            int index = 0;
+            for ( int i=0; i< listOfFormDefaultTest.Count; i++  )
+            {
+                if (listOfFormDefaultTest[i].Name.Equals(currentTest))
+                {
+                    index = i;
+                }
+            }
+
             if (radioButtonTestModeTest.Checked)
             {
-                FormTest formTest = new FormTest(currentTest, currentVzvod, currentStudent);
+
+
+
+                FormTest formTest = new FormTest(currentTest, currentVzvod, currentStudent, listOfFormDefaultTest[index]);
+
+
+                listFormTests.Add(formTest);
+
+
 
                 formTest.Text = "ТЕСТ." + currentTest + ". " + currentVzvod + " взвод. " + "Студент " + currentStudent;
                 formTest.Visible = true;

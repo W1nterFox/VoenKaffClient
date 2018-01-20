@@ -30,6 +30,7 @@
         {
             this.panelTask = new System.Windows.Forms.Panel();
             this.panelAnswers = new System.Windows.Forms.Panel();
+            this.buttonEndTest = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
@@ -44,7 +45,6 @@
             this.toolStripStatusLabelTaskNumberAndTaskCount = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.buttonEndTest = new System.Windows.Forms.Button();
             this.panelTask.SuspendLayout();
             this.panelAnswers.SuspendLayout();
             this.panelQuestion.SuspendLayout();
@@ -58,13 +58,13 @@
             this.panelTask.Controls.Add(this.panelQuestion);
             this.panelTask.Location = new System.Drawing.Point(16, 16);
             this.panelTask.Name = "panelTask";
-            this.panelTask.Size = new System.Drawing.Size(929, 677);
+            this.panelTask.Size = new System.Drawing.Size(1109, 625);
             this.panelTask.TabIndex = 0;
             this.panelTask.Paint += new System.Windows.Forms.PaintEventHandler(this.panelMain_Paint);
             // 
             // panelAnswers
             // 
-            this.panelAnswers.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.panelAnswers.BackColor = System.Drawing.Color.Linen;
             this.panelAnswers.Controls.Add(this.buttonEndTest);
             this.panelAnswers.Controls.Add(this.label1);
             this.panelAnswers.Controls.Add(this.textBox6);
@@ -74,10 +74,22 @@
             this.panelAnswers.Controls.Add(this.textBox2);
             this.panelAnswers.Controls.Add(this.textBox1);
             this.panelAnswers.Controls.Add(this.buttonNextTask);
-            this.panelAnswers.Location = new System.Drawing.Point(6, 570);
+            this.panelAnswers.Location = new System.Drawing.Point(5, 500);
             this.panelAnswers.Name = "panelAnswers";
-            this.panelAnswers.Size = new System.Drawing.Size(920, 104);
+            this.panelAnswers.Size = new System.Drawing.Size(1100, 118);
             this.panelAnswers.TabIndex = 1;
+            // 
+            // buttonEndTest
+            // 
+            this.buttonEndTest.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonEndTest.Font = new System.Drawing.Font("Century Gothic", 11.25F);
+            this.buttonEndTest.Location = new System.Drawing.Point(29, 59);
+            this.buttonEndTest.Name = "buttonEndTest";
+            this.buttonEndTest.Size = new System.Drawing.Size(143, 42);
+            this.buttonEndTest.TabIndex = 8;
+            this.buttonEndTest.Text = "Закончить тест";
+            this.buttonEndTest.UseVisualStyleBackColor = true;
+            this.buttonEndTest.Click += new System.EventHandler(this.buttonEndTest_Click);
             // 
             // label1
             // 
@@ -144,17 +156,17 @@
             // 
             // panelQuestion
             // 
-            this.panelQuestion.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.panelQuestion.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.panelQuestion.Controls.Add(this.label2);
-            this.panelQuestion.Location = new System.Drawing.Point(3, 3);
+            this.panelQuestion.Location = new System.Drawing.Point(5, 5);
             this.panelQuestion.Name = "panelQuestion";
-            this.panelQuestion.Size = new System.Drawing.Size(923, 561);
+            this.panelQuestion.Size = new System.Drawing.Size(1100, 489);
             this.panelQuestion.TabIndex = 0;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(304, 220);
+            this.label2.Location = new System.Drawing.Point(409, 217);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(257, 13);
             this.label2.TabIndex = 0;
@@ -165,7 +177,7 @@
             this.panelMain.BackColor = System.Drawing.SystemColors.ControlLight;
             this.panelMain.Location = new System.Drawing.Point(13, 13);
             this.panelMain.Name = "panelMain";
-            this.panelMain.Size = new System.Drawing.Size(935, 683);
+            this.panelMain.Size = new System.Drawing.Size(1117, 628);
             this.panelMain.TabIndex = 2;
             // 
             // toolStripStatusLabelTaskNumberAndTaskCount
@@ -184,29 +196,17 @@
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabelTaskNumberAndTaskCount,
             this.toolStripProgressBar1});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 699);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 650);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(960, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(1130, 22);
             this.statusStrip1.TabIndex = 1;
             this.statusStrip1.Text = "statusStrip1";
-            // 
-            // buttonEndTest
-            // 
-            this.buttonEndTest.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonEndTest.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            this.buttonEndTest.Location = new System.Drawing.Point(29, 59);
-            this.buttonEndTest.Name = "buttonEndTest";
-            this.buttonEndTest.Size = new System.Drawing.Size(143, 42);
-            this.buttonEndTest.TabIndex = 8;
-            this.buttonEndTest.Text = "Закончить тест";
-            this.buttonEndTest.UseVisualStyleBackColor = true;
-            this.buttonEndTest.Click += new System.EventHandler(this.buttonEndTest_Click);
             // 
             // FormTest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(960, 721);
+            this.ClientSize = new System.Drawing.Size(1130, 672);
             this.Controls.Add(this.panelTask);
             this.Controls.Add(this.panelMain);
             this.Controls.Add(this.statusStrip1);
