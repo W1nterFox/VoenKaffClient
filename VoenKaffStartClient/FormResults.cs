@@ -62,7 +62,7 @@ namespace VoenKaffStartClient
                 labelFinalMark.ForeColor = Color.Orange;
             }
             else
-            if (((float)_countRightAnswers / (float)_countTasks) * 100 >= _marks.Satisfactory)
+            if (((float)_countRightAnswers / (float)_countTasks) * 100 < _marks.Satisfactory)
             {
                 labelFinalMark.Text = "Неудовлетворительно";
                 labelFinalMark.ForeColor = Color.Red;
@@ -74,7 +74,12 @@ namespace VoenKaffStartClient
 
         private void buttonCloseTest_Click(object sender, EventArgs e)
         {
-            this.Visible = false;
+            var rz = MessageBox.Show("Завершить программу?", "Завершение", MessageBoxButtons.YesNo);
+
+            if (rz == DialogResult.Yes)
+            {
+                Close();
+            }
         }
     }
 }

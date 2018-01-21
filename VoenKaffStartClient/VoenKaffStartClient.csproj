@@ -70,6 +70,12 @@
     <Compile Include="FormPlatoon.Designer.cs">
       <DependentUpon>FormPlatoon.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormResultsStudy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormResultsStudy.Designer.cs">
+      <DependentUpon>FormResultsStudy.cs</DependentUpon>
+    </Compile>
     <Compile Include="TestLoader.cs" />
     <Compile Include="VzvodAndLs.cs" />
     <Compile Include="Wrappers\Marks.cs" />
@@ -111,6 +117,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormResults.resx">
       <DependentUpon>FormResults.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormResultsStudy.resx">
+      <DependentUpon>FormResultsStudy.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormStudy.resx">
       <DependentUpon>FormStudy.cs</DependentUpon>

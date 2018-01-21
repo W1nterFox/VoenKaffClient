@@ -128,7 +128,6 @@ namespace VoenKaffStartClient
                 listFormTests.Add(_formTest);
                 _formTest.initTest(listOfFormDefaultTest.TestList[index]);
                 _formTest.Visible = true;
-                //_formTest._listPanelTasks[0].Visible = true;
 
                 _formTest.Text = "ТЕСТ. " + currentTest + ". " + currentVzvod + " взвод. " + "Студент " + currentStudent;
             }
@@ -136,7 +135,10 @@ namespace VoenKaffStartClient
             if (radioButtonTestModeStudy.Checked)
             {
                 _formStudy = new FormStudy(currentTest, currentVzvod, currentStudent);
+                listFormStudy.Add(_formStudy);
+                _formStudy.initTest(listOfFormDefaultTest.TestList[index]);
                 _formStudy.Visible = true;
+
                 _formStudy.Text = "ОБУЧЕНИЕ. " + currentTest + ". " + currentVzvod + " взвод. " + "Студент " + currentStudent;
             }
             

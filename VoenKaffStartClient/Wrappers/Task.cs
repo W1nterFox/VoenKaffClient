@@ -10,5 +10,6 @@ namespace VoenKaffStartClient.Wrappers
     {
         public string Name { get; set; }
         public List<TaskElement> TaskElements { get; set; } = new List<TaskElement>();
+
     }
 }

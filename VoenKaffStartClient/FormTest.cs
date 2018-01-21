@@ -32,7 +32,7 @@ namespace VoenKaffStartClient
         Button btnEndTest;
         Button btnCheckAnswers;
 
-        int textBoxNumber = 1;
+        
         public Dictionary<Task, List<Label>> _listTBLabels = new Dictionary<Task, List<Label>> { };
 
 
@@ -54,15 +54,9 @@ namespace VoenKaffStartClient
 
         }
 
-        private void panelMain_Paint(object sender, PaintEventArgs e)
-        {
+        
 
-        }
-
-        private void buttonNextTask_Click(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void buttonEndTest_Click(object sender, EventArgs e)
         {
@@ -85,8 +79,8 @@ namespace VoenKaffStartClient
             _marks = objectsInCurrentTest.Marks;
 
             foreach (Task paneltask in objectsInCurrentTest.Tasks)
-            { 
-
+            {
+                int textBoxNumber = 1;
                 _RTBInTask.Add(paneltask, new List<Label> { });
                 _PBInTask.Add(paneltask, new List<PictureBox> { });
                 _TBInTask.Add(paneltask, new List<TextBox> { });
