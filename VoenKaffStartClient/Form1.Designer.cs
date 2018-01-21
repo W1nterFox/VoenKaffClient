@@ -42,8 +42,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.загрузитьТестыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.закрытьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.закрытьToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.chooseMode.SuspendLayout();
@@ -199,28 +197,12 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.загрузитьТестыToolStripMenuItem,
-            this.закрытьToolStripMenuItem,
             this.закрытьToolStripMenuItem1});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(691, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
-            // 
-            // загрузитьТестыToolStripMenuItem
-            // 
-            this.загрузитьТестыToolStripMenuItem.Name = "загрузитьТестыToolStripMenuItem";
-            this.загрузитьТестыToolStripMenuItem.Size = new System.Drawing.Size(107, 20);
-            this.загрузитьТестыToolStripMenuItem.Text = "Загрузить тесты";
-            this.загрузитьТестыToolStripMenuItem.Click += new System.EventHandler(this.загрузитьТестыToolStripMenuItem_Click);
-            // 
-            // закрытьToolStripMenuItem
-            // 
-            this.закрытьToolStripMenuItem.Name = "закрытьToolStripMenuItem";
-            this.закрытьToolStripMenuItem.Size = new System.Drawing.Size(195, 20);
-            this.закрытьToolStripMenuItem.Text = "Добавить/Редактировать взвода";
-            this.закрытьToolStripMenuItem.Click += new System.EventHandler(this.добавитьВзводаToolStripMenuItem_Click);
             // 
             // закрытьToolStripMenuItem1
             // 
@@ -267,8 +249,6 @@
         private System.Windows.Forms.Button buttonInstruction;
         private System.Windows.Forms.Button startButton;
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem загрузитьТестыToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem закрытьToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem закрытьToolStripMenuItem1;
     }
 }

@@ -46,19 +46,22 @@ namespace VoenKaffStartClient
             foreach (Test test in listOfFormDefaultTest.TestList)
             {
                 testName.Items.Add(test.Name);
-                //listFormTests.Add(new FormTest(null, null, null));
             }
 
             foreach (KeyValuePair<string, List<string>> keyValue in listOfFormDefaultTest.PlatoonList)
             {
                 VzvodAndLs.Get().Add(keyValue.Key, keyValue.Value);
                 ((ListBox)(formPlaton.Controls.Find("listBoxVzvoda", true)[0])).Items.Add(keyValue.Key);
+                
             }
             
-
+            foreach (KeyValuePair<string, List<string>> keyValue in VzvodAndLs.Get())
+            {
+                vzvodName.Items.Add(keyValue.Key);
+            }
 
             //testName.Items.AddRange(new string[] { "Номенклатура карт", "Дальность до цели" });
-            vzvodName.Items.AddRange(new string[] { "121", "122", "123", "131", "132", "133", "141", "142", "143" });
+            //vzvodName.Items.AddRange(new string[] { "121", "122", "123", "131", "132", "133", "141", "142", "143" });
 
             
 
@@ -80,7 +83,7 @@ namespace VoenKaffStartClient
             string selectedVzvod = (string)vzvodName.SelectedItem;
             FIOName.SelectedItem = null;
             FIOName.Items.Clear();
-            FIOName.Items.AddRange(getStudentsByVzvod(selectedVzvod));
+            FIOName.Items.AddRange(VzvodAndLs.Get()[selectedVzvod].ToArray());
         }
 
         private void startButtonEnabled(object sender, System.EventArgs e)
@@ -95,14 +98,6 @@ namespace VoenKaffStartClient
             }
         }
 
-        private string[] getStudentsByVzvod(string selectedVzvod)
-        {
-
-            if (selectedVzvod.Equals("141")) return new string[] { "Дмитриев", "Целищев" };
-            if (selectedVzvod.Equals("142")) return new string[] { "Минаев", "НеМинаев" };
-
-            return new string[] { "temp1", "temp2", "temp3" };
-        }
 
         private void startButton_Click(object sender, EventArgs e)
         {
