@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Newtonsoft.Json;
+using VoenKaffStartClient.Senders;
 using VoenKaffStartClient.Wrappers;
 
 namespace VoenKaffStartClient
@@ -30,6 +32,22 @@ namespace VoenKaffStartClient
             labelTestName.Text = _currentTest;
             labelVzvodName.Text = _currentVzvod;
             labelFIOName.Text = _currentStudent;
+
+            var json = JsonConvert.SerializeObject(new Result
+            {
+                Mark = "Пройдено",
+                Platoon = labelVzvodName.Text,
+                StudentName = labelFIOName.Text,
+                TestName = labelTestName.Text,
+                Timestamp = DateTime.Now,
+                ResultType = "Экзамен"
+            });
+            SendMessageFromServer(json);
+        }
+
+        private void SendMessageFromServer(string result)
+        {
+            new ResultSender().Connect(result);
         }
 
         private void buttonCloseTest_Click(object sender, EventArgs e)
