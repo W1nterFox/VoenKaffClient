@@ -19,8 +19,8 @@ namespace VoenKaffServer
 
         public class Settings
         {
-            public string Ip { get; set; } = "";
-            public int Port { get; set; } = 0;
+            public string Ip { get; set; } = "127.0.0.1";
+            public int Port { get; set; } = 8080;
         }
 
 
