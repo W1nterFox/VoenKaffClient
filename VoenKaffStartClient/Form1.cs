@@ -9,8 +9,8 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Windows.Forms;
 using SerializablePicutre;
-using VoenKaffStartClient.Binders;
 using VoenKaffStartClient.Properties;
+using VoenKaffStartClient.Senders;
 using VoenKaffStartClient.Wrappers;
 
 namespace VoenKaffStartClient
@@ -28,12 +28,20 @@ namespace VoenKaffStartClient
 
         FormTest _formTest;
         FormStudy _formStudy;
+        private FormSettings _formSettings;
 
         FormPlatoon formPlaton;
 
         public Form1()
         {
             InitializeComponent();
+
+            if (!Directory.Exists(Resources.PathForTest))
+            {
+                Directory.CreateDirectory(Resources.PathForTest);
+            }
+
+            new UpdateTests().Connect();
 
             this.MinimumSize = this.Size;
             this.MaximumSize = this.Size;
@@ -173,6 +181,16 @@ namespace VoenKaffStartClient
 
             this.Visible = false;
             formPlaton.Visible = true;
+        }
+
+        private void Settings_Click(object sender, EventArgs e)
+        {
+            if (_formSettings == null || _formSettings.IsDisposed)
+            {
+                _formSettings=new FormSettings();
+            }
+
+            _formSettings.Visible = true;
         }
     }
 }

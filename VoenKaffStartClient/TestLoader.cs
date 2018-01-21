@@ -22,21 +22,25 @@ namespace VoenKaffStartClient
 
             foreach (var pathToTest in GetTestFilePaths(pathToFolder))
             {
-                Tests test = LoadTestsFromFile(pathToTest);
-                foreach (var testResult in test.PlatoonList)
+                try
                 {
-                    try
+                    Tests test = LoadTestsFromFile(pathToTest);
+                    foreach (var testResult in test.PlatoonList)
                     {
-                        result.PlatoonList.Add(testResult.Key, testResult.Value);
+                        try
+                        {
+                            result.PlatoonList.Add(testResult.Key, testResult.Value);
+                        }
+                        catch (ArgumentException)
+                        {
+                            result.PlatoonList.Remove(testResult.Key);
+                            result.PlatoonList.Add(testResult.Key, testResult.Value);
+                        }
                     }
-                    catch (ArgumentException)
-                    {
-                        result.PlatoonList.Remove(testResult.Key);
-                        result.PlatoonList.Add(testResult.Key,testResult.Value);
-                    } 
-                }
 
-                result.TestList.AddRange(test.TestList);
+                    result.TestList.AddRange(test.TestList);
+                }
+                catch (Exception){}
             }
 
             return result;
@@ -45,6 +49,10 @@ namespace VoenKaffStartClient
         private static IEnumerable<string> GetTestFilePaths(string pathToFolder)
         {
             var directoryInfo = new DirectoryInfo(pathToFolder);
+            if(!Directory.Exists(pathToFolder))
+            {
+                Directory.CreateDirectory(pathToFolder);
+            }
             var testFiles = directoryInfo.GetFiles("*.test");
             return testFiles.Select(testFile => testFile.FullName);
         }

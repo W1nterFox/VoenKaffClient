@@ -4,9 +4,13 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Newtonsoft.Json;
+using VoenKaffStartClient.Senders;
 using VoenKaffStartClient.Wrappers;
 
 namespace VoenKaffStartClient
@@ -68,13 +72,26 @@ namespace VoenKaffStartClient
                 labelFinalMark.ForeColor = Color.Red;
             }
 
+            var json = JsonConvert.SerializeObject(new Result
+            {
+                Mark = labelFinalMark.Text,
+                Platoon = labelVzvodName.Text,
+                StudentName = labelFIOName.Text,
+                TestName = labelTestName.Text,
+                Timestamp = DateTime.Now,
+                ResultType = "Экзамен"
+            });
+            SendMessageFromServer(json);
         }
 
-
+        private void SendMessageFromServer(string result)
+        {
+            new ResultSender().Connect(result);
+        }
 
         private void buttonCloseTest_Click(object sender, EventArgs e)
         {
-            this.Visible = false;
+            Visible = false;
         }
     }
 }
