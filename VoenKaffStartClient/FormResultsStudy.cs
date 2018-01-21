@@ -40,7 +40,7 @@ namespace VoenKaffStartClient
                 StudentName = labelFIOName.Text,
                 TestName = labelTestName.Text,
                 Timestamp = DateTime.Now,
-                ResultType = "Экзамен"
+                ResultType = "Тренировка"
             });
             SendMessageFromServer(json);
         }
