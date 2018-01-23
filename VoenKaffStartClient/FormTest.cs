@@ -25,7 +25,7 @@ namespace VoenKaffStartClient
         public List<Task> _listTasksInTest=new List<Task> { };
         public Dictionary<Task, List<Label>> _RTBInTask = new Dictionary<Task, List<Label>> { };
         public Dictionary<Task, List<PictureBox>> _PBInTask = new Dictionary<Task, List<PictureBox>> { };
-        public Dictionary<Task, List<TextBox>> _TBInTask = new Dictionary<Task, List<TextBox>> { };
+        public Dictionary<Task, Dictionary<string, TextBox>> _TBInTask = new Dictionary<Task, Dictionary<string, TextBox>> { };
         public List<Panel> _listPanelTasks = new List<Panel> { };
 
         Button btnNextTask;
@@ -83,7 +83,7 @@ namespace VoenKaffStartClient
                 int textBoxNumber = 1;
                 _RTBInTask.Add(paneltask, new List<Label> { });
                 _PBInTask.Add(paneltask, new List<PictureBox> { });
-                _TBInTask.Add(paneltask, new List<TextBox> { });
+                _TBInTask.Add(paneltask, new Dictionary<string, TextBox> { });
                 _listTBLabels.Add(paneltask, new List<Label> { });
 
                 _listTasksInTest.Add(paneltask);
@@ -125,7 +125,7 @@ namespace VoenKaffStartClient
 
                     if (taskElem.Type.Equals("System.Windows.Forms.TextBox"))
                     {
-                        _TBInTask[paneltask].Add(new TextBox
+                        _TBInTask[paneltask][taskElem.Name] = (new TextBox
                         {
                             Height = taskElem.Height,
                             Width = taskElem.Width,
@@ -197,7 +197,7 @@ namespace VoenKaffStartClient
                         Font = new System.Drawing.Font("Century Gothic", 9.25F),
 
                         Location = new System.Drawing.Point(perem * panelAnswerFoo.Controls.Count, 10),
-                        Text = "Правильный ответ №" + (i + 1) + ": " + _TBInTask[task][i].Tag,
+                        Text = "Правильный ответ №" + (i + 1) + ": " + _TBInTask[task]["System.Windows.Forms.TextBox, Text: " + (i + 1)].Tag,
                     });
 
                     perem = panelAnswerFoo.Controls[panelAnswerFoo.Controls.Count - 1].Width;
@@ -242,18 +242,19 @@ namespace VoenKaffStartClient
                 btnCheckAnswers.Click += checkAnswers;
                 _listPanelTasks[_listPanelTasks.Count - 1].Controls.Add(btnCheckAnswers);
 
-
-                foreach (Label rtb in _RTBInTask[task])
-                {
-                    panelQestionFoo.Controls.Add(rtb);
-                }
                 foreach (PictureBox pb in _PBInTask[task])
                 {
                     panelQestionFoo.Controls.Add(pb);
                 }
-                foreach (TextBox tb in _TBInTask[task])
+                foreach (Label rtb in _RTBInTask[task])
                 {
-                    panelQestionFoo.Controls.Add(tb);
+                    panelQestionFoo.Controls.Add(rtb);
+                    rtb.BringToFront();
+                }
+                for (int i = 0; i <_TBInTask[task].Count; i++)
+                {
+                    panelQestionFoo.Controls.Add(_TBInTask[task]["System.Windows.Forms.TextBox, Text: " + (i+1)]);
+                    _TBInTask[task]["System.Windows.Forms.TextBox, Text: " + (i + 1)].BringToFront();
                 }
                 foreach (Label label in _listTBLabels[task])
                 {
@@ -316,15 +317,11 @@ namespace VoenKaffStartClient
             {
 
                 Control buf = _listPanelTasks[index].Controls.Find("panelQuestion", true)[0].Controls[i];
-                if (buf.Name.Length >= 27 )
+                if (buf is TextBox)
                 {
-                    string asdasd = buf.Name.Substring(0, 28);
-                    if (asdasd == "System.Windows.Forms.TextBox")
+                    if (buf.Tag.ToString() != buf.Text)
                     {
-                        if (buf.Tag.ToString() != buf.Text)
-                        {
-                            thisTaskSuccess=false;
-                        }
+                        thisTaskSuccess=false;
                     }
                     
                 }
