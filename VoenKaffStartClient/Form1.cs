@@ -17,7 +17,7 @@ namespace VoenKaffStartClient
 {
     public partial class Form1 : Form
     {
-        List<String> listPanelsTasks;
+        //List<String> listPanelsTasks;
         public string currentTest;
         public string currentVzvod;
         public string currentStudent;
@@ -81,7 +81,7 @@ namespace VoenKaffStartClient
             FIOName.SelectedIndexChanged += startButtonEnabled;
 
             radioButtonTestModeTest.Checked = true;
-            listPanelsTasks = new List<String>();
+            //listPanelsTasks = new List<String>();
             //nameFIO.Items.AddRange(new string[] {""});
             
         }
