@@ -498,7 +498,12 @@ namespace VoenKaffStartClient
                 Control buf = _listPanelTasks[index].Controls.Find("panelQuestion", true)[0].Controls[i];
                 if (buf is TextBox)
                 {
-                    if (buf.Tag.ToString() != buf.Text)
+                    var answer = buf.Text.ToLower().Trim().Replace("жы", "жи").Replace("пре", "при");
+                    var tagText = buf.Tag.ToString().ToLower().Trim().Replace("жы", "жи").Replace("пре", "при");
+
+                    if (tagText.Substring(0, tagText.Length - 1) !=
+                        answer.Substring(0, answer.Length - 1)
+                    )
                     {
                         thisTaskSuccess = false;
                     }

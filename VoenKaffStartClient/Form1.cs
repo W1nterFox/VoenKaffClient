@@ -37,7 +37,7 @@ namespace VoenKaffStartClient
         {
             InitializeComponent();
 
-            //new OnTimerSender().Start();
+            new OnTimerSender().Start();
 
             if (!Directory.Exists(Resources.PathForTest))
             {
