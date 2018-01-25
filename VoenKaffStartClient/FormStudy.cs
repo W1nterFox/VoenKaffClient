@@ -19,9 +19,9 @@ namespace VoenKaffStartClient
         public string _currentTest;
         public string _currentVzvod;
         public string _currentStudent;
+        public string _currentCourse;
 
-        
-        
+
         public Dictionary<Panel, int> _countTaskSuccess = new Dictionary<Panel, int> { };
         public Dictionary<Panel, int> _countTaskNotSure = new Dictionary<Panel, int> { };
         public Dictionary<Panel, int> _countTaskFail = new Dictionary<Panel, int> { };
@@ -44,7 +44,7 @@ namespace VoenKaffStartClient
 
 
 
-        public FormStudy(string currentTest, string currentVzvod, string currentStudent)
+        public FormStudy(string currentTest, string currentVzvod, string currentStudent, string currentCourse)
         {
             InitializeComponent();
 
@@ -55,6 +55,7 @@ namespace VoenKaffStartClient
             _currentTest = currentTest;
             _currentVzvod = currentVzvod;
             _currentStudent = currentStudent;
+            _currentCourse = currentCourse;
         }
 
 
@@ -94,6 +95,7 @@ namespace VoenKaffStartClient
                         using (var stream = File.Open(Resources.PathForTest + "\\" + taskElem.Media, FileMode.Open))
                         {
                             var binaryFormatter = new BinaryFormatter();
+                            //ТУТ ВЫЛЕТЕЛ ЕКСЕПШН 1 раз
                             var image = ((SerializablePicture)binaryFormatter.Deserialize(stream)).Picture;
                             _PBInTask[paneltask].Add(new PictureBox
                             {
@@ -121,7 +123,7 @@ namespace VoenKaffStartClient
                         });
                         _listTBLabels[paneltask].Add(new Label
                         {
-                            Location = new Point(taskElem.Point.X, taskElem.Point.Y - 20),
+                            Location = new Point(taskElem.Point.X, taskElem.Point.Y - 30),
                             Text = "Поле №" + textBoxNumber,
                             Font = new System.Drawing.Font("Century Gothic", 10.25F),
                         });

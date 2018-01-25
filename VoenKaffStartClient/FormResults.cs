@@ -21,6 +21,8 @@ namespace VoenKaffStartClient
         string _currentTest;
         string _currentVzvod;
         string _currentStudent;
+        string _currentCourse;
+
         int _countRightAnswers;
         int _countTasks;
         Marks _marks; 
@@ -35,6 +37,8 @@ namespace VoenKaffStartClient
             _currentTest = formTest._currentTest;
             _currentVzvod = formTest._currentVzvod;
             _currentStudent = formTest._currentStudent;
+            _currentCourse = formTest._currentCourse;
+
             _countRightAnswers = formTest.countRightAnswers;
             _countTasks = formTest._listTasksInTest.Count;
             _marks = formTest._marks;
@@ -42,6 +46,7 @@ namespace VoenKaffStartClient
             labelTestName.Text = _currentTest;
             labelVzvodName.Text = _currentVzvod;
             labelFIOName.Text = _currentStudent;
+            labelCurrentCourse.Text = _currentStudent;
 
             labelTasksCount.Text = _countTasks.ToString();
             labelTasksRight.Text = _countRightAnswers.ToString();
@@ -80,7 +85,8 @@ namespace VoenKaffStartClient
                 StudentName = labelFIOName.Text,
                 TestName = labelTestName.Text,
                 Timestamp = DateTime.Now,
-                ResultType = "Экзамен"
+                ResultType = "Экзамен",
+                Course = labelCurrentCourse.Text
             });
             var connectToServer = SendMessageFromServer(json);
 
@@ -106,7 +112,8 @@ namespace VoenKaffStartClient
                 StudentName = labelFIOName.Text,
                 TestName = labelTestName.Text,
                 Timestamp = DateTime.Now,
-                ResultType = "Тренировка"
+                ResultType = "Тренировка",
+                Course = labelCurrentCourse.Text
             });
             File.WriteAllText(path, JsonConvert.SerializeObject(results));
         }

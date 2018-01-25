@@ -19,6 +19,7 @@ namespace VoenKaffStartClient
         public string _currentTest;
         public string _currentVzvod;
         public string _currentStudent;
+        public string _currentCourse;
 
         public Marks _marks = new Marks();
         //Коллекция тасков в тесте
@@ -40,13 +41,13 @@ namespace VoenKaffStartClient
 
         int currentTaskNum = 1;
 
-        public FormTest(string currentTest, string currentVzvod, string currentStudent)
+        public FormTest(string currentTest, string currentVzvod, string currentStudent, string currentCourse)
         {
             InitializeComponent();
             _currentTest = currentTest;
             _currentVzvod = currentVzvod;
             _currentStudent = currentStudent;
-
+            _currentCourse = currentCourse;
             this.MinimumSize = this.Size;
             this.MaximumSize = this.Size;
 
@@ -136,7 +137,7 @@ namespace VoenKaffStartClient
                         });
                         _listTBLabels[paneltask].Add(new Label
                         {
-                            Location = new Point(taskElem.Point.X, taskElem.Point.Y - 20),
+                            Location = new Point(taskElem.Point.X, taskElem.Point.Y - 30),
                             Text = "Поле №" + textBoxNumber,
                             Font = new System.Drawing.Font("Century Gothic", 10.25F),
                         });

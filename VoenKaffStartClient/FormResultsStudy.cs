@@ -19,6 +19,8 @@ namespace VoenKaffStartClient
         string _currentTest;
         string _currentVzvod;
         string _currentStudent;
+        string _currentCourse;
+
         public FormResultsStudy(FormStudy formStudy)
         {
             InitializeComponent();
@@ -29,10 +31,12 @@ namespace VoenKaffStartClient
             _currentTest = formStudy._currentTest;
             _currentVzvod = formStudy._currentVzvod;
             _currentStudent = formStudy._currentStudent;
+            _currentCourse = formStudy._currentCourse;
 
             labelTestName.Text = _currentTest;
             labelVzvodName.Text = _currentVzvod;
             labelFIOName.Text = _currentStudent;
+            labelCurrentCourse.Text = _currentCourse;
 
             var json = JsonConvert.SerializeObject(new Result
             {
@@ -41,7 +45,8 @@ namespace VoenKaffStartClient
                 StudentName = labelFIOName.Text,
                 TestName = labelTestName.Text,
                 Timestamp = DateTime.Now,
-                ResultType = "Тренировка"
+                ResultType = "Тренировка",
+                Course = labelCurrentCourse.Text
             });
             var connectToServer=SendMessageFromServer(json);
 
@@ -59,7 +64,8 @@ namespace VoenKaffStartClient
                 StudentName = labelFIOName.Text,
                 TestName = labelTestName.Text,
                 Timestamp = DateTime.Now,
-                ResultType = "Тренировка"
+                ResultType = "Тренировка",
+                Course = labelCurrentCourse.Text
             });
             File.AppendAllText(path, JsonConvert.SerializeObject(results));
 

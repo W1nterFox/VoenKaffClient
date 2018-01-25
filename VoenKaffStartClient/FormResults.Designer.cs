@@ -47,6 +47,8 @@
             this.labelFIOName = new System.Windows.Forms.Label();
             this.buttonCloseTest = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.labelCurrentCourse = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -97,7 +99,7 @@
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Location = new System.Drawing.Point(157, 166);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(357, 104);
+            this.groupBox2.Size = new System.Drawing.Size(506, 104);
             this.groupBox2.TabIndex = 15;
             this.groupBox2.TabStop = false;
             // 
@@ -163,6 +165,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label9);
+            this.groupBox1.Controls.Add(this.labelCurrentCourse);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.labelTestName);
@@ -171,7 +175,7 @@
             this.groupBox1.Controls.Add(this.labelFIOName);
             this.groupBox1.Location = new System.Drawing.Point(157, 40);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(357, 120);
+            this.groupBox1.Size = new System.Drawing.Size(506, 120);
             this.groupBox1.TabIndex = 14;
             this.groupBox1.TabStop = false;
             // 
@@ -179,7 +183,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            this.label4.Location = new System.Drawing.Point(16, 46);
+            this.label4.Location = new System.Drawing.Point(16, 62);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(53, 20);
             this.label4.TabIndex = 3;
@@ -189,7 +193,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            this.label2.Location = new System.Drawing.Point(16, 26);
+            this.label2.Location = new System.Drawing.Point(16, 42);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(41, 20);
             this.label2.TabIndex = 1;
@@ -199,7 +203,7 @@
             // 
             this.labelTestName.AutoSize = true;
             this.labelTestName.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            this.labelTestName.Location = new System.Drawing.Point(188, 26);
+            this.labelTestName.Location = new System.Drawing.Point(188, 42);
             this.labelTestName.Name = "labelTestName";
             this.labelTestName.Size = new System.Drawing.Size(146, 20);
             this.labelTestName.TabIndex = 2;
@@ -209,7 +213,7 @@
             // 
             this.labelVzvodName.AutoSize = true;
             this.labelVzvodName.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            this.labelVzvodName.Location = new System.Drawing.Point(188, 46);
+            this.labelVzvodName.Location = new System.Drawing.Point(188, 62);
             this.labelVzvodName.Name = "labelVzvodName";
             this.labelVzvodName.Size = new System.Drawing.Size(33, 20);
             this.labelVzvodName.TabIndex = 4;
@@ -219,7 +223,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            this.label5.Location = new System.Drawing.Point(16, 66);
+            this.label5.Location = new System.Drawing.Point(16, 82);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(66, 20);
             this.label5.TabIndex = 5;
@@ -229,7 +233,7 @@
             // 
             this.labelFIOName.AutoSize = true;
             this.labelFIOName.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            this.labelFIOName.Location = new System.Drawing.Point(188, 66);
+            this.labelFIOName.Location = new System.Drawing.Point(188, 82);
             this.labelFIOName.Name = "labelFIOName";
             this.labelFIOName.Size = new System.Drawing.Size(104, 20);
             this.labelFIOName.TabIndex = 6;
@@ -257,6 +261,26 @@
             this.label1.Size = new System.Drawing.Size(132, 25);
             this.label1.TabIndex = 0;
             this.label1.Text = "Результаты";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Century Gothic", 11.25F);
+            this.label9.Location = new System.Drawing.Point(16, 22);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(71, 20);
+            this.label9.TabIndex = 7;
+            this.label9.Text = "Предмет";
+            // 
+            // labelCurrentCourse
+            // 
+            this.labelCurrentCourse.AutoSize = true;
+            this.labelCurrentCourse.Font = new System.Drawing.Font("Century Gothic", 11.25F);
+            this.labelCurrentCourse.Location = new System.Drawing.Point(188, 22);
+            this.labelCurrentCourse.Name = "labelCurrentCourse";
+            this.labelCurrentCourse.Size = new System.Drawing.Size(146, 20);
+            this.labelCurrentCourse.TabIndex = 8;
+            this.labelCurrentCourse.Text = "Номенклатура карт";
             // 
             // FormResults
             // 
@@ -298,5 +322,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label labelCurrentCourse;
     }
 }

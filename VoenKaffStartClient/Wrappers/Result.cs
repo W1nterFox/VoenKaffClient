@@ -14,5 +14,6 @@ namespace VoenKaffStartClient.Wrappers
         public string Mark { get; set; }
         public DateTime Timestamp { get; set; }
         public string ResultType { get; set; }
+        public string Course { get; set; }
     }
 }

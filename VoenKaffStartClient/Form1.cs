@@ -21,6 +21,7 @@ namespace VoenKaffStartClient
         public string currentTest;
         public string currentVzvod;
         public string currentStudent;
+        public string currentCource;
 
         Tests listOfFormDefaultTest;
         List<FormTest> listFormTests = new List<FormTest> { };
@@ -53,10 +54,20 @@ namespace VoenKaffStartClient
             var testLoader = new TestLoader();
             listOfFormDefaultTest = testLoader.LoadTestsFromFolder(Resources.PathForTest);
 
-            foreach (Test test in listOfFormDefaultTest.TestList)
+
+            Courses.Set(listOfFormDefaultTest.CourseList);
+
+            foreach (String course in Courses.Get())
             {
-                testName.Items.Add(test.Name);
+                comboBoxChooseCourse.Items.Add(course);
             }
+
+
+
+            //foreach (Test test in listOfFormDefaultTest.TestList)
+            //{
+            //    testName.Items.Add(test.Name);
+            //}
 
             foreach (KeyValuePair<string, List<string>> keyValue in listOfFormDefaultTest.PlatoonList)
             {
@@ -88,6 +99,19 @@ namespace VoenKaffStartClient
             
         }
 
+        private void comboBoxChooseCourse_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string selectedCourse = (string)comboBoxChooseCourse.SelectedItem;
+            testName.SelectedItem = null;
+            testName.Items.Clear();
+            List<Test> bufList = listOfFormDefaultTest.TestList.FindAll(x => (x.Course == selectedCourse));
+            foreach (Test test in bufList)
+            {
+                testName.Items.Add(test.Name);
+            }
+            
+        }
+
         private void nameVzvod_SelectedIndexChanged(object sender, System.EventArgs e)
         {
             string selectedVzvod = (string)vzvodName.SelectedItem;
@@ -116,7 +140,7 @@ namespace VoenKaffStartClient
             currentTest = testName.SelectedItem.ToString();
             currentVzvod = vzvodName.SelectedItem.ToString();
             currentStudent = FIOName.SelectedItem.ToString();
-
+            currentCource = comboBoxChooseCourse.SelectedItem.ToString();
 
 
             //Test currentTestInLists = new Test();
@@ -134,7 +158,7 @@ namespace VoenKaffStartClient
             
             if (radioButtonTestModeTest.Checked)
             {
-                _formTest = new FormTest(currentTest, currentVzvod, currentStudent);
+                _formTest = new FormTest(currentTest, currentVzvod, currentStudent, currentCource);
                 listFormTests.Add(_formTest);
                 _formTest.initTest(listOfFormDefaultTest.TestList[index]);
                 _formTest.Visible = true;
@@ -144,7 +168,7 @@ namespace VoenKaffStartClient
 
             if (radioButtonTestModeStudy.Checked)
             {
-                _formStudy = new FormStudy(currentTest, currentVzvod, currentStudent);
+                _formStudy = new FormStudy(currentTest, currentVzvod, currentStudent, currentCource);
                 listFormStudy.Add(_formStudy);
                 _formStudy.initTest(listOfFormDefaultTest.TestList[index]);
                 _formStudy.Visible = true;
@@ -201,5 +225,7 @@ namespace VoenKaffStartClient
         {
             Environment.Exit(0);
         }
+
+        
     }
 }
