@@ -120,4 +120,7 @@
   <data name="PathForTest" xml:space="preserve">
     <value>tests</value>
   </data>
+  <data name="ResultData" xml:space="preserve">
+    <value>res.data</value>
+  </data>
 </root>

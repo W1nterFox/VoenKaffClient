@@ -24,24 +24,18 @@ namespace VoenKaffStartClient.Senders
         {
             int port = _parameters.Get().Port;
             string address = _parameters.Get().Ip;
-            try
-            {
-                var ipPoint = new IPEndPoint(IPAddress.Parse(address), port);
-                var socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-                socket.Connect(ipPoint);
-                byte[] data = Encoding.Unicode.GetBytes(result);
-                socket.Send(data);
 
-                socket.Shutdown(SocketShutdown.Both);
-                socket.Close();
+            var ipPoint = new IPEndPoint(IPAddress.Parse(address), port);
+            var socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+            socket.Connect(ipPoint);
+            byte[] data = Encoding.Unicode.GetBytes(result);
+            socket.Send(data);
 
-                return true;
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK);
-                return false;
-            }
+            socket.Shutdown(SocketShutdown.Both);
+            socket.Close();
+
+            return true;
+            
         }
     }
 }

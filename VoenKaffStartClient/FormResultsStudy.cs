@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -42,12 +43,39 @@ namespace VoenKaffStartClient
                 Timestamp = DateTime.Now,
                 ResultType = "Тренировка"
             });
-            SendMessageFromServer(json);
+            var connectToServer=SendMessageFromServer(json);
+
+            if (connectToServer) return;
+            var path = "res.data";
+            var results = new List<Result>();
+            if (File.Exists(path))
+            {
+                results = JsonConvert.DeserializeObject<List<Result>>(File.ReadAllText(path));
+            }
+
+            results.Add(new Result{
+                Mark = "Пройдено",
+                Platoon = labelVzvodName.Text,
+                StudentName = labelFIOName.Text,
+                TestName = labelTestName.Text,
+                Timestamp = DateTime.Now,
+                ResultType = "Тренировка"
+            });
+            File.AppendAllText(path, JsonConvert.SerializeObject(results));
+
         }
 
-        private void SendMessageFromServer(string result)
+        private bool SendMessageFromServer(string result)
         {
-            new ResultSender().Connect(result);
+            try
+            {
+                return new ResultSender().Connect(result);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK);
+                return false;
+            }
         }
 
         private void buttonCloseTest_Click(object sender, EventArgs e)
@@ -56,8 +84,13 @@ namespace VoenKaffStartClient
 
             if (rz == DialogResult.Yes)
             {
-                Close();
+                Environment.Exit(0);
             }
+        }
+
+        private void FormResultsStudy_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Environment.Exit(0);
         }
     }
 }

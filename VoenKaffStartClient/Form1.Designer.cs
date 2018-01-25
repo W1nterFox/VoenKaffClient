@@ -63,7 +63,7 @@
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(17, 33);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(888, 393);
             this.panel1.TabIndex = 0;
@@ -73,7 +73,7 @@
             this.buttonInstruction.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonInstruction.Font = new System.Drawing.Font("Century Gothic", 11.25F);
             this.buttonInstruction.Location = new System.Drawing.Point(368, 327);
-            this.buttonInstruction.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonInstruction.Margin = new System.Windows.Forms.Padding(4);
             this.buttonInstruction.Name = "buttonInstruction";
             this.buttonInstruction.Size = new System.Drawing.Size(165, 47);
             this.buttonInstruction.TabIndex = 9;
@@ -87,7 +87,7 @@
             this.startButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.startButton.Font = new System.Drawing.Font("Century Gothic", 11.25F);
             this.startButton.Location = new System.Drawing.Point(343, 265);
-            this.startButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.startButton.Margin = new System.Windows.Forms.Padding(4);
             this.startButton.Name = "startButton";
             this.startButton.Size = new System.Drawing.Size(216, 55);
             this.startButton.TabIndex = 8;
@@ -101,9 +101,9 @@
             this.chooseMode.Controls.Add(this.radioButtonTestModeTest);
             this.chooseMode.Font = new System.Drawing.Font("Century Gothic", 11.25F);
             this.chooseMode.Location = new System.Drawing.Point(277, 156);
-            this.chooseMode.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chooseMode.Margin = new System.Windows.Forms.Padding(4);
             this.chooseMode.Name = "chooseMode";
-            this.chooseMode.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chooseMode.Padding = new System.Windows.Forms.Padding(4);
             this.chooseMode.Size = new System.Drawing.Size(333, 101);
             this.chooseMode.TabIndex = 7;
             this.chooseMode.TabStop = false;
@@ -112,7 +112,7 @@
             // 
             this.radioButtonTestModeStudy.AutoSize = true;
             this.radioButtonTestModeStudy.Location = new System.Drawing.Point(55, 60);
-            this.radioButtonTestModeStudy.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.radioButtonTestModeStudy.Margin = new System.Windows.Forms.Padding(4);
             this.radioButtonTestModeStudy.Name = "radioButtonTestModeStudy";
             this.radioButtonTestModeStudy.Size = new System.Drawing.Size(191, 26);
             this.radioButtonTestModeStudy.TabIndex = 1;
@@ -124,7 +124,7 @@
             // 
             this.radioButtonTestModeTest.AutoSize = true;
             this.radioButtonTestModeTest.Location = new System.Drawing.Point(55, 23);
-            this.radioButtonTestModeTest.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.radioButtonTestModeTest.Margin = new System.Windows.Forms.Padding(4);
             this.radioButtonTestModeTest.Name = "radioButtonTestModeTest";
             this.radioButtonTestModeTest.Size = new System.Drawing.Size(231, 26);
             this.radioButtonTestModeTest.TabIndex = 0;
@@ -138,7 +138,7 @@
             this.FIOName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.FIOName.FormattingEnabled = true;
             this.FIOName.Location = new System.Drawing.Point(579, 123);
-            this.FIOName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.FIOName.Margin = new System.Windows.Forms.Padding(4);
             this.FIOName.Name = "FIOName";
             this.FIOName.Size = new System.Drawing.Size(239, 24);
             this.FIOName.TabIndex = 5;
@@ -149,7 +149,7 @@
             this.vzvodName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.vzvodName.FormattingEnabled = true;
             this.vzvodName.Location = new System.Drawing.Point(331, 123);
-            this.vzvodName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.vzvodName.Margin = new System.Windows.Forms.Padding(4);
             this.vzvodName.Name = "vzvodName";
             this.vzvodName.Size = new System.Drawing.Size(239, 24);
             this.vzvodName.TabIndex = 3;
@@ -160,7 +160,7 @@
             this.testName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.testName.FormattingEnabled = true;
             this.testName.Location = new System.Drawing.Point(83, 123);
-            this.testName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.testName.Margin = new System.Windows.Forms.Padding(4);
             this.testName.Name = "testName";
             this.testName.Size = new System.Drawing.Size(239, 24);
             this.testName.TabIndex = 1;
@@ -241,13 +241,13 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(921, 441);
-            this.ControlBox = false;
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.chooseMode.ResumeLayout(false);

@@ -259,6 +259,7 @@ namespace VoenKaffStartClient
                 foreach (Label label in _listTBLabels[task])
                 {
                     panelQestionFoo.Controls.Add(label);
+                    label.BringToFront();
                 }
 
             }

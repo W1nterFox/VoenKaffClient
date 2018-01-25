@@ -36,6 +36,8 @@ namespace VoenKaffStartClient
         {
             InitializeComponent();
 
+            //new OnTimerSender().Start();
+
             if (!Directory.Exists(Resources.PathForTest))
             {
                 Directory.CreateDirectory(Resources.PathForTest);
@@ -193,6 +195,11 @@ namespace VoenKaffStartClient
             }
 
             _formSettings.Visible = true;
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Environment.Exit(0);
         }
     }
 }

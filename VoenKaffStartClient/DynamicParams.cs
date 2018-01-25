@@ -6,7 +6,7 @@ namespace VoenKaffServer
 {
     public class DynamicParams
     {
-        string Path = "settings.ini"; //Имя файла.
+        string Path = "settingsClient.ini"; //Имя файла.
 
         // С помощью конструктора записываем пусть до файла и его имя.
         public DynamicParams()

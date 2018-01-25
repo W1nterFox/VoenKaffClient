@@ -50,7 +50,8 @@ namespace VoenKaffStartClient.Senders
                 while (socket.Available > 0);
 
                 var filenames = JsonConvert.DeserializeObject<List<ObjectInfo>>(builder.ToString());
-
+                Directory.Delete("tests", true);
+                Directory.CreateDirectory("tests");
                 Directory.CreateDirectory("tests\\picture");
                 socket.Shutdown(SocketShutdown.Both);
                 socket.Close();
@@ -65,6 +66,7 @@ namespace VoenKaffStartClient.Senders
                     builder = new StringBuilder();
 
                     FileStream fs = new FileStream(Resources.PathForTest+"\\"+filenames[i].FileName, FileMode.Create, FileAccess.ReadWrite, FileShare.None);
+                    var timeout = 0;
                     while (true)
                     {
                         var test = socket.Available;
@@ -89,7 +91,8 @@ namespace VoenKaffStartClient.Senders
                                 break;
                             }
                         }
-                        // если нет подходящих условий - то ничего не делаем, пока собственно буфер приема не заполнится
+
+                        timeout++;
                     }
                     fs.Close();
                 }

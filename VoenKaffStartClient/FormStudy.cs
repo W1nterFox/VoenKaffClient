@@ -284,6 +284,7 @@ namespace VoenKaffStartClient
                 foreach (Label label in _listTBLabels[task])
                 {
                     panelQestionFoo.Controls.Add(label);
+                    label.BringToFront();
                 }
 
             }
@@ -526,7 +527,10 @@ namespace VoenKaffStartClient
 
             }
         }
-        
 
+        private void FormStudy_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Environment.Exit(0);
+        }
     }
 }

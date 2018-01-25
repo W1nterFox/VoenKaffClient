@@ -68,5 +68,14 @@ namespace VoenKaffStartClient.Properties {
                 return ResourceManager.GetString("PathForTest", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на res.data.
+        /// </summary>
+        internal static string ResultData {
+            get {
+                return ResourceManager.GetString("ResultData", resourceCulture);
+            }
+        }
     }
 }
