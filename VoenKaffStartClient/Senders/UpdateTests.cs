@@ -69,7 +69,6 @@ namespace VoenKaffStartClient.Senders
 
                 for (var i = 0; i < filenames.Count; i++)
                 {
-                    Thread.Sleep(500);
                     socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
                     socket.Connect(ipPoint);
                     socket.Send(Encoding.Unicode.GetBytes(i.ToString()));
@@ -81,9 +80,9 @@ namespace VoenKaffStartClient.Senders
                     while (true)
                     {
                         // если есть доступные данные, которые всецело можно записать в буфер обмена - то пишем
-                        if (socket.Available > 256)
+                        if (socket.Available > 4096)
                         {
-                            data = new byte[256];
+                            data = new byte[4096];
                             int recv = socket.Receive(data, SocketFlags.None);
                             if (recv == 0)
                                 break;
@@ -97,7 +96,7 @@ namespace VoenKaffStartClient.Senders
                             if (fs.Length + socketAvaliable == filenames[i].Length)
                             {
                                 File.AppendAllText("log.txt","Socket Avaliable: " + socketAvaliable);
-                                data = new byte[256];
+                                data = new byte[4096];
                                 socket.Receive(data, SocketFlags.None);
                                 fs.Write(data, 0, data.Length);
                                 break;
