@@ -46,7 +46,7 @@ namespace VoenKaffStartClient
             labelTestName.Text = _currentTest;
             labelVzvodName.Text = _currentVzvod;
             labelFIOName.Text = _currentStudent;
-            labelCurrentCourse.Text = _currentStudent;
+            labelCurrentCourse.Text = _currentCourse;
 
             labelTasksCount.Text = _countTasks.ToString();
             labelTasksRight.Text = _countRightAnswers.ToString();
