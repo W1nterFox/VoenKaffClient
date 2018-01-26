@@ -182,14 +182,15 @@ namespace VoenKaffStartClient
                 for (int i = 0; i < _TBInTask[task].Count; i++)
                 {
 
-
+                    string bufText = "Правильный ответ №" + (i + 1) + ": " +
+                                     _TBInTask[task]["System.Windows.Forms.TextBox, Text: " + (i + 1)].Tag;
                     panelAnswerFoo.Controls.Add(new Label
                     {
                         AutoSize = true,
-                        Font = new System.Drawing.Font("Century Gothic", 9.25F),
+                        Font = new System.Drawing.Font("Century Gothic", 18.25F, System.Drawing.FontStyle.Bold),
 
                         Location = new System.Drawing.Point(perem * (panelAnswerFoo.Controls.Count) + i * 30, 10),
-                        Text = "Правильный ответ №" + (i + 1) + ": " + _TBInTask[task]["System.Windows.Forms.TextBox, Text: " + (i + 1)].Tag,
+                        Text = bufText,
                     });
 
                     perem = panelAnswerFoo.Controls[panelAnswerFoo.Controls.Count - 1].Width;
@@ -309,7 +310,7 @@ namespace VoenKaffStartClient
         private void taskUserkSuccess(object sender, EventArgs e)
         {
             string tempString = ((Control)sender).Name;
-            int indexOld = Int32.Parse(tempString.Substring(tempString.Length - 1));
+            int indexOld = Int32.Parse(tempString.Replace("btnTaskUserkSuccess",""));
             int index = currentTaskNum;
             //Приведение контроллеров в исходное состояние
             _listPanelTasks[index].Controls.Find("panelAnswers", true)[0].Visible = false;
@@ -431,7 +432,7 @@ namespace VoenKaffStartClient
         private void nextTask(object sender, EventArgs e)
         {
             string tempString = ((Control)sender).Name;
-            int indexOld = Int32.Parse(tempString.Substring(tempString.Length - 1));
+            int indexOld = Int32.Parse(tempString.Replace("btnNextTask", ""));
             int index = currentTaskNum;
 
             //Приведение контроллеров в исходное состояние

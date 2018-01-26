@@ -190,15 +190,16 @@ namespace VoenKaffStartClient
                 int perem = 0;
                 for (int i = 0; i < _TBInTask[task].Count; i++)
                 {
-
-
+                    string bufText = ("Правильный ответ №" + (i + 1) + ": " + _TBInTask[task]["System.Windows.Forms.TextBox, Text: " + (i + 1)].Tag);
+                    
                     panelAnswerFoo.Controls.Add(new Label
                     {
+                        
                         AutoSize = true,
-                        Font = new System.Drawing.Font("Century Gothic", 9.25F),
+                        Font = new System.Drawing.Font("Century Gothic", 18.25F, System.Drawing.FontStyle.Bold),
 
                         Location = new System.Drawing.Point(perem * panelAnswerFoo.Controls.Count, 10),
-                        Text = "Правильный ответ №" + (i + 1) + ": " + _TBInTask[task]["System.Windows.Forms.TextBox, Text: " + (i + 1)].Tag,
+                        Text = bufText,
                     });
 
                     perem = panelAnswerFoo.Controls[panelAnswerFoo.Controls.Count - 1].Width;
