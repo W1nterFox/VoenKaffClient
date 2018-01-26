@@ -309,7 +309,7 @@ namespace VoenKaffStartClient
         private void checkAnswers(object sender, EventArgs e)
         {
             string tempString = ((Control)sender).Name;
-            int index = Int32.Parse(tempString.Substring(tempString.Length - 1));
+            int index = Int32.Parse(tempString.Replace("btnCheckAnswers",""));
             bool thisTaskSuccess = true;
 
 
@@ -348,6 +348,7 @@ namespace VoenKaffStartClient
             if (thisTaskSuccess) countRightAnswers++;
 
             //System.Windows.Forms.TextBox, Text: 1
+            var test = _listPanelTasks[index].Controls.Find("panelAnswers", true)[0];
             _listPanelTasks[index].Controls.Find("panelAnswers", true)[0].Visible = true;
         }
 

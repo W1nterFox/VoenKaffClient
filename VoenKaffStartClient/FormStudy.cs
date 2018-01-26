@@ -485,7 +485,7 @@ namespace VoenKaffStartClient
         private void checkAnswers(object sender, EventArgs e)
         {
             string tempString = ((Control)sender).Name;
-            int indexOld = Int32.Parse(tempString.Substring(tempString.Length - 1));
+            int indexOld = Int32.Parse(tempString.Replace("btnCheckAnswers", ""));
             int index = currentTaskNum;
             bool thisTaskSuccess = true;
 

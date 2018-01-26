@@ -41,13 +41,18 @@ namespace VoenKaffStartClient.Senders
 
                 data = new byte[256]; // буфер для ответа
                 StringBuilder builder = new StringBuilder();
+                var counter = 0;
                 int bytes = 0; // количество полученных байт
-                do
+                while (counter < 20)
                 {
+                    if (socket.Available == 0)
+                    {
+                        counter++;
+                    }
                     bytes = socket.Receive(data, data.Length, 0);
                     builder.Append(Encoding.Unicode.GetString(data, 0, bytes));
                 }
-                while (socket.Available > 0);
+
 
                 var filenames = JsonConvert.DeserializeObject<List<ObjectInfo>>(builder.ToString());
                 Directory.Delete("tests", true);
@@ -65,16 +70,14 @@ namespace VoenKaffStartClient.Senders
 
                     builder = new StringBuilder();
 
-                    FileStream fs = new FileStream(Resources.PathForTest+"\\"+filenames[i].FileName, FileMode.Create, FileAccess.ReadWrite, FileShare.None);
-                    var timeout = 0;
+                    FileStream fs = new FileStream(Resources.PathForTest+"\\"+filenames[i].FileName, FileMode.Create, FileAccess.ReadWrite, FileShare.ReadWrite);
                     while (true)
                     {
-                        var test = socket.Available;
                         // если есть доступные данные, которые всецело можно записать в буфер обмена - то пишем
-                        if (socket.Available > 4096)
+                        if (socket.Available > 12)
                         {
-                            data = new byte[4096];
-                            int recv = socket.Receive(data, SocketFlags.None);
+                            data = new byte[12];
+                            int recv = socket.Receive(data, SocketFlags.Partial);
                             if (recv == 0)
                                 break;
                             fs.Write(data, 0, data.Length);
@@ -85,14 +88,12 @@ namespace VoenKaffStartClient.Senders
                             // 5402624 - размер файла оригинала
                             if (fs.Length + socket.Available == filenames[i].Length)
                             {
-                                data = new byte[4096];
+                                data = new byte[12];
                                 socket.Receive(data, SocketFlags.None);
                                 fs.Write(data, 0, data.Length);
                                 break;
                             }
                         }
-
-                        timeout++;
                     }
                     fs.Close();
                 }
