@@ -61,6 +61,12 @@ namespace VoenKaffStartClient.Senders
                 socket.Shutdown(SocketShutdown.Both);
                 socket.Close();
 
+
+                foreach (var objectInfo in filenames)
+                {
+                    File.AppendAllText("log.txt",objectInfo.FileName+":"+objectInfo.Length+"\r\n");
+                }
+
                 for (var i = 0; i < filenames.Count; i++)
                 {
                     socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
@@ -70,14 +76,14 @@ namespace VoenKaffStartClient.Senders
 
                     builder = new StringBuilder();
 
-                    FileStream fs = new FileStream(Resources.PathForTest+"\\"+filenames[i].FileName, FileMode.Create, FileAccess.ReadWrite, FileShare.ReadWrite);
+                    FileStream fs = new FileStream(Resources.PathForTest+"\\"+filenames[i].FileName, FileMode.Create, FileAccess.ReadWrite, FileShare.None);
                     while (true)
                     {
                         // если есть доступные данные, которые всецело можно записать в буфер обмена - то пишем
-                        if (socket.Available > 12)
+                        if (socket.Available > 256)
                         {
-                            data = new byte[12];
-                            int recv = socket.Receive(data, SocketFlags.Partial);
+                            data = new byte[256];
+                            int recv = socket.Receive(data, SocketFlags.None);
                             if (recv == 0)
                                 break;
                             fs.Write(data, 0, data.Length);
@@ -88,7 +94,7 @@ namespace VoenKaffStartClient.Senders
                             // 5402624 - размер файла оригинала
                             if (fs.Length + socket.Available == filenames[i].Length)
                             {
-                                data = new byte[12];
+                                data = new byte[256];
                                 socket.Receive(data, SocketFlags.None);
                                 fs.Write(data, 0, data.Length);
                                 break;
