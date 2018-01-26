@@ -91,9 +91,11 @@ namespace VoenKaffStartClient.Senders
                         //иначе проверяем, является ли это последним блоком данных, который меньше нашего буфера
                         else
                         {
+                            var socketAvaliable = socket.Available;
                             // 5402624 - размер файла оригинала
-                            if (fs.Length + socket.Available == filenames[i].Length)
+                            if (fs.Length + socketAvaliable == filenames[i].Length)
                             {
+                                File.AppendAllText("log.txt","Socket Avaliable: " + socketAvaliable);
                                 data = new byte[256];
                                 socket.Receive(data, SocketFlags.None);
                                 fs.Write(data, 0, data.Length);
