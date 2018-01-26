@@ -69,6 +69,7 @@ namespace VoenKaffStartClient.Senders
 
                 for (var i = 0; i < filenames.Count; i++)
                 {
+                    Thread.Sleep(500);
                     socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
                     socket.Connect(ipPoint);
                     socket.Send(Encoding.Unicode.GetBytes(i.ToString()));
