@@ -501,11 +501,21 @@ namespace VoenKaffStartClient
                     var answer = buf.Text.ToLower().Trim().Replace("жы", "жи").Replace("пре", "при");
                     var tagText = buf.Tag.ToString().ToLower().Trim().Replace("жы", "жи").Replace("пре", "при");
 
-                    if (tagText.Substring(0, tagText.Length - 1) !=
-                        answer.Substring(0, answer.Length - 1)
-                    )
+                    if (answer != "")
                     {
-                        thisTaskSuccess = false;
+                        if (tagText.Substring(0, tagText.Length - 1) !=
+                        answer.Substring(0, answer.Length - 1)
+                        )
+                        {
+                            thisTaskSuccess = false;
+                        }
+                    }
+                    else
+                    {
+                        if (answer != tagText)
+                        {
+                            thisTaskSuccess = false;
+                        }
                     }
                 }
             }

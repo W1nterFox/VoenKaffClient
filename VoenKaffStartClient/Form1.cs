@@ -102,23 +102,34 @@ namespace VoenKaffStartClient
         private void comboBoxChooseCourse_SelectedIndexChanged(object sender, EventArgs e)
         {
             string selectedCourse = (string)comboBoxChooseCourse.SelectedItem;
-            testName.SelectedItem = null;
-            testName.Items.Clear();
-            List<Test> bufList = listOfFormDefaultTest.TestList.FindAll(x => (x.Course == selectedCourse));
-            foreach (Test test in bufList)
+            if (selectedCourse != null)
             {
-                testName.Items.Add(test.Name);
+                testName.SelectedItem = null;
+                testName.Items.Clear();
+                List<Test> bufList = listOfFormDefaultTest.TestList.FindAll(x => (x.Course == selectedCourse));
+                foreach (Test test in bufList)
+                {
+                    testName.Items.Add(test.Name);
+                }
             }
+            
             
         }
 
         private void nameVzvod_SelectedIndexChanged(object sender, System.EventArgs e)
         {
+            
             string selectedVzvod = (string)vzvodName.SelectedItem;
-            FIOName.SelectedItem = null;
-            FIOName.Items.Clear();
-            FIOName.Items.AddRange(VzvodAndLs.Get()[selectedVzvod].ToArray());
+            if (selectedVzvod != null)
+            {
+                FIOName.SelectedItem = null;
+                FIOName.Items.Clear();
+
+                FIOName.Items.AddRange(VzvodAndLs.Get()[selectedVzvod].ToArray());
+            }
+        
         }
+           
 
         private void startButtonEnabled(object sender, System.EventArgs e)
         {
