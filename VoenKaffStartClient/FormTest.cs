@@ -121,7 +121,8 @@ namespace VoenKaffStartClient
                             var image = ((SerializablePicture) binaryFormatter.Deserialize(stream)).Picture;
                             _PBInTask[paneltask].Add(new PictureBox
                             {
-                                Size = image.Size,
+                                Size = new Size(taskElem.Width, taskElem.Height),
+                                SizeMode = PictureBoxSizeMode.StretchImage,
                                 Image = image,
                                 //Height = taskElem.Height,
                                 //Width = taskElem.Width,
