@@ -81,13 +81,21 @@ namespace VoenKaffStartClient
 
             foreach (Task paneltask in objectsInCurrentTest.Tasks)
             {
-                int textBoxNumber = 1;
+                int textBoxNumber = 0;
                 _RTBInTask.Add(paneltask, new List<Label> { });
                 _PBInTask.Add(paneltask, new List<PictureBox> { });
                 _TBInTask.Add(paneltask, new Dictionary<string, TextBox> { });
                 _listTBLabels.Add(paneltask, new List<Label> { });
 
                 _listTasksInTest.Add(paneltask);
+
+                foreach (TaskElement taskElem in paneltask.TaskElements)
+                {
+                    if (taskElem.Type.Equals("System.Windows.Forms.TextBox"))
+                    {
+                        textBoxNumber++;
+                    }
+                }
 
                 foreach (TaskElement taskElem in paneltask.TaskElements)
                 {
@@ -124,6 +132,8 @@ namespace VoenKaffStartClient
 
                     }
 
+
+
                     if (taskElem.Type.Equals("System.Windows.Forms.TextBox"))
                     {
                         _TBInTask[paneltask][taskElem.Name] = (new TextBox
@@ -142,7 +152,7 @@ namespace VoenKaffStartClient
                             Font = new System.Drawing.Font("Century Gothic", 10.25F),
                         });
 
-                        textBoxNumber++;
+                        textBoxNumber--;
 
 
                     }
