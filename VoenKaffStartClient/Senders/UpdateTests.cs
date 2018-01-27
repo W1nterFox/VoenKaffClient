@@ -80,9 +80,9 @@ namespace VoenKaffStartClient.Senders
                     while (true)
                     {
                         // если есть доступные данные, которые всецело можно записать в буфер обмена - то пишем
-                        if (socket.Available > 4096)
+                        if (socket.Available > 50000)
                         {
-                            data = new byte[4096];
+                            data = new byte[50000];
                             int recv = socket.Receive(data, SocketFlags.None);
                             if (recv == 0)
                                 break;
@@ -96,7 +96,7 @@ namespace VoenKaffStartClient.Senders
                             if (fs.Length + socketAvaliable == filenames[i].Length)
                             {
                                 File.AppendAllText("log.txt","Socket Avaliable: " + socketAvaliable);
-                                data = new byte[4096];
+                                data = new byte[50000];
                                 socket.Receive(data, SocketFlags.None);
                                 fs.Write(data, 0, data.Length);
                                 break;
