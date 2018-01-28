@@ -41,10 +41,9 @@
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabelTaskNumberAndTaskCount,
             this.toolStripProgressBar1});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 801);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 650);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 19, 0);
-            this.statusStrip1.Size = new System.Drawing.Size(1507, 26);
+            this.statusStrip1.Size = new System.Drawing.Size(1130, 22);
             this.statusStrip1.TabIndex = 1;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -52,34 +51,32 @@
             // 
             this.toolStripStatusLabelTaskNumberAndTaskCount.Margin = new System.Windows.Forms.Padding(10, 3, 0, 2);
             this.toolStripStatusLabelTaskNumberAndTaskCount.Name = "toolStripStatusLabelTaskNumberAndTaskCount";
-            this.toolStripStatusLabelTaskNumberAndTaskCount.Size = new System.Drawing.Size(207, 21);
+            this.toolStripStatusLabelTaskNumberAndTaskCount.Size = new System.Drawing.Size(160, 17);
             this.toolStripStatusLabelTaskNumberAndTaskCount.Text = "Выполнено заданий: 0 из 30";
             // 
             // toolStripProgressBar1
             // 
             this.toolStripProgressBar1.Margin = new System.Windows.Forms.Padding(15, 3, 1, 3);
             this.toolStripProgressBar1.Name = "toolStripProgressBar1";
-            this.toolStripProgressBar1.Size = new System.Drawing.Size(400, 20);
+            this.toolStripProgressBar1.Size = new System.Drawing.Size(300, 16);
             // 
             // panelMain
             // 
             this.panelMain.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.panelMain.Location = new System.Drawing.Point(16, 15);
-            this.panelMain.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelMain.Location = new System.Drawing.Point(12, 12);
             this.panelMain.Name = "panelMain";
-            this.panelMain.Size = new System.Drawing.Size(1473, 773);
+            this.panelMain.Size = new System.Drawing.Size(1105, 628);
             this.panelMain.TabIndex = 2;
             // 
             // FormStudy
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1507, 827);
+            this.ClientSize = new System.Drawing.Size(1130, 672);
             this.Controls.Add(this.panelMain);
             this.Controls.Add(this.statusStrip1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FormStudy";
-            this.Text = "FormStudy";
+            this.Text = "Обучение";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormStudy_FormClosing);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();

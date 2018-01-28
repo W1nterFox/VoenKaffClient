@@ -79,6 +79,7 @@ namespace VoenKaffStartClient.Senders
                     FileStream fs = new FileStream(Resources.PathForTest+"\\"+filenames[i].FileName, FileMode.Create, FileAccess.ReadWrite, FileShare.None);
                     while (true)
                     {
+                        Application.DoEvents();
                         // если есть доступные данные, которые всецело можно записать в буфер обмена - то пишем
                         if (socket.Available > 50000)
                         {
@@ -103,7 +104,9 @@ namespace VoenKaffStartClient.Senders
                             }
                         }
                     }
+                    
                     fs.Close();
+                    
                 }
 
                 socket.Shutdown(SocketShutdown.Both);

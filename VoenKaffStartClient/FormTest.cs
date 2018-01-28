@@ -191,10 +191,11 @@ namespace VoenKaffStartClient
                     BackColor = System.Drawing.Color.Linen,
                     //Controls.Add(this.buttonEndTest);
                     //Controls.Add(this.buttonNextTask);
-                    Location = new System.Drawing.Point(0, 520),
+                    Location = new System.Drawing.Point(0, 510),
                     Name = "panelAnswers",
                     Size = new System.Drawing.Size(1105, 118),
                     TabIndex = 1,
+                    AutoScroll = true,
                 };
                 _listPanelTasks[_listPanelTasks.Count - 1].Controls.Add(panelAnswerFoo);
 

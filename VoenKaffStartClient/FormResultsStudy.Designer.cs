@@ -33,14 +33,14 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.labelCurrentCourse = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.labelTestName = new System.Windows.Forms.Label();
             this.labelVzvodName = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.labelFIOName = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.labelCurrentCourse = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -107,6 +107,26 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
+            // labelCurrentCourse
+            // 
+            this.labelCurrentCourse.AutoSize = true;
+            this.labelCurrentCourse.Font = new System.Drawing.Font("Century Gothic", 11.25F);
+            this.labelCurrentCourse.Location = new System.Drawing.Point(188, 20);
+            this.labelCurrentCourse.Name = "labelCurrentCourse";
+            this.labelCurrentCourse.Size = new System.Drawing.Size(146, 20);
+            this.labelCurrentCourse.TabIndex = 11;
+            this.labelCurrentCourse.Text = "Номенклатура карт";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Century Gothic", 11.25F);
+            this.label6.Location = new System.Drawing.Point(16, 20);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(71, 20);
+            this.label6.TabIndex = 10;
+            this.label6.Text = "Предмет";
+            // 
             // labelTestName
             // 
             this.labelTestName.AutoSize = true;
@@ -167,34 +187,15 @@
             this.label5.TabIndex = 8;
             this.label5.Text = "Студент";
             // 
-            // labelCurrentCourse
-            // 
-            this.labelCurrentCourse.AutoSize = true;
-            this.labelCurrentCourse.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            this.labelCurrentCourse.Location = new System.Drawing.Point(188, 20);
-            this.labelCurrentCourse.Name = "labelCurrentCourse";
-            this.labelCurrentCourse.Size = new System.Drawing.Size(146, 20);
-            this.labelCurrentCourse.TabIndex = 11;
-            this.labelCurrentCourse.Text = "Номенклатура карт";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            this.label6.Location = new System.Drawing.Point(16, 20);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(71, 20);
-            this.label6.TabIndex = 10;
-            this.label6.Text = "Предмет";
-            // 
             // FormResultsStudy
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(691, 424);
+            this.ControlBox = false;
             this.Controls.Add(this.panel1);
             this.Name = "FormResultsStudy";
-            this.Text = "FormResultsStudy";
+            this.Text = "Результаты";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormResultsStudy_FormClosing);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

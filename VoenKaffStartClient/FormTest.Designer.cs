@@ -76,7 +76,7 @@
             this.Controls.Add(this.panelMain);
             this.Controls.Add(this.statusStrip1);
             this.Name = "FormTest";
-            this.Text = "FormTest";
+            this.Text = "Тестирование";
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);

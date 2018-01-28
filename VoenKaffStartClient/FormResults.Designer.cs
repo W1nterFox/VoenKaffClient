@@ -39,6 +39,8 @@
             this.labelTasksRight = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.labelCurrentCourse = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.labelTestName = new System.Windows.Forms.Label();
@@ -47,8 +49,6 @@
             this.labelFIOName = new System.Windows.Forms.Label();
             this.buttonCloseTest = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.labelCurrentCourse = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -179,6 +179,26 @@
             this.groupBox1.TabIndex = 14;
             this.groupBox1.TabStop = false;
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Century Gothic", 11.25F);
+            this.label9.Location = new System.Drawing.Point(16, 22);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(71, 20);
+            this.label9.TabIndex = 7;
+            this.label9.Text = "Предмет";
+            // 
+            // labelCurrentCourse
+            // 
+            this.labelCurrentCourse.AutoSize = true;
+            this.labelCurrentCourse.Font = new System.Drawing.Font("Century Gothic", 11.25F);
+            this.labelCurrentCourse.Location = new System.Drawing.Point(188, 22);
+            this.labelCurrentCourse.Name = "labelCurrentCourse";
+            this.labelCurrentCourse.Size = new System.Drawing.Size(146, 20);
+            this.labelCurrentCourse.TabIndex = 8;
+            this.labelCurrentCourse.Text = "Номенклатура карт";
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -262,26 +282,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Результаты";
             // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            this.label9.Location = new System.Drawing.Point(16, 22);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(71, 20);
-            this.label9.TabIndex = 7;
-            this.label9.Text = "Предмет";
-            // 
-            // labelCurrentCourse
-            // 
-            this.labelCurrentCourse.AutoSize = true;
-            this.labelCurrentCourse.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            this.labelCurrentCourse.Location = new System.Drawing.Point(188, 22);
-            this.labelCurrentCourse.Name = "labelCurrentCourse";
-            this.labelCurrentCourse.Size = new System.Drawing.Size(146, 20);
-            this.labelCurrentCourse.TabIndex = 8;
-            this.labelCurrentCourse.Text = "Номенклатура карт";
-            // 
             // FormResults
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -290,7 +290,7 @@
             this.ControlBox = false;
             this.Controls.Add(this.panel1);
             this.Name = "FormResults";
-            this.Text = "FormResults";
+            this.Text = "Результаты";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.groupBox2.ResumeLayout(false);

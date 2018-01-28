@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.comboBoxChooseCourse = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.buttonInstruction = new System.Windows.Forms.Button();
             this.startButton = new System.Windows.Forms.Button();
             this.chooseMode = new System.Windows.Forms.GroupBox();
@@ -43,8 +45,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.Settings = new System.Windows.Forms.ToolStripMenuItem();
-            this.comboBoxChooseCourse = new System.Windows.Forms.ComboBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.chooseMode.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -69,6 +69,27 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(802, 319);
             this.panel1.TabIndex = 0;
+            // 
+            // comboBoxChooseCourse
+            // 
+            this.comboBoxChooseCourse.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxChooseCourse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBoxChooseCourse.FormattingEnabled = true;
+            this.comboBoxChooseCourse.Location = new System.Drawing.Point(28, 101);
+            this.comboBoxChooseCourse.Name = "comboBoxChooseCourse";
+            this.comboBoxChooseCourse.Size = new System.Drawing.Size(180, 21);
+            this.comboBoxChooseCourse.TabIndex = 10;
+            this.comboBoxChooseCourse.SelectedIndexChanged += new System.EventHandler(this.comboBoxChooseCourse_SelectedIndexChanged);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Century Gothic", 11.25F);
+            this.label5.Location = new System.Drawing.Point(45, 78);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(141, 20);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "Выберите предмет";
             // 
             // buttonInstruction
             // 
@@ -164,9 +185,9 @@
             this.label4.Font = new System.Drawing.Font("Century Gothic", 11.25F);
             this.label4.Location = new System.Drawing.Point(593, 78);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(152, 20);
+            this.label4.Size = new System.Drawing.Size(144, 20);
             this.label4.TabIndex = 6;
-            this.label4.Text = "Выберите стедуента";
+            this.label4.Text = "Выберите студента";
             // 
             // label3
             // 
@@ -194,9 +215,9 @@
             this.label1.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.Location = new System.Drawing.Point(255, 19);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(297, 25);
+            this.label1.Size = new System.Drawing.Size(243, 25);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Тестирование нормативов";
+            this.label1.Text = "Тестирование знаний";
             // 
             // menuStrip1
             // 
@@ -216,27 +237,6 @@
             this.Settings.Text = "Настройки";
             this.Settings.Click += new System.EventHandler(this.Settings_Click);
             // 
-            // comboBoxChooseCourse
-            // 
-            this.comboBoxChooseCourse.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxChooseCourse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBoxChooseCourse.FormattingEnabled = true;
-            this.comboBoxChooseCourse.Location = new System.Drawing.Point(28, 101);
-            this.comboBoxChooseCourse.Name = "comboBoxChooseCourse";
-            this.comboBoxChooseCourse.Size = new System.Drawing.Size(180, 21);
-            this.comboBoxChooseCourse.TabIndex = 10;
-            this.comboBoxChooseCourse.SelectedIndexChanged += new System.EventHandler(this.comboBoxChooseCourse_SelectedIndexChanged);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            this.label5.Location = new System.Drawing.Point(45, 78);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(141, 20);
-            this.label5.TabIndex = 11;
-            this.label5.Text = "Выберите предмет";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -246,7 +246,7 @@
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Тестирование знаний";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
