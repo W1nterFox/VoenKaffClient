@@ -168,7 +168,7 @@ namespace VoenKaffStartClient
                     BackColor = System.Drawing.SystemColors.GradientInactiveCaption,
                     Location = new System.Drawing.Point(0, 0),
                     Name = task.Name,
-                    Size = new System.Drawing.Size(1109, 630),
+                    Size = new System.Drawing.Size(1109, 730),
                     TabIndex = 0,
                     Parent = panelMain
                 });
@@ -180,7 +180,7 @@ namespace VoenKaffStartClient
                     //Controls.Add(this.label2),
                     Location = new System.Drawing.Point(0, 0),
                     Name = "panelQuestion",
-                    Size = new System.Drawing.Size(1105, 510),
+                    Size = new System.Drawing.Size(1105, 610),
                     TabIndex = 0
                 };
                 _listPanelTasks[_listPanelTasks.Count - 1].Controls.Add(panelQestionFoo);
@@ -191,7 +191,7 @@ namespace VoenKaffStartClient
                     BackColor = System.Drawing.Color.Linen,
                     //Controls.Add(this.buttonEndTest);
                     //Controls.Add(this.buttonNextTask);
-                    Location = new System.Drawing.Point(0, 510),
+                    Location = new System.Drawing.Point(0, 610),
                     Name = "panelAnswers",
                     Size = new System.Drawing.Size(1105, 118),
                     TabIndex = 1,
@@ -248,7 +248,7 @@ namespace VoenKaffStartClient
                 {
                     FlatStyle = System.Windows.Forms.FlatStyle.Flat,
                     Font = new System.Drawing.Font("Century Gothic", 11.25F),
-                    Location = new System.Drawing.Point(450, 550),
+                    Location = new System.Drawing.Point(450, 650),
                     Name = "btnCheckAnswers" + (_listPanelTasks.Count - 1),
                     Size = new System.Drawing.Size(162, 45),
                     Text = "Ответить",
