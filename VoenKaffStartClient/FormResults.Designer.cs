@@ -73,7 +73,7 @@
             this.labelFinalMark.AutoSize = true;
             this.labelFinalMark.Font = new System.Drawing.Font("Century Gothic", 17.75F);
             this.labelFinalMark.ForeColor = System.Drawing.Color.Red;
-            this.labelFinalMark.Location = new System.Drawing.Point(332, 287);
+            this.labelFinalMark.Location = new System.Drawing.Point(115, 286);
             this.labelFinalMark.Name = "labelFinalMark";
             this.labelFinalMark.Size = new System.Drawing.Size(117, 30);
             this.labelFinalMark.TabIndex = 16;
@@ -83,7 +83,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Century Gothic", 17.75F);
-            this.label7.Location = new System.Drawing.Point(225, 287);
+            this.label7.Location = new System.Drawing.Point(8, 286);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(108, 30);
             this.label7.TabIndex = 13;

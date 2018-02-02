@@ -75,6 +75,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Courses.cs" />
+    <Compile Include="DecendingComparer.cs" />
     <Compile Include="DynamicParams.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -118,6 +119,7 @@
     <Compile Include="Senders\UpdateTests.cs" />
     <Compile Include="TestLoader.cs" />
     <Compile Include="VzvodAndLs.cs" />
+    <Compile Include="WatermarkTextBox.cs" />
     <Compile Include="Wrappers\Marks.cs" />
     <Compile Include="Wrappers\ObjectInfo.cs" />
     <Compile Include="Wrappers\Result.cs" />

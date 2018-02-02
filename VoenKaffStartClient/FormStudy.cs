@@ -11,11 +11,17 @@ using System.Windows.Forms;
 using SerializablePicutre;
 using VoenKaffStartClient.Properties;
 using VoenKaffStartClient.Wrappers;
+using System.Runtime.InteropServices;
 
 namespace VoenKaffStartClient
 {
     public partial class FormStudy : Form
     {
+
+        private const int EM_SETCUEBANNER = 0x1501;
+        [DllImport("user32.dll", CharSet = CharSet.Auto)]
+        private static extern Int32 SendMessage(IntPtr hWnd, int msg, int wParam, [MarshalAs(UnmanagedType.LPWStr)]string lParam);
+
         public string _currentTest;
         public string _currentVzvod;
         public string _currentStudent;
@@ -179,14 +185,21 @@ namespace VoenKaffStartClient
                 };
                 _listPanelTasks[_listPanelTasks.Count - 1].Controls.Add(panelAnswerFoo);
 
+                SortedList<int, TextBox> mySLofTB = new SortedList<int, TextBox>(new DecendingComparer<int>());
+
                 foreach (TextBox tb in _TBInTask[task])
+                {
+                    mySLofTB.Add(tb.TabIndex, tb);
+                }
+
+                foreach (KeyValuePair<int, TextBox> keyValuetb in mySLofTB)
                 {
 
                     Label answerLabel = new Label();
 
                     answerLabel.AutoSize = true;
                     answerLabel.Font = new System.Drawing.Font("Century Gothic", 18.25F, System.Drawing.FontStyle.Bold);
-                    answerLabel.Text = "Ответ №" + tb.TabIndex + ": " + tb.Tag + "  |  ";
+                    answerLabel.Text = "Ответ №" + keyValuetb.Key + ": " + keyValuetb.Value.Tag + "  |  ";
                     answerLabel.Dock = DockStyle.Left;
 
                     panelAnswerFoo.Controls.Add(answerLabel);
@@ -280,12 +293,18 @@ namespace VoenKaffStartClient
                 {
                     panelQestionFoo.Controls.Add(tb);
                     tb.BringToFront();
+                    Size lenTBText = TextRenderer.MeasureText("Ответ №" + tb.TabIndex, tb.Font);
+                    if (lenTBText.Width > tb.Width)
+                    {
+                        tb.Width = lenTBText.Width + 3;
+                    }
+                    SendMessage(tb.Handle, EM_SETCUEBANNER, 0, "Ответ №" + tb.TabIndex);
                 }
-                foreach (Label label in _listTBLabels[task])
-                {
-                    panelQestionFoo.Controls.Add(label);
-                    label.BringToFront();
-                }
+                //foreach (Label label in _listTBLabels[task])
+                //{
+                //    panelQestionFoo.Controls.Add(label);
+                //    label.BringToFront();
+                //}
 
             }
 
