@@ -26,7 +26,7 @@ namespace VoenKaffStartClient
         public List<Task> _listTasksInTest=new List<Task> { };
         public Dictionary<Task, List<Label>> _RTBInTask = new Dictionary<Task, List<Label>> { };
         public Dictionary<Task, List<PictureBox>> _PBInTask = new Dictionary<Task, List<PictureBox>> { };
-        public Dictionary<Task, Dictionary<string, TextBox>> _TBInTask = new Dictionary<Task, Dictionary<string, TextBox>> { };
+        public Dictionary<Task, List<TextBox>> _TBInTask = new Dictionary<Task, List<TextBox>> { };
         public List<Panel> _listPanelTasks = new List<Panel> { };
 
         Button btnNextTask;
@@ -81,21 +81,15 @@ namespace VoenKaffStartClient
 
             foreach (Task paneltask in objectsInCurrentTest.Tasks)
             {
-                int textBoxNumber = 1;
+                
                 _RTBInTask.Add(paneltask, new List<Label> { });
                 _PBInTask.Add(paneltask, new List<PictureBox> { });
-                _TBInTask.Add(paneltask, new Dictionary<string, TextBox> { });
+                _TBInTask.Add(paneltask, new List<TextBox> { });
                 _listTBLabels.Add(paneltask, new List<Label> { });
 
                 _listTasksInTest.Add(paneltask);
 
-                //foreach (TaskElement taskElem in paneltask.TaskElements)
-                //{
-                //    if (taskElem.Type.Equals("System.Windows.Forms.TextBox"))
-                //    {
-                //        textBoxNumber++;
-                //    }
-                //}
+                
 
                 foreach (TaskElement taskElem in paneltask.TaskElements)
                 {
@@ -137,23 +131,23 @@ namespace VoenKaffStartClient
 
                     if (taskElem.Type.Equals("System.Windows.Forms.TextBox"))
                     {
-                        _TBInTask[paneltask][taskElem.Name] = (new TextBox
+                        _TBInTask[paneltask].Add((new TextBox
                         {
                             Height = taskElem.Height,
                             Width = taskElem.Width,
                             Name = taskElem.Name,
                             Location = taskElem.Point,
                             Tag = taskElem.Answer,
-                            
-                        });
+                            TabIndex = taskElem.Index
+                        }));
                         _listTBLabels[paneltask].Add(new Label
                         {
-                            Location = new Point(taskElem.Point.X, taskElem.Point.Y - 30),
-                            Text = "Поле №" + textBoxNumber,
+                            Location = new Point(taskElem.Point.X, taskElem.Point.Y - 25),
+                            Text = "Поле №" + taskElem.Index,
                             Font = new System.Drawing.Font("Century Gothic", 10.25F),
                         });
 
-                        textBoxNumber++;
+                        
 
 
                     }
@@ -189,8 +183,6 @@ namespace VoenKaffStartClient
                 Panel panelAnswerFoo = new Panel
                 {
                     BackColor = System.Drawing.Color.Linen,
-                    //Controls.Add(this.buttonEndTest);
-                    //Controls.Add(this.buttonNextTask);
                     Location = new System.Drawing.Point(0, 610),
                     Name = "panelAnswers",
                     Size = new System.Drawing.Size(1105, 118),
@@ -199,23 +191,22 @@ namespace VoenKaffStartClient
                 };
                 _listPanelTasks[_listPanelTasks.Count - 1].Controls.Add(panelAnswerFoo);
 
-                int perem = 0;
-                for (int i = 0; i < _TBInTask[task].Count; i++)
+                
+                foreach (TextBox tb in _TBInTask[task])
                 {
-                    string bufText = ("Правильный ответ №" + (i + 1) + ": " + _TBInTask[task]["System.Windows.Forms.TextBox, Text: " + (i + 1)].Tag);
+
+                    Label answerLabel = new Label();
+
+                    answerLabel.AutoSize = true;
+                    answerLabel.Font = new System.Drawing.Font("Century Gothic", 18.25F, System.Drawing.FontStyle.Bold);
+                    answerLabel.Text = "Ответ №" + tb.TabIndex + ": " + tb.Tag + "  |  ";
+                    answerLabel.Dock = DockStyle.Left;
                     
-                    panelAnswerFoo.Controls.Add(new Label
-                    {
-                        
-                        AutoSize = true,
-                        Font = new System.Drawing.Font("Century Gothic", 18.25F, System.Drawing.FontStyle.Bold),
-
-                        Location = new System.Drawing.Point(perem * panelAnswerFoo.Controls.Count, 10),
-                        Text = bufText,
-                    });
-
-                    perem = panelAnswerFoo.Controls[panelAnswerFoo.Controls.Count - 1].Width;
+                    panelAnswerFoo.Controls.Add(answerLabel);
+                    
                 }
+
+                
 
                 //Следующее задание
                 btnNextTask = new Button
@@ -265,11 +256,13 @@ namespace VoenKaffStartClient
                     panelQestionFoo.Controls.Add(rtb);
                     rtb.BringToFront();
                 }
-                for (int i = 0; i <_TBInTask[task].Count; i++)
+
+                foreach (TextBox tb in _TBInTask[task])
                 {
-                    panelQestionFoo.Controls.Add(_TBInTask[task]["System.Windows.Forms.TextBox, Text: " + (i+1)]);
-                    _TBInTask[task]["System.Windows.Forms.TextBox, Text: " + (i + 1)].BringToFront();
+                    panelQestionFoo.Controls.Add(tb);
+                    tb.BringToFront();
                 }
+                
                 foreach (Label label in _listTBLabels[task])
                 {
                     panelQestionFoo.Controls.Add(label);

@@ -171,6 +171,8 @@
             // 
             // testName
             // 
+            this.testName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.testName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.testName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.testName.FormattingEnabled = true;
