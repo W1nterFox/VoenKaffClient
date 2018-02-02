@@ -81,7 +81,7 @@ namespace VoenKaffStartClient
 
             foreach (Task paneltask in objectsInCurrentTest.Tasks)
             {
-                int textBoxNumber = 0;
+                int textBoxNumber = 1;
                 _RTBInTask.Add(paneltask, new List<Label> { });
                 _PBInTask.Add(paneltask, new List<PictureBox> { });
                 _TBInTask.Add(paneltask, new Dictionary<string, TextBox> { });
@@ -89,13 +89,13 @@ namespace VoenKaffStartClient
 
                 _listTasksInTest.Add(paneltask);
 
-                foreach (TaskElement taskElem in paneltask.TaskElements)
-                {
-                    if (taskElem.Type.Equals("System.Windows.Forms.TextBox"))
-                    {
-                        textBoxNumber++;
-                    }
-                }
+                //foreach (TaskElement taskElem in paneltask.TaskElements)
+                //{
+                //    if (taskElem.Type.Equals("System.Windows.Forms.TextBox"))
+                //    {
+                //        textBoxNumber++;
+                //    }
+                //}
 
                 foreach (TaskElement taskElem in paneltask.TaskElements)
                 {
@@ -153,7 +153,7 @@ namespace VoenKaffStartClient
                             Font = new System.Drawing.Font("Century Gothic", 10.25F),
                         });
 
-                        textBoxNumber--;
+                        textBoxNumber++;
 
 
                     }
@@ -294,8 +294,8 @@ namespace VoenKaffStartClient
 
         private void nextTask(object sender, EventArgs e)
         {
-            string tempString = ((Control)sender).Name;
-            int index = Int32.Parse(tempString.Substring(tempString.Length - 1));
+            string tempString = ((Control)sender).Name.Replace("btnNextTask", "");
+            int index = Int32.Parse(tempString);
             if (index != _listPanelTasks.Count - 1)
             {
                 _listPanelTasks[index].Visible = false;
@@ -308,8 +308,8 @@ namespace VoenKaffStartClient
 
         private void endTask(object sender, EventArgs e)
         {
-            string tempString = ((Control)sender).Name;
-            int index = Int32.Parse(tempString.Substring(tempString.Length - 1));
+            string tempString = ((Control)sender).Name.Replace("btnEndTest", "");
+            int index = Int32.Parse(tempString);
 
             _listPanelTasks[index].Visible = false;
 
