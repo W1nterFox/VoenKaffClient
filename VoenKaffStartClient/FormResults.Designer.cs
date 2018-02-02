@@ -97,9 +97,9 @@
             this.groupBox2.Controls.Add(this.labelTasksPercent);
             this.groupBox2.Controls.Add(this.labelTasksRight);
             this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Location = new System.Drawing.Point(157, 166);
+            this.groupBox2.Location = new System.Drawing.Point(3, 166);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(506, 104);
+            this.groupBox2.Size = new System.Drawing.Size(660, 104);
             this.groupBox2.TabIndex = 15;
             this.groupBox2.TabStop = false;
             // 
@@ -173,9 +173,9 @@
             this.groupBox1.Controls.Add(this.labelVzvodName);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.labelFIOName);
-            this.groupBox1.Location = new System.Drawing.Point(157, 40);
+            this.groupBox1.Location = new System.Drawing.Point(3, 40);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(506, 120);
+            this.groupBox1.Size = new System.Drawing.Size(660, 120);
             this.groupBox1.TabIndex = 14;
             this.groupBox1.TabStop = false;
             // 

@@ -50,29 +50,30 @@ namespace VoenKaffStartClient
 
             labelTasksCount.Text = _countTasks.ToString();
             labelTasksRight.Text = _countRightAnswers.ToString();
-            labelTasksPercent.Text = ((float)_countRightAnswers / (float)_countTasks)*100 + "%".ToString();
+            double percentRight = Math.Round((((float)_countRightAnswers / (float)_countTasks) * 100), 0, MidpointRounding.AwayFromZero);
+            labelTasksPercent.Text = percentRight + "%".ToString();
 
             //labelFinalMark
 
-            if (((float)_countRightAnswers / (float)_countTasks) * 100 >= _marks.Excellent)
+            if (percentRight >= _marks.Excellent)
             {
                 labelFinalMark.Text = "Отлично";
                 labelFinalMark.ForeColor = Color.Green;
             }
             else
-            if (((float)_countRightAnswers / (float)_countTasks) * 100 >= _marks.Good)
+            if (percentRight >= _marks.Good)
             {
                 labelFinalMark.Text = "Хорошо";
                 labelFinalMark.ForeColor = Color.Blue;
             }
             else
-            if (((float)_countRightAnswers / (float)_countTasks) * 100 >= _marks.Satisfactory)
+            if (percentRight >= _marks.Satisfactory)
             {
                 labelFinalMark.Text = "Удовлетворительно";
                 labelFinalMark.ForeColor = Color.Orange;
             }
             else
-            if (((float)_countRightAnswers / (float)_countTasks) * 100 < _marks.Satisfactory)
+            if (percentRight < _marks.Satisfactory)
             {
                 labelFinalMark.Text = "Неудовлетворительно";
                 labelFinalMark.ForeColor = Color.Red;
