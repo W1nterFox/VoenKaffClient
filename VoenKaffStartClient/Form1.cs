@@ -62,25 +62,25 @@ namespace VoenKaffStartClient
 
             var testLoader = new TestLoader();
 
-            var loaderChecker = false;
             var errorCounter = 0;
             while (errorCounter<10)
             {
-
                 try
                 {
                     listOfFormDefaultTest = testLoader.LoadTestsFromFolder(Resources.PathForTest);
-                    loaderChecker = true;
+                    break;
                 }
                 catch (Exception)
                 {
                     errorCounter++;
                 }
+            }
 
-                if (loaderChecker)
-                {
-                    break;
-                }
+            if (errorCounter == 9)
+            {
+                MessageBox.Show("Не удалось загрузить тесты, попробуйте перезапустить программу",
+                    "Не удалось загрузить тесты", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Environment.Exit(0);
             }
 
 
