@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -9,6 +10,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Windows.Forms;
 using SerializablePicutre;
+using VoenKaffStartClient;
 using VoenKaffStartClient.Properties;
 using VoenKaffStartClient.Senders;
 using VoenKaffStartClient.Wrappers;
@@ -35,6 +37,13 @@ namespace VoenKaffStartClient
 
         public Form1()
         {
+            var runningProccess = from proc in Process.GetProcesses(".") orderby proc.Id select proc;
+            if (runningProccess.Count(p => p.ProcessName.Contains("VoenKaffStartClient")) > 1)
+            {
+                MessageBox.Show("Программа уже запущена, невозможно запустить ещё один экземпляр",
+                    "Программа уже запущена", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Environment.Exit(0);
+            }
             InitializeComponent();
 
             new OnTimerSender().Start();
@@ -52,7 +61,27 @@ namespace VoenKaffStartClient
             formPlaton = new FormPlatoon(this);
 
             var testLoader = new TestLoader();
-            listOfFormDefaultTest = testLoader.LoadTestsFromFolder(Resources.PathForTest);
+
+            var loaderChecker = false;
+            var errorCounter = 0;
+            while (errorCounter<10)
+            {
+
+                try
+                {
+                    listOfFormDefaultTest = testLoader.LoadTestsFromFolder(Resources.PathForTest);
+                    loaderChecker = true;
+                }
+                catch (Exception)
+                {
+                    errorCounter++;
+                }
+
+                if (loaderChecker)
+                {
+                    break;
+                }
+            }
 
 
             Courses.Set(listOfFormDefaultTest.CourseList);
