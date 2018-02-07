@@ -280,11 +280,11 @@ namespace VoenKaffStartClient
                 {
                     panelQestionFoo.Controls.Add(tb);
                     tb.BringToFront();
-                    Size lenTBText = TextRenderer.MeasureText("Ответ №" + tb.TabIndex, tb.Font);
-                    if (lenTBText.Width > tb.Width)
-                    {
-                        tb.Width = lenTBText.Width + 3;
-                    }
+                    //Size lenTBText = TextRenderer.MeasureText("Ответ №" + tb.TabIndex, tb.Font);
+                    //if (lenTBText.Width > tb.Width)
+                    //{
+                    // tb.Width = lenTBText.Width + 3;
+                    //}
                     SendMessage(tb.Handle, EM_SETCUEBANNER, 0, "Ответ №" + tb.TabIndex);
                 }
                 //foreach (Label label in _listTBLabels[task])
