@@ -92,6 +92,12 @@
     <Compile Include="FormCourse.Designer.cs">
       <DependentUpon>FormCourse.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormLoader.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormLoader.Designer.cs">
+      <DependentUpon>FormLoader.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormLSInputMany.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -165,6 +171,9 @@
     <EmbeddedResource Include="FormInstruction.resx">
       <DependentUpon>FormInstruction.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormLoader.resx">
+      <DependentUpon>FormLoader.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormResults.resx">
       <DependentUpon>FormResults.cs</DependentUpon>
     </EmbeddedResource>
@@ -205,6 +214,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\giphy1.gif" />
     <Content Include="simv_vs_Russia_4_39.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

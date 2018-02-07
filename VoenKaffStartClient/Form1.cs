@@ -53,7 +53,7 @@ namespace VoenKaffStartClient
                 Directory.CreateDirectory(Resources.PathForTest);
             }
 
-            new UpdateTests().Connect();
+            //new UpdateTests().Connect();
 
             this.MinimumSize = this.Size;
             this.MaximumSize = this.Size;
