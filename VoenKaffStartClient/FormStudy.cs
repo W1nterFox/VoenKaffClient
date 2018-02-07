@@ -40,7 +40,6 @@ namespace VoenKaffStartClient
 
 
         Button btnNextTask;
-        Button btnEndTest;
         Button btnCheckAnswers;
         Button btnTaskUserkSuccess;
         Button btnTaskUserkNotSure;
@@ -252,19 +251,7 @@ namespace VoenKaffStartClient
                 btnNextTask.Click += nextTask;
                 panelAnswerFoo.Controls.Add(btnNextTask);
 
-                //Закончить тест
-                btnEndTest = new Button
-                {
-                    FlatStyle = System.Windows.Forms.FlatStyle.Flat,
-                    Font = new System.Drawing.Font("Century Gothic", 11.25F),
-                    Location = new System.Drawing.Point(450, 50),
-                    Name = "btnEndTest" + (_listPanelTasks.Count - 1),
-                    Size = new System.Drawing.Size(162, 45),
-                    Text = "Закончить тест",
-                    Visible = false,
-                };
-                btnEndTest.Click += endTask;
-                panelAnswerFoo.Controls.Add(btnEndTest);
+                
 
                 //Показать ответы
                 btnCheckAnswers = new Button
@@ -309,8 +296,8 @@ namespace VoenKaffStartClient
             }
 
 
-            _listPanelTasks[_listPanelTasks.Count - 1].Controls.Find("btnNextTask" + (_listPanelTasks.Count - 1), true)[0].Visible = false;
-            _listPanelTasks[_listPanelTasks.Count - 1].Controls.Find("btnEndTest" + (_listPanelTasks.Count - 1), true)[0].Visible = true;
+            
+            
 
             for (int i = 0; i < _listPanelTasks.Count; i++)
             {
@@ -340,14 +327,10 @@ namespace VoenKaffStartClient
             {
 
                 Control buf = _listPanelTasks[index].Controls.Find("panelQuestion", true)[0].Controls[i];
-                if (buf.Name.Length >= 27)
+                if (buf is TextBox)
                 {
-                    string asdasd = buf.Name.Substring(0, 28);
-                    if (asdasd == "System.Windows.Forms.TextBox")
-                    {
-                        buf.Text = "";
-                    }
-
+                    buf.Enabled = true;
+                    buf.Text = "";
                 }
             }
 
@@ -401,6 +384,7 @@ namespace VoenKaffStartClient
                 Control buf = _listPanelTasks[index].Controls.Find("panelQuestion", true)[0].Controls[i];
                 if (buf is TextBox)
                 {
+                    buf.Enabled = true;
                     buf.Text = "";
                 }
             }
@@ -463,6 +447,7 @@ namespace VoenKaffStartClient
                 Control buf = _listPanelTasks[index].Controls.Find("panelQuestion", true)[0].Controls[i];
                 if (buf is TextBox)
                 {
+                    buf.Enabled = true;
                     buf.Text = "";
                 }
             }
@@ -486,18 +471,7 @@ namespace VoenKaffStartClient
             
         }
 
-        private void endTask(object sender, EventArgs e)
-        {
-            string tempString = ((Control)sender).Name;
-            int index = Int32.Parse(tempString.Substring(tempString.Length - 1));
-
-            _listPanelTasks[index].Visible = false;
-
-            //FormResults formResults = new FormResults(this);
-            //formResults.Text = "ТЕСТ. " + _currentTest + ". " + _currentVzvod + " взвод. " + "Студент " + _currentStudent;
-            this.Visible = false;
-            //formResults.Visible = true;
-        }
+        
 
         private void checkAnswers(object sender, EventArgs e)
         {
@@ -517,7 +491,7 @@ namespace VoenKaffStartClient
                 {
                     var answer = buf.Text.ToLower().Trim().Replace("жы", "жи").Replace("пре", "при");
                     var tagText = buf.Tag.ToString().ToLower().Trim().Replace("жы", "жи").Replace("пре", "при");
-
+                    buf.Enabled = false;
                     if (answer != "")
                     {
                         if (tagText.Substring(0, tagText.Length - 1) !=

@@ -338,13 +338,13 @@ namespace VoenKaffStartClient
             bool thisTaskSuccess = true;
 
 
-            //в текстбоксах в tag Хранятся правильные ответы, их нужно сравнивать с введенным тестом
+            //в текстбоксах в tag Хранятся правильные ответы, их нужно сравнивать с введенным текстом
 
             for (int i = 0; i < _listPanelTasks[index].Controls.Find("panelQuestion", true)[0].Controls.Count; i++)
             {
 
                 Control buf = _listPanelTasks[index].Controls.Find("panelQuestion", true)[0].Controls[i];
-
+                buf.Enabled = false;
                 if (buf is TextBox)
                 {
                     var answer = buf.Text.ToLower().Trim().Replace("жы", "жи").Replace("пре", "при");
