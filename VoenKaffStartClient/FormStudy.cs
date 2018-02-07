@@ -492,22 +492,13 @@ namespace VoenKaffStartClient
                     var answer = buf.Text.ToLower().Trim().Replace("жы", "жи").Replace("пре", "при");
                     var tagText = buf.Tag.ToString().ToLower().Trim().Replace("жы", "жи").Replace("пре", "при");
                     buf.Enabled = false;
-                    if (answer != "")
+                    
+                    
+                    if (answer != tagText)
                     {
-                        if (tagText.Substring(0, tagText.Length - 1) !=
-                        answer.Substring(0, answer.Length - 1)
-                        )
-                        {
-                            thisTaskSuccess = false;
-                        }
+                        thisTaskSuccess = false;
                     }
-                    else
-                    {
-                        if (answer != tagText)
-                        {
-                            thisTaskSuccess = false;
-                        }
-                    }
+                    
                 }
             }
             
