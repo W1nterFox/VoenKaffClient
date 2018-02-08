@@ -1,7 +1,10 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using VoenKaffStartClient.Senders;
+using System.Linq;
+
 
 namespace VoenKaffStartClient
 {
@@ -14,12 +17,22 @@ namespace VoenKaffStartClient
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
+            var runningProccess = from proc in Process.GetProcesses(".") orderby proc.Id select proc;
+            if (runningProccess.Count(p => p.ProcessName.Contains("VoenKaffStartClient")) > 1)
+            {
+                MessageBox.Show("Программа уже запущена, невозможно запустить ещё один экземпляр",
+                    "Программа уже запущена", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Environment.Exit(0);
+            }
+
             goUpdateClient();
             Application.Run();
         }
 
         private static async void  goUpdateClient()
         {
+            
             FormLoader formLoading = new FormLoader();
             formLoading.Visible = true;
             if (await Task.Run(() => method1()))

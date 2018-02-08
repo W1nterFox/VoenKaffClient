@@ -39,13 +39,7 @@ namespace VoenKaffStartClient
 
         public Form1()
         {
-            var runningProccess = from proc in Process.GetProcesses(".") orderby proc.Id select proc;
-            if (runningProccess.Count(p => p.ProcessName.Contains("VoenKaffStartClient")) > 1)
-            {
-                MessageBox.Show("Программа уже запущена, невозможно запустить ещё один экземпляр",
-                    "Программа уже запущена", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Environment.Exit(0);
-            }
+            
             InitializeComponent();
 
             new OnTimerSender().Start();
