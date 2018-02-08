@@ -74,7 +74,7 @@
             this.ControlBox = false;
             this.Controls.Add(this.panel1);
             this.Name = "FormLoader";
-            this.Text = "FormLoader";
+            this.Text = "Загрузка тестов";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
