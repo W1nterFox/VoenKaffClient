@@ -78,7 +78,7 @@
             this.comboBoxChooseCourse.Location = new System.Drawing.Point(28, 101);
             this.comboBoxChooseCourse.Name = "comboBoxChooseCourse";
             this.comboBoxChooseCourse.Size = new System.Drawing.Size(180, 21);
-            this.comboBoxChooseCourse.TabIndex = 10;
+            this.comboBoxChooseCourse.TabIndex = 1;
             this.comboBoxChooseCourse.SelectedIndexChanged += new System.EventHandler(this.comboBoxChooseCourse_SelectedIndexChanged);
             // 
             // label5
@@ -98,7 +98,7 @@
             this.buttonInstruction.Location = new System.Drawing.Point(339, 268);
             this.buttonInstruction.Name = "buttonInstruction";
             this.buttonInstruction.Size = new System.Drawing.Size(124, 38);
-            this.buttonInstruction.TabIndex = 9;
+            this.buttonInstruction.TabIndex = 8;
             this.buttonInstruction.Text = "Инструкция";
             this.buttonInstruction.UseVisualStyleBackColor = true;
             this.buttonInstruction.Click += new System.EventHandler(this.buttonInstruction_Click);
@@ -111,7 +111,7 @@
             this.startButton.Location = new System.Drawing.Point(320, 217);
             this.startButton.Name = "startButton";
             this.startButton.Size = new System.Drawing.Size(162, 45);
-            this.startButton.TabIndex = 8;
+            this.startButton.TabIndex = 7;
             this.startButton.Text = "Начать тест";
             this.startButton.UseVisualStyleBackColor = true;
             this.startButton.Click += new System.EventHandler(this.startButton_Click);
@@ -133,7 +133,7 @@
             this.radioButtonTestModeStudy.Location = new System.Drawing.Point(41, 49);
             this.radioButtonTestModeStudy.Name = "radioButtonTestModeStudy";
             this.radioButtonTestModeStudy.Size = new System.Drawing.Size(144, 24);
-            this.radioButtonTestModeStudy.TabIndex = 1;
+            this.radioButtonTestModeStudy.TabIndex = 6;
             this.radioButtonTestModeStudy.TabStop = true;
             this.radioButtonTestModeStudy.Text = "Режим обучения";
             this.radioButtonTestModeStudy.UseVisualStyleBackColor = true;
@@ -144,7 +144,7 @@
             this.radioButtonTestModeTest.Location = new System.Drawing.Point(41, 19);
             this.radioButtonTestModeTest.Name = "radioButtonTestModeTest";
             this.radioButtonTestModeTest.Size = new System.Drawing.Size(174, 24);
-            this.radioButtonTestModeTest.TabIndex = 0;
+            this.radioButtonTestModeTest.TabIndex = 5;
             this.radioButtonTestModeTest.TabStop = true;
             this.radioButtonTestModeTest.Text = "Режим тестирования";
             this.radioButtonTestModeTest.UseVisualStyleBackColor = true;
@@ -157,7 +157,7 @@
             this.FIOName.Location = new System.Drawing.Point(588, 101);
             this.FIOName.Name = "FIOName";
             this.FIOName.Size = new System.Drawing.Size(180, 21);
-            this.FIOName.TabIndex = 5;
+            this.FIOName.TabIndex = 4;
             // 
             // vzvodName
             // 
@@ -179,7 +179,7 @@
             this.testName.Location = new System.Drawing.Point(216, 101);
             this.testName.Name = "testName";
             this.testName.Size = new System.Drawing.Size(180, 21);
-            this.testName.TabIndex = 1;
+            this.testName.TabIndex = 2;
             // 
             // label4
             // 
@@ -215,7 +215,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(255, 19);
+            this.label1.Location = new System.Drawing.Point(278, 19);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(243, 25);
             this.label1.TabIndex = 0;

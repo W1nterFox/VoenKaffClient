@@ -35,6 +35,8 @@ namespace VoenKaffStartClient
 
         FormPlatoon formPlaton;
 
+        //TestLoader testloader;
+
         public Form1()
         {
             var runningProccess = from proc in Process.GetProcesses(".") orderby proc.Id select proc;

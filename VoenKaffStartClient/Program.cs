@@ -7,7 +7,7 @@ namespace VoenKaffStartClient
 {
     public static class Program
     {
-
+        static Form1 form1;
         [STAThread]
         public static void Main()
         {
@@ -15,7 +15,6 @@ namespace VoenKaffStartClient
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             goUpdateClient();
-            //Application.Run(new Form1());
             Application.Run();
         }
 
@@ -25,7 +24,7 @@ namespace VoenKaffStartClient
             formLoading.Visible = true;
             if (await Task.Run(() => method1()))
             {
-                Form1 form1 = new Form1();
+                
                 //Application.Run(form1);
                 formLoading.Visible = false;
                 form1.Visible = true;
@@ -35,6 +34,7 @@ namespace VoenKaffStartClient
         private static Boolean method1()
         {
             new UpdateTests().Connect();
+            form1 = new Form1();
             return true;
         }
 
