@@ -62,11 +62,6 @@ namespace VoenKaffStartClient.Senders
                 socket.Close();
 
 
-                foreach (var objectInfo in filenames)
-                {
-                    File.AppendAllText("log.txt",objectInfo.FileName+":"+objectInfo.Length+"\r\n");
-                }
-
                 for (var i = 0; i < filenames.Count; i++)
                 {
                     socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
@@ -96,7 +91,6 @@ namespace VoenKaffStartClient.Senders
                             // 5402624 - размер файла оригинала
                             if (fs.Length + socketAvaliable == filenames[i].Length)
                             {
-                                File.AppendAllText("log.txt","Socket Avaliable: " + socketAvaliable);
                                 data = new byte[500];
                                 socket.Receive(data, SocketFlags.None);
                                 fs.Write(data, 0, data.Length);
