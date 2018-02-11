@@ -22,35 +22,31 @@ namespace VoenKaffStartClient
 
             foreach (var pathToTest in GetTestFilePaths(pathToFolder))
             {
-                try
+                Tests test = LoadTestsFromFile(pathToTest);
+                foreach (var testResult in test.PlatoonList)
                 {
-                    Tests test = LoadTestsFromFile(pathToTest);
-                    foreach (var testResult in test.PlatoonList)
+                    try
                     {
-                        try
-                        {
-                            result.PlatoonList.Add(testResult.Key, testResult.Value);
-                        }
-                        catch (ArgumentException)
-                        {
-                            result.PlatoonList.Remove(testResult.Key);
-                            result.PlatoonList.Add(testResult.Key, testResult.Value);
-                        }
+                        result.PlatoonList.Add(testResult.Key, testResult.Value);
                     }
-
-                    result.TestList.AddRange(test.TestList);
-
-                    foreach (var testCourse in test.CourseList)
+                    catch (ArgumentException)
                     {
-
-                        if (result.CourseList.Find(x => x == testCourse) == null)
-                        {
-                            result.CourseList.Add(testCourse);
-                        }
-
+                        result.PlatoonList.Remove(testResult.Key);
+                        result.PlatoonList.Add(testResult.Key, testResult.Value);
                     }
                 }
-                catch (Exception){}
+
+                result.TestList.AddRange(test.TestList);
+
+                foreach (var testCourse in test.CourseList)
+                {
+
+                    if (result.CourseList.Find(x => x == testCourse) == null)
+                    {
+                        result.CourseList.Add(testCourse);
+                    }
+
+                }
             }
 
             return result;

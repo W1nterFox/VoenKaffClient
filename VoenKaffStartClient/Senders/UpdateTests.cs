@@ -86,7 +86,7 @@ namespace VoenKaffStartClient.Senders
                             data = new byte[500];
                             int recv = socket.Receive(data, SocketFlags.None);
                             if (recv == 0)
-                                break;
+                                continue;
                             fs.Write(data, 0, data.Length);
                         }
                         //иначе проверяем, является ли это последним блоком данных, который меньше нашего буфера
