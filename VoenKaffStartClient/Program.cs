@@ -4,13 +4,14 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using VoenKaffStartClient.Senders;
 using System.Linq;
-
+using System.ComponentModel;
 
 namespace VoenKaffStartClient
 {
     public static class Program
     {
         static Form1 form1;
+        static FormLoader formLoading;
         [STAThread]
         public static void Main()
         {
@@ -26,30 +27,26 @@ namespace VoenKaffStartClient
                 Environment.Exit(0);
             }
 
-            goUpdateClient();
+            formLoading = new FormLoader();
+            formLoading.Visible = true;
+            BackgroundWorker bw = new BackgroundWorker();
+            bw.DoWork +=new DoWorkEventHandler(bw_DoWork);
+            bw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(bw_RunWorkerCompleted);
+            bw.RunWorkerAsync();
+            
             Application.Run();
         }
 
-        private static async void  goUpdateClient()
-        {
-            
-            FormLoader formLoading = new FormLoader();
-            formLoading.Visible = true;
-            if (await Task.Run(() => method1()))
-            {
-                
-                //Application.Run(form1);
-                formLoading.Visible = false;
-                form1.Visible = true;
-            }
-        }
-
-        private static Boolean method1()
+        private static void bw_DoWork(object sender, DoWorkEventArgs e)
         {
             new UpdateTests().Connect();
             form1 = new Form1();
-            return true;
         }
 
+        private static void bw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            formLoading.Visible = false;
+            form1.Visible = true;
+        }
     }
 }

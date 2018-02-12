@@ -55,7 +55,10 @@ namespace VoenKaffStartClient.Senders
 
 
                 var filenames = JsonConvert.DeserializeObject<List<ObjectInfo>>(builder.ToString());
-                Directory.Delete("tests", true);
+                if (Directory.Exists("tests"))
+                {
+                    Directory.Delete("tests", true);
+                }
                 Directory.CreateDirectory("tests");
                 Directory.CreateDirectory("tests\\picture");
                 socket.Shutdown(SocketShutdown.Both);
