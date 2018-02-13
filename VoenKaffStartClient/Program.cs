@@ -40,11 +40,11 @@ namespace VoenKaffStartClient
         private static void bw_DoWork(object sender, DoWorkEventArgs e)
         {
             new UpdateTests().Connect();
-            form1 = new Form1();
         }
 
         private static void bw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
+            form1 = new Form1();
             formLoading.Visible = false;
             form1.Visible = true;
         }

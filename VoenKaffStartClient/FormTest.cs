@@ -13,6 +13,7 @@ using VoenKaffStartClient.Properties;
 using VoenKaffStartClient.Wrappers;
 using System.Runtime.InteropServices;
 using System.Collections;
+using VoenKaffStartClient.Senders;
 
 namespace VoenKaffStartClient
 {
@@ -116,22 +117,16 @@ namespace VoenKaffStartClient
 
                     if (taskElem.Type.Equals("System.Windows.Forms.PictureBox"))
                     {
-                        using (var stream = File.Open(Resources.PathForTest+"\\"+taskElem.Media, FileMode.Open))
+                        _PBInTask[paneltask].Add(new PictureBox
                         {
-                            var binaryFormatter = new BinaryFormatter();
-                            var image = ((SerializablePicture) binaryFormatter.Deserialize(stream)).Picture;
-                            _PBInTask[paneltask].Add(new PictureBox
-                            {
-                                Size = new Size(taskElem.Width, taskElem.Height),
-                                SizeMode = PictureBoxSizeMode.StretchImage,
-                                Image = image,
-                                //Height = taskElem.Height,
-                                //Width = taskElem.Width,
-                                Name = taskElem.Name,
-                                Location = taskElem.Point
-                            });
-                        }
-
+                            Size = new Size(taskElem.Width, taskElem.Height),
+                            SizeMode = PictureBoxSizeMode.StretchImage,
+                            Image = new Bitmap(Resources.PathForTest + "\\" + taskElem.Media),
+                            //Height = taskElem.Height,
+                            //Width = taskElem.Width,
+                            Name = taskElem.Name,
+                            Location = taskElem.Point
+                        });
                     }
 
 
