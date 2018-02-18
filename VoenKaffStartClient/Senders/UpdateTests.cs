@@ -62,10 +62,11 @@ namespace VoenKaffStartClient.Senders
                         }
 
                         filenames = JsonConvert.DeserializeObject<List<ObjectInfo>>(builder.ToString());
+                        break;
                     }
                     catch (Exception)
                     {
-                        break;
+                        // ignored
                     }
                 }
 
