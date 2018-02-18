@@ -80,7 +80,7 @@ namespace VoenKaffStartClient
 
                 _listTasksInTest.Add(paneltask);
                 
-                foreach (TaskElement taskElem in paneltask.TaskElements)
+                foreach (var taskElem in paneltask.TaskElements)
                 {
                     if (taskElem.Type.Equals("System.Windows.Forms.RichTextBox"))
                     {
@@ -120,7 +120,6 @@ namespace VoenKaffStartClient
                             Location = taskElem.Point,
                             Tag = taskElem.Answer,
                             TabIndex = taskElem.Index
-
                         }));
                         _listTBLabels[paneltask].Add(new Label
                         {

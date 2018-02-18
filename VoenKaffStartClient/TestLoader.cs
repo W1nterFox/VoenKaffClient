@@ -11,7 +11,8 @@ namespace VoenKaffStartClient
     {
         public Tests LoadTestsFromFile(string pathToTest)
         {
-            var json = System.IO.File.ReadAllText(pathToTest);
+
+            var json = Crypto.DecryptStringAES(File.ReadAllText(pathToTest), "CVSrdcv#@*j9FS08430V");
             return JsonConvert.DeserializeObject<Tests>(json);
         }
 

@@ -63,6 +63,7 @@ namespace VoenKaffStartClient
             {
                 try
                 {
+
                     listOfFormDefaultTest = testLoader.LoadTestsFromFolder(Resources.PathForTest);
                     break;
                 }

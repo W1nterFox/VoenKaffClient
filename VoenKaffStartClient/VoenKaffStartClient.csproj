@@ -78,6 +78,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Courses.cs" />
+    <Compile Include="Crypto.cs" />
     <Compile Include="DecendingComparer.cs" />
     <Compile Include="DynamicParams.cs" />
     <Compile Include="Form1.cs">

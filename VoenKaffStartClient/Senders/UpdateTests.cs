@@ -36,25 +36,39 @@ namespace VoenKaffStartClient.Senders
                 var ipPoint = new IPEndPoint(IPAddress.Parse(address), port);
                 var socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
                 socket.Connect(ipPoint);
-                byte[] data = Encoding.Unicode.GetBytes("Update");
-                socket.Send(data);
 
-                data = new byte[256]; // буфер для ответа
-                StringBuilder builder = new StringBuilder();
-                var counter = 0;
-                int bytes = 0; // количество полученных байт
-                while (counter < 20)
+                List<ObjectInfo> filenames=new List<ObjectInfo>();
+                byte[] data;
+                while (true)
                 {
-                    if (socket.Available == 0)
+                    try
                     {
-                        counter++;
+                        data = Encoding.Unicode.GetBytes("Update");
+                        socket.Send(data);
+
+                        data = new byte[256]; // буфер для ответа
+                        StringBuilder builder = new StringBuilder();
+                        var counter = 0;
+                        int bytes = 0; // количество полученных байт
+                        while (counter < 20)
+                        {
+                            if (socket.Available == 0)
+                            {
+                                counter++;
+                            }
+
+                            bytes = socket.Receive(data, data.Length, 0);
+                            builder.Append(Encoding.Unicode.GetString(data, 0, bytes));
+                        }
+
+                        filenames = JsonConvert.DeserializeObject<List<ObjectInfo>>(builder.ToString());
                     }
-                    bytes = socket.Receive(data, data.Length, 0);
-                    builder.Append(Encoding.Unicode.GetString(data, 0, bytes));
+                    catch (Exception)
+                    {
+                        break;
+                    }
                 }
 
-
-                var filenames = JsonConvert.DeserializeObject<List<ObjectInfo>>(builder.ToString());
                 if (Directory.Exists("tests"))
                 {
                     Directory.Delete("tests", true);
@@ -71,10 +85,8 @@ namespace VoenKaffStartClient.Senders
                     socket.Connect(ipPoint);
                     socket.Send(Encoding.Unicode.GetBytes(i.ToString()));
 
-
-                    builder = new StringBuilder();
-
-                    FileStream fs = new FileStream(Resources.PathForTest+"\\"+filenames[i].FileName, FileMode.Create, FileAccess.ReadWrite, FileShare.None);
+                    FileStream fs = new FileStream(Resources.PathForTest + "\\" + filenames[i].FileName,
+                        FileMode.Create, FileAccess.ReadWrite, FileShare.None);
                     while (true)
                     {
                         Application.DoEvents();
@@ -101,9 +113,15 @@ namespace VoenKaffStartClient.Senders
                             }
                         }
                     }
-                    
+
                     fs.Close();
-                    
+
+                    if (!filenames[i].FileName.Contains("picture"))
+                    {
+                        var fullText = File.ReadAllText(Resources.PathForTest + "\\" + filenames[i].FileName);
+                        File.WriteAllText(Resources.PathForTest + "\\" + filenames[i].FileName,
+                            Crypto.EncryptStringAES(fullText, "CVSrdcv#@*j9FS08430V"));
+                    }
                 }
 
                 socket.Shutdown(SocketShutdown.Both);

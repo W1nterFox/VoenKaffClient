@@ -63,10 +63,6 @@ namespace VoenKaffStartClient
 
         }
 
-        
-
-        
-
         private void buttonEndTest_Click(object sender, EventArgs e)
         {
             //FormResults formResults = new FormResults(_currentTest, _currentVzvod, _currentStudent);
@@ -74,13 +70,6 @@ namespace VoenKaffStartClient
             //formResults.Text = "ТЕСТ. " + _currentTest + ". " + _currentVzvod + " взвод. " + "Студент " + _currentStudent;
             //formResults.Visible = true;
         }
-
-
-
-
-
-
-
 
         public void initTest(Test objectsInCurrentTest)
         {
@@ -344,16 +333,10 @@ namespace VoenKaffStartClient
                 {
                     var answer = buf.Text.ToLower().Trim().Replace("жы", "жи").Replace("пре", "при");
                     var tagText = buf.Tag.ToString().ToLower().Trim().Replace("жы", "жи").Replace("пре", "при");
-
-                    
-                    
                     if (answer != tagText)
                     {
                         thisTaskSuccess = false;
                     }
-                    
-                    
-                    
                 }
             }
 
