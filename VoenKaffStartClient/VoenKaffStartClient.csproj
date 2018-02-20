@@ -123,6 +123,7 @@
     <Compile Include="FormSettings.Designer.cs">
       <DependentUpon>FormSettings.cs</DependentUpon>
     </Compile>
+    <Compile Include="RandomSort.cs" />
     <Compile Include="Senders\OnTimerSender.cs" />
     <Compile Include="Senders\ResultSender.cs" />
     <Compile Include="Senders\TestConnection.cs" />
