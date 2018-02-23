@@ -72,9 +72,15 @@ namespace VoenKaffStartClient.Senders
 
                 if (Directory.Exists("tests"))
                 {
-                    Directory.Delete("tests", true);
+                    var files = new List<string>();
+                    files.AddRange(Directory.GetFiles("tests"));
+                    files.AddRange(Directory.GetDirectories("tests"));
+                    foreach (var file in files)
+                    {
+                        Directory.Delete("tests\\" + file);
+                    }
                 }
-                Directory.CreateDirectory("tests");
+                else Directory.CreateDirectory("tests");
                 Directory.CreateDirectory("tests\\picture");
                 socket.Shutdown(SocketShutdown.Both);
                 socket.Close();

@@ -67,8 +67,6 @@ namespace VoenKaffStartClient
 
         public void initTest(Test objectsInCurrentTest)
         {
-            objectsInCurrentTest.Tasks = RandomSort<Task>.Sort(objectsInCurrentTest.Tasks);
-
             foreach (Task paneltask in objectsInCurrentTest.Tasks)
             {
 
