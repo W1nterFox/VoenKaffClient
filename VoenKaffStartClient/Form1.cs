@@ -1,16 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Diagnostics;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Runtime.Serialization.Formatters.Binary;
-using System.Text;
 using System.Windows.Forms;
-using SerializablePicutre;
-using VoenKaffStartClient;
 using VoenKaffStartClient.Properties;
 using VoenKaffStartClient.Senders;
 using VoenKaffStartClient.Wrappers;
@@ -63,7 +54,6 @@ namespace VoenKaffStartClient
             {
                 try
                 {
-
                     listOfFormDefaultTest = testLoader.LoadTestsFromFolder(Resources.PathForTest);
                     break;
                 }
@@ -73,7 +63,7 @@ namespace VoenKaffStartClient
                 }
             }
 
-            if (errorCounter == 9)
+            if (errorCounter > 9)
             {
                 MessageBox.Show("Не удалось загрузить тесты, попробуйте перезапустить программу",
                     "Не удалось загрузить тесты", MessageBoxButtons.OK, MessageBoxIcon.Error);

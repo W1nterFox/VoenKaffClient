@@ -70,21 +70,23 @@ namespace VoenKaffStartClient.Senders
                     }
                 }
 
-                if (Directory.Exists("tests"))
+                if (Directory.Exists(Resources.PathForTest))
                 {
                     var files = new List<string>();
-                    files.AddRange(Directory.GetFiles("tests"));
-                    files.AddRange(Directory.GetDirectories("tests"));
+                    files.AddRange(Directory.GetFiles(Resources.PathForTest, "*",SearchOption.AllDirectories));
                     foreach (var file in files)
                     {
-                        Directory.Delete("tests\\" + file);
+                        File.Delete(file);
                     }
                 }
-                else Directory.CreateDirectory("tests");
-                Directory.CreateDirectory("tests\\picture");
+                else
+                {
+                    Directory.CreateDirectory(Resources.PathForTest);
+                }
+                Directory.CreateDirectory(Resources.PathForPictures);
+
                 socket.Shutdown(SocketShutdown.Both);
                 socket.Close();
-
 
                 for (var i = 0; i < filenames.Count; i++)
                 {
@@ -110,7 +112,6 @@ namespace VoenKaffStartClient.Senders
                         else
                         {
                             var socketAvaliable = socket.Available;
-                            // 5402624 - размер файла оригинала
                             if (fs.Length + socketAvaliable == filenames[i].Length)
                             {
                                 data = new byte[500];
@@ -123,12 +124,23 @@ namespace VoenKaffStartClient.Senders
 
                     fs.Close();
 
-                    if (!filenames[i].FileName.Contains("picture"))
+                    if (filenames[i].FileName.Contains("picture")) continue;
+                    var fullText = File.ReadAllText(Resources.PathForTest + "\\" + filenames[i].FileName);
+
+                    //Попытка десериализовать, если провалилась, то грузим файл заново
+                    try
                     {
-                        var fullText = File.ReadAllText(Resources.PathForTest + "\\" + filenames[i].FileName);
-                        File.WriteAllText(Resources.PathForTest + "\\" + filenames[i].FileName,
-                            Crypto.EncryptStringAES(fullText, "CVSrdcv#@*j9FS08430V"));
+                        JsonConvert.DeserializeObject<Tests>(fullText);
                     }
+                    catch (Exception)
+                    {
+                        File.Delete(Resources.PathForTest + "\\" + filenames[i].FileName);
+                        i--;
+                        continue;
+                    }
+
+                    File.WriteAllText(Resources.PathForTest + "\\" + filenames[i].FileName,
+                        Crypto.EncryptStringAES(fullText, "CVSrdcv#@*j9FS08430V"));
                 }
 
                 socket.Shutdown(SocketShutdown.Both);
