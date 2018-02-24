@@ -37,7 +37,7 @@ namespace VoenKaffStartClient.Senders
                 var socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
                 socket.Connect(ipPoint);
 
-                List<ObjectInfo> filenames=new List<ObjectInfo>();
+                List<ObjectInfo> filenames;
                 byte[] data;
                 while (true)
                 {
@@ -60,7 +60,6 @@ namespace VoenKaffStartClient.Senders
                             bytes = socket.Receive(data, data.Length, 0);
                             builder.Append(Encoding.Unicode.GetString(data, 0, bytes));
                         }
-
                         filenames = JsonConvert.DeserializeObject<List<ObjectInfo>>(builder.ToString());
                         break;
                     }
@@ -70,26 +69,34 @@ namespace VoenKaffStartClient.Senders
                     }
                 }
 
-                if (Directory.Exists(Resources.PathForTest))
-                {
-                    var files = new List<string>();
-                    files.AddRange(Directory.GetFiles(Resources.PathForTest, "*",SearchOption.AllDirectories));
-                    foreach (var file in files)
-                    {
-                        File.Delete(file);
-                    }
-                }
-                else
-                {
-                    Directory.CreateDirectory(Resources.PathForTest);
-                }
+                Directory.CreateDirectory(Resources.PathForTest);
                 Directory.CreateDirectory(Resources.PathForPictures);
 
                 socket.Shutdown(SocketShutdown.Both);
                 socket.Close();
+                var fileInfo=new List<ObjectInfo>();
+                if (File.Exists(Resources.FileInformer))
+                {
+                    fileInfo =
+                        JsonConvert.DeserializeObject<List<ObjectInfo>>(File.ReadAllText(Resources.FileInformer));
+                }
+
+                foreach (var file in new DirectoryInfo(Resources.PathForTest).GetFiles("*",SearchOption.AllDirectories).Where(p=>!filenames.Exists(j=>j.FileName==p.Name)))
+                {
+                    if (File.Exists(Resources.PathForTest + "\\" + file.Name))
+                    {
+                        File.Delete(Resources.PathForTest + "\\" + file.Name);
+                    }
+                }
 
                 for (var i = 0; i < filenames.Count; i++)
                 {
+                    if (fileInfo.Any(
+                        p => p.FileName == filenames[i].FileName && p.LastUpdate == filenames[i].LastUpdate))
+                    {
+                        continue;
+                    }
+
                     socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
                     socket.Connect(ipPoint);
                     socket.Send(Encoding.Unicode.GetBytes(i.ToString()));
@@ -123,7 +130,8 @@ namespace VoenKaffStartClient.Senders
                     }
 
                     fs.Close();
-
+                    socket.Shutdown(SocketShutdown.Both);
+                    socket.Close();
                     if (filenames[i].FileName.Contains("picture")) continue;
                     var fullText = File.ReadAllText(Resources.PathForTest + "\\" + filenames[i].FileName);
 
@@ -143,14 +151,13 @@ namespace VoenKaffStartClient.Senders
                         Crypto.EncryptStringAES(fullText, "CVSrdcv#@*j9FS08430V"));
                 }
 
-                socket.Shutdown(SocketShutdown.Both);
-                socket.Close();
+                File.WriteAllText(Resources.FileInformer,JsonConvert.SerializeObject(filenames));
 
                 return result;
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message, "df", MessageBoxButtons.OK);
+                MessageBox.Show(e.Message+" "+e.StackTrace, "df", MessageBoxButtons.OK);
                 return false;
             }
         }

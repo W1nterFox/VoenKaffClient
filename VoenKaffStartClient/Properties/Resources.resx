@@ -130,4 +130,7 @@
   <data name="PathForPictures" xml:space="preserve">
     <value>tests\\picture</value>
   </data>
+  <data name="FileInformer" xml:space="preserve">
+    <value>file.info</value>
+  </data>
 </root>
