@@ -43,13 +43,13 @@ namespace VoenKaffStartClient.Senders
                 {
                     try
                     {
+
                         data = Encoding.Unicode.GetBytes("Update");
                         socket.Send(data);
 
                         data = new byte[256]; // буфер для ответа
                         StringBuilder builder = new StringBuilder();
                         var counter = 0;
-                        int bytes = 0; // количество полученных байт
                         while (counter < 20)
                         {
                             if (socket.Available == 0)
@@ -57,7 +57,7 @@ namespace VoenKaffStartClient.Senders
                                 counter++;
                             }
 
-                            bytes = socket.Receive(data, data.Length, 0);
+                            var bytes = socket.Receive(data, data.Length, 0); // количество полученных байт
                             builder.Append(Encoding.Unicode.GetString(data, 0, bytes));
                         }
                         filenames = JsonConvert.DeserializeObject<List<ObjectInfo>>(builder.ToString());
@@ -65,7 +65,9 @@ namespace VoenKaffStartClient.Senders
                     }
                     catch (Exception)
                     {
-                        // ignored
+                        ipPoint = new IPEndPoint(IPAddress.Parse(address), port);
+                        socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+                        socket.Connect(ipPoint);
                     }
                 }
 
@@ -91,7 +93,7 @@ namespace VoenKaffStartClient.Senders
 
                 for (var i = 0; i < filenames.Count; i++)
                 {
-                    if (fileInfo.Any(
+                    if (File.Exists(Resources.PathForTest + "\\" + filenames[i].FileName) && fileInfo.Any(
                         p => p.FileName == filenames[i].FileName && p.LastUpdate == filenames[i].LastUpdate))
                     {
                         continue;
@@ -157,7 +159,7 @@ namespace VoenKaffStartClient.Senders
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message+" "+e.StackTrace, "df", MessageBoxButtons.OK);
+                MessageBox.Show(e.Message, "df", MessageBoxButtons.OK);
                 return false;
             }
         }

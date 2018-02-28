@@ -14,16 +14,16 @@ namespace VoenKaffStartClient.Senders
 {
     class OnTimerSender
     {
-        private Thread thread;
+        private readonly Thread _thread;
 
         public OnTimerSender()
         {
-            thread= new Thread(Connect);
+            _thread= new Thread(Connect);
         }
 
         public void Start()
         {
-            thread.Start();
+            _thread.Start();
         }
 
         private void Connect()
@@ -46,12 +46,12 @@ namespace VoenKaffStartClient.Senders
                         File.Delete(Resources.ResultData);
                     }
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
-                    MessageBox.Show(e.Message, "rewwer", MessageBoxButtons.OK);
+                    //ignore
                 }
 
-                Thread.Sleep(10000);
+                Thread.Sleep(1000);
             }
         }
     }

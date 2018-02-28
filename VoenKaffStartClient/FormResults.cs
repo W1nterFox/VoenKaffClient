@@ -51,7 +51,7 @@ namespace VoenKaffStartClient
             labelTasksCount.Text = _countTasks.ToString();
             labelTasksRight.Text = _countRightAnswers.ToString();
             double percentRight = Math.Round((((float)_countRightAnswers / (float)_countTasks) * 100), 0, MidpointRounding.AwayFromZero);
-            labelTasksPercent.Text = percentRight + "%".ToString();
+            labelTasksPercent.Text = percentRight + "%";
 
             //labelFinalMark
 
@@ -92,7 +92,7 @@ namespace VoenKaffStartClient
             var connectToServer = SendMessageFromServer(json);
 
             if (connectToServer) return;
-            var path = "res.data";
+            const string path = "res.data";
             var results = new List<Result>();
             if (File.Exists(path))
             {
@@ -108,12 +108,12 @@ namespace VoenKaffStartClient
 
             results.Add(new Result
             {
-                Mark = "Пройдено",
+                Mark = labelFinalMark.Text,
                 Platoon = labelVzvodName.Text,
                 StudentName = labelFIOName.Text,
                 TestName = labelTestName.Text,
                 Timestamp = DateTime.Now,
-                ResultType = "Тренировка",
+                ResultType = "Экзамен",
                 Course = labelCurrentCourse.Text
             });
             File.WriteAllText(path, JsonConvert.SerializeObject(results));

@@ -1,19 +1,11 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Runtime.Serialization.Formatters.Binary;
-using System.Text;
 using System.Windows.Forms;
-using SerializablePicutre;
 using VoenKaffStartClient.Properties;
 using VoenKaffStartClient.Wrappers;
 using System.Runtime.InteropServices;
-using System.Collections;
-using VoenKaffStartClient.Senders;
 
 namespace VoenKaffStartClient
 {
@@ -138,10 +130,6 @@ namespace VoenKaffStartClient
                             Text = "Поле №" + taskElem.Index,
                             Font = new System.Drawing.Font("Century Gothic", 10.25F),
                         });
-
-                        
-
-
                     }
                 }
             }
@@ -315,6 +303,28 @@ namespace VoenKaffStartClient
             this.Visible = false;
             formResults.Visible = true;
         }
+        private bool GrammarCheck(string rightAnswer, string userAnswer)
+        {
+            var length = rightAnswer.Length > userAnswer.Length ? userAnswer.Length : rightAnswer.Length;
+            var checker = 0;
+            for (var i = 0; i < length; i++)
+            {
+                if (rightAnswer[i] == userAnswer[i]
+                    || (i + 1 < rightAnswer.Length && rightAnswer[i + 1] == userAnswer[i])
+                    || (i + 1 < userAnswer.Length && rightAnswer[i] == userAnswer[i + 1])
+                    || (i + 2 < rightAnswer.Length && rightAnswer[i + 2] == userAnswer[i])
+                    || (i + 2 < userAnswer.Length && rightAnswer[i] == userAnswer[i + 2]))
+                {
+                    checker++;
+                }
+            }
+
+            if ((float)checker / length >= 0.7)
+            {
+                return true;
+            }
+            return false;
+        }
 
         private void checkAnswers(object sender, EventArgs e)
         {
@@ -332,9 +342,7 @@ namespace VoenKaffStartClient
                 buf.Enabled = false;
                 if (buf is TextBox)
                 {
-                    var answer = buf.Text.ToLower().Trim().Replace("жы", "жи").Replace("пре", "при");
-                    var tagText = buf.Tag.ToString().ToLower().Trim().Replace("жы", "жи").Replace("пре", "при");
-                    if (answer != tagText)
+                     if (!GrammarCheck(buf.Text.ToLower().Replace(" ", ""), buf.Tag.ToString().ToLower().Replace(" ", "")))
                     {
                         thisTaskSuccess = false;
                     }

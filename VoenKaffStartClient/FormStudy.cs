@@ -271,18 +271,8 @@ namespace VoenKaffStartClient
                 {
                     panelQestionFoo.Controls.Add(tb);
                     tb.BringToFront();
-                    //Size lenTBText = TextRenderer.MeasureText("Ответ №" + tb.TabIndex, tb.Font);
-                    //if (lenTBText.Width > tb.Width)
-                    //{
-                    // tb.Width = lenTBText.Width + 3;
-                    //}
                     SendMessage(tb.Handle, EM_SETCUEBANNER, 0, "Ответ №" + tb.TabIndex);
                 }
-                //foreach (Label label in _listTBLabels[task])
-                //{
-                //    panelQestionFoo.Controls.Add(label);
-                //    label.BringToFront();
-                //}
 
             }
 
@@ -462,8 +452,29 @@ namespace VoenKaffStartClient
             
         }
 
-        
 
+        private bool GrammarCheck(string rightAnswer,string userAnswer)
+        {
+            var length = rightAnswer.Length > userAnswer.Length ? userAnswer.Length : rightAnswer.Length;
+            var checker = 0;
+            for (var i = 0; i < length; i++)
+            {
+                if (rightAnswer[i] == userAnswer[i] 
+                    || (i + 1 < rightAnswer.Length && rightAnswer[i+1] == userAnswer[i]) 
+                    || (i + 1 < userAnswer.Length && rightAnswer[i] == userAnswer[i+1])
+                    || (i + 2 < rightAnswer.Length && rightAnswer[i + 2] == userAnswer[i])
+                    || (i + 2 < userAnswer.Length && rightAnswer[i] == userAnswer[i + 2]))
+                {
+                    checker++;
+                }
+            }
+
+            if ((float) checker/ length >= 0.7)
+            {
+                return true;
+            }
+            return false;
+        }
         private void checkAnswers(object sender, EventArgs e)
         {
             string tempString = ((Control)sender).Name;
@@ -478,18 +489,13 @@ namespace VoenKaffStartClient
             {
 
                 Control buf = _listPanelTasks[index].Controls.Find("panelQuestion", true)[0].Controls[i];
-                if (buf is TextBox)
+                if (!(buf is TextBox)) continue;
+                buf.Enabled = false;
+                    
+                    
+                if (!GrammarCheck(buf.Text.ToLower().Replace(" ",""), buf.Tag.ToString().ToLower().Replace(" ", "")))
                 {
-                    var answer = buf.Text.ToLower().Trim().Replace("жы", "жи").Replace("пре", "при");
-                    var tagText = buf.Tag.ToString().ToLower().Trim().Replace("жы", "жи").Replace("пре", "при");
-                    buf.Enabled = false;
-                    
-                    
-                    if (answer != tagText)
-                    {
-                        thisTaskSuccess = false;
-                    }
-                    
+                    thisTaskSuccess = false;
                 }
             }
             
