@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using VoenKaffStartClient.Senders;
 using System.Linq;
 using System.ComponentModel;
+using System.IO;
 
 namespace VoenKaffStartClient
 {
@@ -44,6 +45,7 @@ namespace VoenKaffStartClient
 
         private static void bw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
+            
             form1 = new Form1();
             formLoading.Visible = false;
             form1.Visible = true;

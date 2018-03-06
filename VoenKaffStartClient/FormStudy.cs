@@ -493,7 +493,7 @@ namespace VoenKaffStartClient
                 buf.Enabled = false;
                     
                     
-                if (!GrammarCheck(buf.Text.ToLower().Replace(" ",""), buf.Tag.ToString().ToLower().Replace(" ", "")))
+                if (!GrammarCheck(buf.Text.ToLower().Replace(" ", "").Replace(".", ",").Replace("ё", "е"), buf.Tag.ToString().ToLower().Replace(" ", "").Replace(".", ",").Replace("ё", "е")))
                 {
                     thisTaskSuccess = false;
                 }

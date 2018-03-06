@@ -48,7 +48,7 @@ namespace VoenKaffStartClient.Senders
                         socket.Send(data);
 
                         data = new byte[256]; // буфер для ответа
-                        StringBuilder builder = new StringBuilder();
+                        var builder = new StringBuilder();
                         var counter = 0;
                         while (counter < 20)
                         {
@@ -132,6 +132,7 @@ namespace VoenKaffStartClient.Senders
                     }
 
                     fs.Close();
+
                     socket.Shutdown(SocketShutdown.Both);
                     socket.Close();
                     if (filenames[i].FileName.Contains("picture")) continue;
@@ -153,6 +154,11 @@ namespace VoenKaffStartClient.Senders
                         Crypto.EncryptStringAES(fullText, "CVSrdcv#@*j9FS08430V"));
                 }
 
+                ipPoint = new IPEndPoint(IPAddress.Parse(address), port);
+                socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+                socket.Connect(ipPoint);
+                data = Encoding.Unicode.GetBytes("Close");
+                socket.Send(data);
                 File.WriteAllText(Resources.FileInformer,JsonConvert.SerializeObject(filenames));
 
                 return result;

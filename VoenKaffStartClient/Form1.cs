@@ -26,8 +26,6 @@ namespace VoenKaffStartClient
 
         FormPlatoon formPlaton;
 
-        //TestLoader testloader;
-
         public Form1()
         {
             
@@ -39,8 +37,6 @@ namespace VoenKaffStartClient
             {
                 Directory.CreateDirectory(Resources.PathForTest);
             }
-
-            //new UpdateTests().Connect();
 
             this.MinimumSize = this.Size;
             this.MaximumSize = this.Size;
@@ -70,20 +66,12 @@ namespace VoenKaffStartClient
                 Environment.Exit(0);
             }
 
-
             Courses.Set(listOfFormDefaultTest.CourseList);
 
-            foreach (String course in Courses.Get())
+            foreach (var course in Courses.Get())
             {
                 comboBoxChooseCourse.Items.Add(course);
             }
-
-
-
-            //foreach (Test test in listOfFormDefaultTest.TestList)
-            //{
-            //    testName.Items.Add(test.Name);
-            //}
 
             foreach (KeyValuePair<string, List<string>> keyValue in listOfFormDefaultTest.PlatoonList)
             {
@@ -97,11 +85,6 @@ namespace VoenKaffStartClient
                 vzvodName.Items.Add(keyValue.Key);
             }
 
-            //testName.Items.AddRange(new string[] { "Номенклатура карт", "Дальность до цели" });
-            //vzvodName.Items.AddRange(new string[] { "121", "122", "123", "131", "132", "133", "141", "142", "143" });
-
-            
-
             vzvodName.SelectedIndexChanged += nameVzvod_SelectedIndexChanged;
 
 
@@ -110,8 +93,6 @@ namespace VoenKaffStartClient
             FIOName.SelectedIndexChanged += startButtonEnabled;
 
             radioButtonTestModeTest.Checked = true;
-            //listPanelsTasks = new List<String>();
-            //nameFIO.Items.AddRange(new string[] {""});
             
         }
 
