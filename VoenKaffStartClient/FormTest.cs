@@ -44,15 +44,13 @@ namespace VoenKaffStartClient
         public FormTest(string currentTest, string currentVzvod, string currentStudent, string currentCourse)
         {
             InitializeComponent();
+            WindowState = FormWindowState.Maximized;
+            FormBorderStyle = FormBorderStyle.None;
+            TopMost = true;
             _currentTest = currentTest;
             _currentVzvod = currentVzvod;
             _currentStudent = currentStudent;
             _currentCourse = currentCourse;
-            this.MinimumSize = this.Size;
-            this.MaximumSize = this.Size;
-
-            
-
         }
 
         private void buttonEndTest_Click(object sender, EventArgs e)
@@ -134,7 +132,7 @@ namespace VoenKaffStartClient
                 }
             }
 
-            foreach (Task task in _listTasksInTest)
+            foreach (var task in _listTasksInTest)
             {
 
                 _listPanelTasks.Add(new Panel
@@ -142,52 +140,56 @@ namespace VoenKaffStartClient
                     BackColor = System.Drawing.SystemColors.GradientInactiveCaption,
                     Location = new System.Drawing.Point(0, 0),
                     Name = task.Name,
-                    Size = new System.Drawing.Size(1109, 730),
+                    Size = SystemInformation.PrimaryMonitorSize,
                     TabIndex = 0,
                     Parent = panelMain
                 });
 
+                const int panelAnswerSizeHeigth = 160;
+                const int panelAnswerWidth = 800;
                 //Добавление панели с заданием
                 Panel panelQestionFoo = new Panel
                 {
-                    BackColor = System.Drawing.SystemColors.GradientInactiveCaption,
-                    //Controls.Add(this.label2),
-                    Location = new System.Drawing.Point(0, 0),
+                    BackColor = SystemColors.GradientInactiveCaption,
+                    Location = new Point(SystemInformation.PrimaryMonitorSize.Width/2- panelAnswerWidth/2, 0),
                     Name = "panelQuestion",
-                    Size = new System.Drawing.Size(1105, 610),
+                    Size = new Size(panelAnswerWidth, SystemInformation.PrimaryMonitorSize.Height - panelAnswerSizeHeigth - 15),
                     TabIndex = 0
                 };
                 _listPanelTasks[_listPanelTasks.Count - 1].Controls.Add(panelQestionFoo);
 
+                
                 //Добавление панели с ответами
                 Panel panelAnswerFoo = new Panel
                 {
-                    BackColor = System.Drawing.Color.Linen,
-                    Location = new System.Drawing.Point(0, 610),
+                    BackColor = Color.Linen,
+                    Location = new Point(0, SystemInformation.PrimaryMonitorSize.Height- panelAnswerSizeHeigth-15),
                     Name = "panelAnswers",
-                    Size = new System.Drawing.Size(1105, 118),
+                    Size = new Size(_listPanelTasks[_listPanelTasks.Count - 1].Size.Width, panelAnswerSizeHeigth),
                     TabIndex = 1,
-                    AutoScroll = true,
+                    AutoScroll = true
                 };
                 _listPanelTasks[_listPanelTasks.Count - 1].Controls.Add(panelAnswerFoo);
 
-                SortedList<int, TextBox> mySLofTB = new SortedList<int, TextBox>(new DecendingComparer<int>());
+                SortedList<int, TextBox> mySLofTb = new SortedList<int, TextBox>(new DecendingComparer<int>());
                 
                 foreach (TextBox tb in _TBInTask[task])
                 {
-                    mySLofTB.Add(tb.TabIndex, tb);
+                    mySLofTb.Add(tb.TabIndex, tb);
                 }
                 
-                foreach (KeyValuePair<int, TextBox> keyValuetb in mySLofTB)
+                foreach (KeyValuePair<int, TextBox> keyValuetb in mySLofTb)
                 {
-                    
-                    Label answerLabel = new Label();
 
-                    answerLabel.AutoSize = true;
-                    answerLabel.Font = new System.Drawing.Font("Century Gothic", 18.25F, System.Drawing.FontStyle.Bold);
-                    answerLabel.Text = "Ответ №" + keyValuetb.Key + ": " + keyValuetb.Value.Tag + "  |  ";
-                    answerLabel.Dock = DockStyle.Left;
-                    
+                    Label answerLabel = new Label
+                    {
+                        AutoSize = true,
+                        Font = new System.Drawing.Font("Century Gothic", 18.25F, System.Drawing.FontStyle.Bold),
+                        Text = "Ответ №" + keyValuetb.Key + ": " + keyValuetb.Value.Tag + "  |  ",
+                        Dock = DockStyle.Left
+                    };
+
+
                     panelAnswerFoo.Controls.Add(answerLabel);
                     
                 }
@@ -199,7 +201,7 @@ namespace VoenKaffStartClient
                 {
                     FlatStyle = System.Windows.Forms.FlatStyle.Flat,
                     Font = new System.Drawing.Font("Century Gothic", 11.25F),
-                    Location = new System.Drawing.Point(450, 50),
+                    Location = new System.Drawing.Point(SystemInformation.PrimaryMonitorSize.Width / 2 - 81, 40),
                     Name = "btnNextTask" + (_listPanelTasks.Count - 1),
                     Size = new System.Drawing.Size(162, 45),
                     Text = "Следующее задание",
@@ -212,7 +214,7 @@ namespace VoenKaffStartClient
                 {
                     FlatStyle = System.Windows.Forms.FlatStyle.Flat,
                     Font = new System.Drawing.Font("Century Gothic", 11.25F),
-                    Location = new System.Drawing.Point(450, 50),
+                    Location = new System.Drawing.Point(SystemInformation.PrimaryMonitorSize.Width / 2 - 81, 40),
                     Name = "btnEndTest" + (_listPanelTasks.Count - 1),
                     Size = new System.Drawing.Size(162, 45),
                     Text = "Закончить тест",
@@ -223,12 +225,13 @@ namespace VoenKaffStartClient
                 //Показать ответы
                 btnCheckAnswers = new Button
                 {
-                    FlatStyle = System.Windows.Forms.FlatStyle.Flat,
-                    Font = new System.Drawing.Font("Century Gothic", 11.25F),
-                    Location = new System.Drawing.Point(450, 650),
+                    FlatStyle = FlatStyle.Flat,
+                    Font = new Font("Century Gothic", 11.25F),
+                    Location = new Point(SystemInformation.PrimaryMonitorSize.Width/2-81, SystemInformation.PrimaryMonitorSize.Height - 118),
                     Name = "btnCheckAnswers" + (_listPanelTasks.Count - 1),
-                    Size = new System.Drawing.Size(162, 45),
+                    Size = new Size(162, 45),
                     Text = "Ответить",
+                    AutoSize = true
                 };
                 btnCheckAnswers.Click += checkAnswers;
                 _listPanelTasks[_listPanelTasks.Count - 1].Controls.Add(btnCheckAnswers);
@@ -342,7 +345,11 @@ namespace VoenKaffStartClient
                 buf.Enabled = false;
                 if (buf is TextBox)
                 {
-                     if (!GrammarCheck(buf.Text.ToLower().Replace(" ", "").Replace(".",",").Replace("ё","е"), buf.Tag.ToString().ToLower().Replace(" ", "").Replace(".", ",").Replace("ё", "е")))
+                    /*if (buf.Text == "HESOYAM")
+                    {
+                        break;
+                    }*/
+                    if (!GrammarCheck(buf.Text.ToLower().Replace(" ", "").Replace(".",",").Replace("ё","е"), buf.Tag.ToString().ToLower().Replace(" ", "").Replace(".", ",").Replace("ё", "е")))
                     {
                         thisTaskSuccess = false;
                     }
@@ -356,6 +363,9 @@ namespace VoenKaffStartClient
             _listPanelTasks[index].Controls.Find("panelAnswers", true)[0].Visible = true;
         }
 
-        
+        private void FormTest_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Environment.Exit(0);
+        }
     }
 }
