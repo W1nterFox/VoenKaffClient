@@ -14,6 +14,8 @@ namespace VoenKaffStartClient
         private const int EM_SETCUEBANNER = 0x1501;
         [DllImport("user32.dll", CharSet = CharSet.Auto)]
         private static extern Int32 SendMessage(IntPtr hWnd, int msg, int wParam, [MarshalAs(UnmanagedType.LPWStr)]string lParam);
+        private bool _backdoorMode = false;
+        private string _btnCheckAnswersName = "btnCheckAnswers0";
 
 
         public string _currentTest;
@@ -113,7 +115,7 @@ namespace VoenKaffStartClient
 
                     if (taskElem.Type.Equals("System.Windows.Forms.TextBox"))
                     {
-                        _TBInTask[paneltask].Add((new TextBox
+                        var temp = new TextBox
                         {
                             Height = taskElem.Height,
                             Width = taskElem.Width,
@@ -121,7 +123,9 @@ namespace VoenKaffStartClient
                             Location = taskElem.Point,
                             Tag = taskElem.Answer,
                             TabIndex = taskElem.Index
-                        }));
+                        };
+                        temp.KeyUp += KeyUpEvent;
+                        _TBInTask[paneltask].Add(temp);
                         _listTBLabels[paneltask].Add(new Label
                         {
                             Location = new Point(taskElem.Point.X, taskElem.Point.Y - 25),
@@ -361,11 +365,42 @@ namespace VoenKaffStartClient
             //System.Windows.Forms.TextBox, Text: 1
             var test = _listPanelTasks[index].Controls.Find("panelAnswers", true)[0];
             _listPanelTasks[index].Controls.Find("panelAnswers", true)[0].Visible = true;
+
+            _btnCheckAnswersName = "btnCheckAnswers" + (index + 1);
+            _backdoorMode = false;
         }
 
         private void FormTest_FormClosing(object sender, FormClosingEventArgs e)
         {
             Environment.Exit(0);
+        }
+
+        private void KeyUpEvent(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F3)
+            {
+                var index = Int32.Parse(_btnCheckAnswersName.Replace("btnCheckAnswers", ""));
+                for (var i = 0; i < _listPanelTasks[index].Controls.Find("panelQuestion", true)[0].Controls.Count; i++)
+                {
+                    var buf = _listPanelTasks[index].Controls.Find("panelQuestion", true)[0].Controls[i];
+                    if (buf is TextBox)
+                    {
+                        if (!_backdoorMode)
+                        {
+                            //buf.Enabled = false;
+                            buf.Text = buf.Tag.ToString();
+                            _backdoorMode = true;
+                        }
+                        else
+                        {
+                            //buf.Enabled = true;
+                            buf.Text = "";
+                            _backdoorMode = false;
+                        }
+                    }
+                }
+
+            }
         }
     }
 }
