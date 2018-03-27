@@ -32,18 +32,25 @@ namespace VoenKaffServer
 
         private Settings ReadFile()
         {
-            try
+            while (true)
             {
-                using (var stream = new FileStream(Path, FileMode.Open))
+                try
                 {
-                    XmlSerializer serializer = new XmlSerializer(typeof(Settings));
-                    var iniSet = (Settings)serializer.Deserialize(stream);
-                    return iniSet;
+                    using (var stream = new FileStream(Path, FileMode.Open))
+                    {
+                        XmlSerializer serializer = new XmlSerializer(typeof(Settings));
+                        var iniSet = (Settings) serializer.Deserialize(stream);
+                        return iniSet;
+                    }
                 }
-            }
-            catch (Exception)
-            {
-                return new Settings();
+                catch (IOException)
+                {
+
+                }
+                catch (Exception)
+                {
+                    return new Settings();
+                }
             }
         }
         //Записываем в ini-файл. Запись происходит в выбранную секцию в выбранный ключ.

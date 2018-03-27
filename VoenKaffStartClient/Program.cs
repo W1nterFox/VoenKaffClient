@@ -28,11 +28,10 @@ namespace VoenKaffStartClient
                 Environment.Exit(0);
             }
 
-            formLoading = new FormLoader();
-            formLoading.Visible = true;
-            BackgroundWorker bw = new BackgroundWorker();
-            bw.DoWork +=new DoWorkEventHandler(bw_DoWork);
-            bw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(bw_RunWorkerCompleted);
+            formLoading = new FormLoader {Visible = true};
+            var bw = new BackgroundWorker();
+            bw.DoWork +=bw_DoWork;
+            bw.RunWorkerCompleted += bw_RunWorkerCompleted;
             bw.RunWorkerAsync();
             
             Application.Run();

@@ -39,7 +39,7 @@ namespace VoenKaffStartClient
         public Dictionary<Task, List<Label>> _listTBLabels = new Dictionary<Task, List<Label>> { };
 
 
-        public int countRightAnswers = 0;
+        public int countRightAnswers;
 
         int currentTaskNum = 1;
 
@@ -53,14 +53,17 @@ namespace VoenKaffStartClient
             _currentVzvod = currentVzvod;
             _currentStudent = currentStudent;
             _currentCourse = currentCourse;
+            statusStrip1.BringToFront();
         }
 
         private void buttonEndTest_Click(object sender, EventArgs e)
         {
-            //FormResults formResults = new FormResults(_currentTest, _currentVzvod, _currentStudent);
-            this.Visible = false;
-            //formResults.Text = "ТЕСТ. " + _currentTest + ". " + _currentVzvod + " взвод. " + "Студент " + _currentStudent;
-            //formResults.Visible = true;
+            Visible = false;
+        }
+
+        public void AddTestName(string name)
+        {
+            TestName.Text = name;
         }
 
         public void initTest(Test objectsInCurrentTest)
@@ -155,9 +158,9 @@ namespace VoenKaffStartClient
                 Panel panelQestionFoo = new Panel
                 {
                     BackColor = SystemColors.GradientInactiveCaption,
-                    Location = new Point(SystemInformation.PrimaryMonitorSize.Width/2- panelAnswerWidth/2, 0),
+                    Location = new Point(SystemInformation.PrimaryMonitorSize.Width/2- panelAnswerWidth/2, 40),
                     Name = "panelQuestion",
-                    Size = new Size(panelAnswerWidth, SystemInformation.PrimaryMonitorSize.Height - panelAnswerSizeHeigth - 15),
+                    Size = new Size(panelAnswerWidth, SystemInformation.PrimaryMonitorSize.Height - panelAnswerSizeHeigth - 55),
                     TabIndex = 0
                 };
                 _listPanelTasks[_listPanelTasks.Count - 1].Controls.Add(panelQestionFoo);

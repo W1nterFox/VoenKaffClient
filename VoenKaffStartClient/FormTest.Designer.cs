@@ -32,6 +32,7 @@
             this.toolStripStatusLabelTaskNumberAndTaskCount = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.TestName = new System.Windows.Forms.Label();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -45,7 +46,7 @@
             this.panelMain.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.panelMain.Cursor = System.Windows.Forms.Cursors.Default;
             this.panelMain.Location = new System.Drawing.Point(17, 16);
-            this.panelMain.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelMain.Margin = new System.Windows.Forms.Padding(4);
             this.panelMain.Name = "panelMain";
             this.panelMain.Size = new System.Drawing.Size(0, 0);
             this.panelMain.TabIndex = 2;
@@ -65,6 +66,7 @@
             // 
             // statusStrip1
             // 
+            this.statusStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Visible;
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabelTaskNumberAndTaskCount,
@@ -76,6 +78,17 @@
             this.statusStrip1.TabIndex = 1;
             this.statusStrip1.Text = "statusStrip1";
             // 
+            // TestName
+            // 
+            this.TestName.AutoSize = true;
+            this.TestName.BackColor = System.Drawing.Color.Transparent;
+            this.TestName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.TestName.Location = new System.Drawing.Point(12, 9);
+            this.TestName.Name = "TestName";
+            this.TestName.Size = new System.Drawing.Size(64, 25);
+            this.TestName.TabIndex = 3;
+            this.TestName.Text = "label1";
+            // 
             // FormTest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -84,9 +97,10 @@
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1507, 950);
             this.ControlBox = false;
+            this.Controls.Add(this.TestName);
             this.Controls.Add(this.panelMain);
             this.Controls.Add(this.statusStrip1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormTest";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Тестирование";
@@ -104,5 +118,6 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelTaskNumberAndTaskCount;
         private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar1;
         private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.Label TestName;
     }
 }

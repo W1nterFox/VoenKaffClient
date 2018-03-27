@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 using VoenKaffStartClient.Properties;
@@ -96,6 +97,18 @@ namespace VoenKaffStartClient
             
         }
 
+        public sealed override Size MaximumSize
+        {
+            get { return base.MaximumSize; }
+            set { base.MaximumSize = value; }
+        }
+
+        public sealed override Size MinimumSize
+        {
+            get { return base.MinimumSize; }
+            set { base.MinimumSize = value; }
+        }
+
         private void comboBoxChooseCourse_SelectedIndexChanged(object sender, EventArgs e)
         {
             string selectedCourse = (string)comboBoxChooseCourse.SelectedItem;
@@ -160,17 +173,13 @@ namespace VoenKaffStartClient
                     index = i;
                 }
             }
-            
-            
-            
-            
             if (radioButtonTestModeTest.Checked)
             {
                 _formTest = new FormTest(currentTest, currentVzvod, currentStudent, currentCource);
                 listFormTests.Add(_formTest);
                 _formTest.initTest(listOfFormDefaultTest.TestList[index]);
                 _formTest.Visible = true;
-
+                _formTest.AddTestName("ТЕСТ. " + currentTest + ". " + currentVzvod + " взвод. " + "Студент " + currentStudent);
                 _formTest.Text = "ТЕСТ. " + currentTest + ". " + currentVzvod + " взвод. " + "Студент " + currentStudent;
             }
 
