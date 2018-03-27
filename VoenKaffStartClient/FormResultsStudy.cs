@@ -79,7 +79,7 @@ namespace VoenKaffStartClient
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK);
+                MessageBox.Show("Не удалось отправить результаты на сервер. Пожалуйста, попробуйте перезапустить программу, для повторной попытки отправки, а так же проверьте состояние сервера.","Ошибка", MessageBoxButtons.OK);
                 return false;
             }
         }

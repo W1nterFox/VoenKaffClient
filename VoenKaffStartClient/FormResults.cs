@@ -102,7 +102,7 @@ namespace VoenKaffStartClient
                 }
                 catch (Exception)
                 {
-
+                    // ignored
                 }
             }
 
@@ -124,9 +124,9 @@ namespace VoenKaffStartClient
             try {
                 return new ResultSender().Connect(result);
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK);
+                MessageBox.Show("Не удалось отправить результаты на сервер. Пожалуйста, попробуйте перезапустить программу, для повторной попытки отправки, а так же проверьте состояние сервера.", "Ошибка", MessageBoxButtons.OK,MessageBoxIcon.Warning);
                 return false;
             }
         }

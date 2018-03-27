@@ -187,7 +187,7 @@ namespace VoenKaffStartClient
             {
                 _formStudy = new FormStudy(currentTest, currentVzvod, currentStudent, currentCource);
                 listFormStudy.Add(_formStudy);
-                _formStudy.initTest(listOfFormDefaultTest.TestList[index]);
+                _formStudy.InitTest(listOfFormDefaultTest.TestList[index]);
                 _formStudy.Visible = true;
 
                 _formStudy.Text = "ОБУЧЕНИЕ. " + currentTest + ". " + currentVzvod + " взвод. " + "Студент " + currentStudent;

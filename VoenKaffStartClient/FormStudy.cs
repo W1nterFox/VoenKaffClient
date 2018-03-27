@@ -65,12 +65,10 @@ namespace VoenKaffStartClient
         }
 
 
-        public void initTest(Test objectsInCurrentTest)
+        public void InitTest(Test objectsInCurrentTest)
         {
-            foreach (Task paneltask in objectsInCurrentTest.Tasks)
-            {
-
-                
+            foreach (var paneltask in objectsInCurrentTest.Tasks)
+            {             
                 _RTBInTask.Add(paneltask, new List<Label> { });
                 _PBInTask.Add(paneltask, new List<PictureBox> { });
                 _TBInTask.Add(paneltask, new List<TextBox> { });
@@ -89,7 +87,7 @@ namespace VoenKaffStartClient
                             Name = taskElem.Name,
                             Location = taskElem.Point,
                             Text = taskElem.Text,
-                            Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204))),
+                            Font = new Font("Century Gothic", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 204),
 
                         });
                     }
@@ -123,12 +121,8 @@ namespace VoenKaffStartClient
                         {
                             Location = new Point(taskElem.Point.X, taskElem.Point.Y - 25),
                             Text = "Поле №" + taskElem.Index,
-                            Font = new System.Drawing.Font("Century Gothic", 10.25F),
+                            Font = new Font("Century Gothic", 10.25F),
                         });
-
-                        
-
-
                     }
                 }
             }
@@ -138,10 +132,10 @@ namespace VoenKaffStartClient
 
                 _listPanelTasks.Add(new Panel
                 {
-                    BackColor = System.Drawing.SystemColors.GradientInactiveCaption,
-                    Location = new System.Drawing.Point(0, 0),
+                    BackColor = SystemColors.GradientInactiveCaption,
+                    Location = new Point(0, 0),
                     Name = task.Name,
-                    Size = new System.Drawing.Size(1109, 730),
+                    Size = new Size(1109, 730),
                     TabIndex = 0,
                     Parent = panelMain
                 });
@@ -154,11 +148,11 @@ namespace VoenKaffStartClient
                 //Добавление панели с заданием
                 Panel panelQestionFoo = new Panel
                 {
-                    BackColor = System.Drawing.SystemColors.GradientInactiveCaption,
+                    BackColor = SystemColors.GradientInactiveCaption,
                     //Controls.Add(this.label2),
-                    Location = new System.Drawing.Point(0, 0),
+                    Location = new Point(0, 0),
                     Name = "panelQuestion",
-                    Size = new System.Drawing.Size(1105, 610),
+                    Size = new Size(1105, 610),
                     TabIndex = 0
                 };
                 _listPanelTasks[_listPanelTasks.Count - 1].Controls.Add(panelQestionFoo);
@@ -166,10 +160,10 @@ namespace VoenKaffStartClient
                 //Добавление панели с ответами
                 Panel panelAnswerFoo = new Panel
                 {
-                    BackColor = System.Drawing.Color.Linen,
-                    Location = new System.Drawing.Point(0, 610),
+                    BackColor = Color.Linen,
+                    Location = new Point(0, 610),
                     Name = "panelAnswers",
-                    Size = new System.Drawing.Size(1105, 118),
+                    Size = new Size(1105, 118),
                     TabIndex = 1,
                     AutoScroll = true,
                 };
@@ -188,7 +182,7 @@ namespace VoenKaffStartClient
                     Label answerLabel = new Label();
 
                     answerLabel.AutoSize = true;
-                    answerLabel.Font = new System.Drawing.Font("Century Gothic", 18.25F, System.Drawing.FontStyle.Bold);
+                    answerLabel.Font = new Font("Century Gothic", 18.25F, FontStyle.Bold);
                     answerLabel.Text = "Ответ №" + keyValuetb.Key + ": " + keyValuetb.Value.Tag + "  |  ";
                     answerLabel.Dock = DockStyle.Left;
 
@@ -200,28 +194,28 @@ namespace VoenKaffStartClient
                 //Ответил верно
                 btnTaskUserkSuccess = new Button
                 {
-                    BackColor = System.Drawing.Color.LightGreen,
-                    FlatStyle = System.Windows.Forms.FlatStyle.Flat,
-                    Font = new System.Drawing.Font("Century Gothic", 11.25F),
-                    Location = new System.Drawing.Point(340, 50),
+                    BackColor = Color.LightGreen,
+                    FlatStyle = FlatStyle.Flat,
+                    Font = new Font("Century Gothic", 11.25F),
+                    Location = new Point(340, 50),
                     Name = "btnTaskUserkSuccess" + (_listPanelTasks.Count - 1),
-                    Size = new System.Drawing.Size(200, 45),
+                    Size = new Size(200, 45),
                     Text = "Ответил верно",
                     Visible = false,
                 };
-                btnTaskUserkSuccess.Click += taskUserkSuccess;
+                btnTaskUserkSuccess.Click += TaskUserkSuccess;
                 panelAnswerFoo.Controls.Add(btnTaskUserkSuccess);
 
 
                 //Ответил неуверенно
                 btnTaskUserkNotSure = new Button
                 {
-                    BackColor = System.Drawing.Color.Gold,
-                    FlatStyle = System.Windows.Forms.FlatStyle.Flat,
-                    Font = new System.Drawing.Font("Century Gothic", 11.25F),
-                    Location = new System.Drawing.Point(540, 50),
+                    BackColor = Color.Gold,
+                    FlatStyle = FlatStyle.Flat,
+                    Font = new Font("Century Gothic", 11.25F),
+                    Location = new Point(540, 50),
                     Name = "btnTaskUserkNotSure" + (_listPanelTasks.Count - 1),
-                    Size = new System.Drawing.Size(300, 45),
+                    Size = new Size(300, 45),
                     Text = "Ответил, но не был уверен",
                     Visible = false,
                 };
@@ -231,11 +225,11 @@ namespace VoenKaffStartClient
                 //Следующее задание
                 btnNextTask = new Button
                 {
-                    FlatStyle = System.Windows.Forms.FlatStyle.Flat,
-                    Font = new System.Drawing.Font("Century Gothic", 11.25F),
-                    Location = new System.Drawing.Point(450, 50),
+                    FlatStyle = FlatStyle.Flat,
+                    Font = new Font("Century Gothic", 11.25F),
+                    Location = new Point(450, 50),
                     Name = "btnNextTask" + (_listPanelTasks.Count - 1),
-                    Size = new System.Drawing.Size(162, 45),
+                    Size = new Size(162, 45),
                     Text = "Следующее задание",
                     Visible = false,
                 };
@@ -247,11 +241,11 @@ namespace VoenKaffStartClient
                 //Показать ответы
                 btnCheckAnswers = new Button
                 {
-                    FlatStyle = System.Windows.Forms.FlatStyle.Flat,
-                    Font = new System.Drawing.Font("Century Gothic", 11.25F),
-                    Location = new System.Drawing.Point(450, 650),
+                    FlatStyle = FlatStyle.Flat,
+                    Font = new Font("Century Gothic", 11.25F),
+                    Location = new Point(450, 650),
                     Name = "btnCheckAnswers" + (_listPanelTasks.Count - 1),
-                    Size = new System.Drawing.Size(162, 45),
+                    Size = new Size(162, 45),
                     Text = "Ответить",
                 };
                 btnCheckAnswers.Click += checkAnswers;
@@ -276,13 +270,9 @@ namespace VoenKaffStartClient
 
             }
 
-
-            
-            
-
-            for (int i = 0; i < _listPanelTasks.Count; i++)
+            foreach (var panelTask in _listPanelTasks)
             {
-                _listPanelTasks[i].Controls.Find("panelAnswers", true)[0].Visible = false;
+                panelTask.Controls.Find("panelAnswers", true)[0].Visible = false;
             }
 
             toolStripProgressBar1.Value = 100 / _listTasksInTest.Count;
@@ -291,7 +281,7 @@ namespace VoenKaffStartClient
         }
 
 
-        private void taskUserkSuccess(object sender, EventArgs e)
+        private void TaskUserkSuccess(object sender, EventArgs e)
         {
             string tempString = ((Control)sender).Name;
             int indexOld = Int32.Parse(tempString.Replace("btnTaskUserkSuccess",""));
@@ -403,11 +393,7 @@ namespace VoenKaffStartClient
                 currentTaskNum++;
                 toolStripProgressBar1.Value = 100 * (currentTaskNum + 1) / _listPanelTasks.Count;
             }
-            
-            
             toolStripStatusLabelTaskNumberAndTaskCount.Text = "Выполняется задание: " + (currentTaskNum + 1) + " из " + _listPanelTasks.Count;
-
-
         }
 
         private void nextTask(object sender, EventArgs e)
@@ -445,8 +431,6 @@ namespace VoenKaffStartClient
                 currentTaskNum++;
                 toolStripProgressBar1.Value = 100 * (currentTaskNum + 1) / _listPanelTasks.Count;
             }
-            
-
 
             toolStripStatusLabelTaskNumberAndTaskCount.Text = "Выполняется задание: " + (currentTaskNum + 1) + " из " + _listPanelTasks.Count;
             
@@ -517,9 +501,7 @@ namespace VoenKaffStartClient
                 
 
                 toolStripProgressBar1.Value = 100 * currentTaskNum/ _listPanelTasks.Count;
-                toolStripStatusLabelTaskNumberAndTaskCount.Text = "Выполняется задание: " + (currentTaskNum + 1) + " из " + _listPanelTasks.Count;
-                
-                //_listPanelTasks.Remove(_listPanelTasks[index]);
+                toolStripStatusLabelTaskNumberAndTaskCount.Text = "Выполняется задание: " + (currentTaskNum + 1) + " из " + _listPanelTasks.Count;       
 
             }
         }
