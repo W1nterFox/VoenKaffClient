@@ -65,10 +65,9 @@
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(17, 33);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4);
+            this.panel1.Location = new System.Drawing.Point(13, 27);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1069, 393);
+            this.panel1.Size = new System.Drawing.Size(802, 319);
             this.panel1.TabIndex = 0;
             // 
             // comboBoxChooseCourse
@@ -76,10 +75,9 @@
             this.comboBoxChooseCourse.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxChooseCourse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.comboBoxChooseCourse.FormattingEnabled = true;
-            this.comboBoxChooseCourse.Location = new System.Drawing.Point(37, 124);
-            this.comboBoxChooseCourse.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBoxChooseCourse.Location = new System.Drawing.Point(28, 101);
             this.comboBoxChooseCourse.Name = "comboBoxChooseCourse";
-            this.comboBoxChooseCourse.Size = new System.Drawing.Size(239, 24);
+            this.comboBoxChooseCourse.Size = new System.Drawing.Size(180, 21);
             this.comboBoxChooseCourse.TabIndex = 1;
             this.comboBoxChooseCourse.SelectedIndexChanged += new System.EventHandler(this.comboBoxChooseCourse_SelectedIndexChanged);
             // 
@@ -87,10 +85,9 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            this.label5.Location = new System.Drawing.Point(60, 96);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Location = new System.Drawing.Point(45, 78);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(192, 22);
+            this.label5.Size = new System.Drawing.Size(154, 20);
             this.label5.TabIndex = 11;
             this.label5.Text = "Выберите предмет";
             // 
@@ -98,10 +95,9 @@
             // 
             this.buttonInstruction.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonInstruction.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            this.buttonInstruction.Location = new System.Drawing.Point(452, 330);
-            this.buttonInstruction.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonInstruction.Location = new System.Drawing.Point(339, 268);
             this.buttonInstruction.Name = "buttonInstruction";
-            this.buttonInstruction.Size = new System.Drawing.Size(165, 47);
+            this.buttonInstruction.Size = new System.Drawing.Size(124, 38);
             this.buttonInstruction.TabIndex = 8;
             this.buttonInstruction.Text = "Инструкция";
             this.buttonInstruction.UseVisualStyleBackColor = true;
@@ -112,10 +108,9 @@
             this.startButton.Enabled = false;
             this.startButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.startButton.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            this.startButton.Location = new System.Drawing.Point(427, 267);
-            this.startButton.Margin = new System.Windows.Forms.Padding(4);
+            this.startButton.Location = new System.Drawing.Point(320, 217);
             this.startButton.Name = "startButton";
-            this.startButton.Size = new System.Drawing.Size(216, 55);
+            this.startButton.Size = new System.Drawing.Size(162, 45);
             this.startButton.TabIndex = 7;
             this.startButton.Text = "Начать тест";
             this.startButton.UseVisualStyleBackColor = true;
@@ -126,21 +121,18 @@
             this.chooseMode.Controls.Add(this.radioButtonTestModeStudy);
             this.chooseMode.Controls.Add(this.radioButtonTestModeTest);
             this.chooseMode.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            this.chooseMode.Location = new System.Drawing.Point(361, 159);
-            this.chooseMode.Margin = new System.Windows.Forms.Padding(4);
+            this.chooseMode.Location = new System.Drawing.Point(271, 129);
             this.chooseMode.Name = "chooseMode";
-            this.chooseMode.Padding = new System.Windows.Forms.Padding(4);
-            this.chooseMode.Size = new System.Drawing.Size(333, 101);
+            this.chooseMode.Size = new System.Drawing.Size(250, 82);
             this.chooseMode.TabIndex = 7;
             this.chooseMode.TabStop = false;
             // 
             // radioButtonTestModeStudy
             // 
             this.radioButtonTestModeStudy.AutoSize = true;
-            this.radioButtonTestModeStudy.Location = new System.Drawing.Point(55, 60);
-            this.radioButtonTestModeStudy.Margin = new System.Windows.Forms.Padding(4);
+            this.radioButtonTestModeStudy.Location = new System.Drawing.Point(41, 49);
             this.radioButtonTestModeStudy.Name = "radioButtonTestModeStudy";
-            this.radioButtonTestModeStudy.Size = new System.Drawing.Size(191, 26);
+            this.radioButtonTestModeStudy.Size = new System.Drawing.Size(153, 24);
             this.radioButtonTestModeStudy.TabIndex = 6;
             this.radioButtonTestModeStudy.TabStop = true;
             this.radioButtonTestModeStudy.Text = "Режим обучения";
@@ -149,10 +141,9 @@
             // radioButtonTestModeTest
             // 
             this.radioButtonTestModeTest.AutoSize = true;
-            this.radioButtonTestModeTest.Location = new System.Drawing.Point(55, 23);
-            this.radioButtonTestModeTest.Margin = new System.Windows.Forms.Padding(4);
+            this.radioButtonTestModeTest.Location = new System.Drawing.Point(41, 19);
             this.radioButtonTestModeTest.Name = "radioButtonTestModeTest";
-            this.radioButtonTestModeTest.Size = new System.Drawing.Size(231, 26);
+            this.radioButtonTestModeTest.Size = new System.Drawing.Size(186, 24);
             this.radioButtonTestModeTest.TabIndex = 5;
             this.radioButtonTestModeTest.TabStop = true;
             this.radioButtonTestModeTest.Text = "Режим тестирования";
@@ -163,10 +154,9 @@
             this.FIOName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.FIOName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.FIOName.FormattingEnabled = true;
-            this.FIOName.Location = new System.Drawing.Point(784, 124);
-            this.FIOName.Margin = new System.Windows.Forms.Padding(4);
+            this.FIOName.Location = new System.Drawing.Point(588, 101);
             this.FIOName.Name = "FIOName";
-            this.FIOName.Size = new System.Drawing.Size(239, 24);
+            this.FIOName.Size = new System.Drawing.Size(180, 21);
             this.FIOName.TabIndex = 4;
             // 
             // vzvodName
@@ -174,10 +164,9 @@
             this.vzvodName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.vzvodName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.vzvodName.FormattingEnabled = true;
-            this.vzvodName.Location = new System.Drawing.Point(536, 124);
-            this.vzvodName.Margin = new System.Windows.Forms.Padding(4);
+            this.vzvodName.Location = new System.Drawing.Point(402, 101);
             this.vzvodName.Name = "vzvodName";
-            this.vzvodName.Size = new System.Drawing.Size(239, 24);
+            this.vzvodName.Size = new System.Drawing.Size(180, 21);
             this.vzvodName.TabIndex = 3;
             // 
             // testName
@@ -187,20 +176,18 @@
             this.testName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.testName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.testName.FormattingEnabled = true;
-            this.testName.Location = new System.Drawing.Point(288, 124);
-            this.testName.Margin = new System.Windows.Forms.Padding(4);
+            this.testName.Location = new System.Drawing.Point(216, 101);
             this.testName.Name = "testName";
-            this.testName.Size = new System.Drawing.Size(239, 24);
+            this.testName.Size = new System.Drawing.Size(180, 21);
             this.testName.TabIndex = 2;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            this.label4.Location = new System.Drawing.Point(791, 96);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(593, 78);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(193, 22);
+            this.label4.Size = new System.Drawing.Size(155, 20);
             this.label4.TabIndex = 6;
             this.label4.Text = "Выберите студента";
             // 
@@ -208,10 +195,9 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            this.label3.Location = new System.Drawing.Point(571, 96);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(428, 78);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(158, 22);
+            this.label3.Size = new System.Drawing.Size(126, 20);
             this.label3.TabIndex = 4;
             this.label3.Text = "Выберите взвод";
             // 
@@ -219,10 +205,9 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            this.label2.Location = new System.Drawing.Point(328, 96);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(246, 78);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(146, 22);
+            this.label2.Size = new System.Drawing.Size(119, 20);
             this.label2.TabIndex = 2;
             this.label2.Text = "Выберите тест";
             // 
@@ -230,10 +215,9 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(371, 23);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(278, 19);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(308, 32);
+            this.label1.Size = new System.Drawing.Size(243, 25);
             this.label1.TabIndex = 0;
             this.label1.Text = "Тестирование знаний";
             // 
@@ -244,29 +228,27 @@
             this.Settings});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(1103, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(827, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // Settings
             // 
             this.Settings.Name = "Settings";
-            this.Settings.Size = new System.Drawing.Size(96, 24);
+            this.Settings.Size = new System.Drawing.Size(79, 20);
             this.Settings.Text = "Настройки";
             this.Settings.Click += new System.EventHandler(this.Settings_Click);
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1103, 441);
+            this.ClientSize = new System.Drawing.Size(827, 358);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
-            this.Text = "7";
+            this.Text = "Тестирование знаний";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
