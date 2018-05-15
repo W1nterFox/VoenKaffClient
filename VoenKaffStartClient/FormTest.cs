@@ -160,7 +160,7 @@ namespace VoenKaffStartClient
                     BackColor = SystemColors.GradientInactiveCaption,
                     Location = new Point(SystemInformation.PrimaryMonitorSize.Width/2- panelAnswerWidth/2, 40),
                     Name = "panelQuestion",
-                    Size = new Size(panelAnswerWidth, SystemInformation.PrimaryMonitorSize.Height - panelAnswerSizeHeigth - 55),
+                    Size = new Size(panelAnswerWidth, SystemInformation.PrimaryMonitorSize.Height - panelAnswerSizeHeigth - 70),
                     TabIndex = 0
                 };
                 _listPanelTasks[_listPanelTasks.Count - 1].Controls.Add(panelQestionFoo);
@@ -170,7 +170,7 @@ namespace VoenKaffStartClient
                 Panel panelAnswerFoo = new Panel
                 {
                     BackColor = Color.Linen,
-                    Location = new Point(0, SystemInformation.PrimaryMonitorSize.Height- panelAnswerSizeHeigth-15),
+                    Location = new Point(0, SystemInformation.PrimaryMonitorSize.Height- panelAnswerSizeHeigth-30),
                     Name = "panelAnswers",
                     Size = new Size(_listPanelTasks[_listPanelTasks.Count - 1].Size.Width, panelAnswerSizeHeigth),
                     TabIndex = 1,
