@@ -383,26 +383,25 @@ namespace VoenKaffStartClient
             if (e.KeyCode == Keys.F3)
             {
                 var index = Int32.Parse(_btnCheckAnswersName.Replace("btnCheckAnswers", ""));
-                for (var i = 0; i < _listPanelTasks[index].Controls.Find("panelQuestion", true)[0].Controls.Count; i++)
+                var smth = _listPanelTasks[index].Controls.Find("panelQuestion", true);
+                for (var i = 0; i < smth[0].Controls.Count; i++)
                 {
-                    var buf = _listPanelTasks[index].Controls.Find("panelQuestion", true)[0].Controls[i];
+                    var buf = smth[0].Controls[i];
                     if (buf is TextBox)
                     {
                         if (!_backdoorMode)
                         {
                             //buf.Enabled = false;
                             buf.Text = buf.Tag.ToString();
-                            _backdoorMode = true;
                         }
                         else
                         {
                             //buf.Enabled = true;
                             buf.Text = "";
-                            _backdoorMode = false;
                         }
                     }
                 }
-
+                _backdoorMode = !_backdoorMode;
             }
         }
     }
