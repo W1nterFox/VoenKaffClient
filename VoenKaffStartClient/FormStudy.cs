@@ -108,7 +108,7 @@ namespace VoenKaffStartClient
 
                     if (taskElem.Type.Equals("System.Windows.Forms.TextBox"))
                     {
-                        _TBInTask[paneltask].Add((new TextBox
+                        var textBox = new TextBox
                         {
                             Height = taskElem.Height,
                             Width = taskElem.Width,
@@ -116,7 +116,9 @@ namespace VoenKaffStartClient
                             Location = taskElem.Point,
                             Tag = taskElem.Answer,
                             TabIndex = taskElem.Index
-                        }));
+                        };
+                        textBox.KeyPress+=textBox1_KeyDown;
+                        _TBInTask[paneltask].Add(textBox);
                         _listTBLabels[paneltask].Add(new Label
                         {
                             Location = new Point(taskElem.Point.X, taskElem.Point.Y - 25),
@@ -126,6 +128,7 @@ namespace VoenKaffStartClient
                     }
                 }
             }
+
 
             foreach (Task task in _listTasksInTest)
             {
@@ -280,6 +283,14 @@ namespace VoenKaffStartClient
             toolStripStatusLabelTaskNumberAndTaskCount.Text = "Выполняется задание: " + (currentTaskNum + 1) + " из " + _listTasksInTest.Count;
         }
 
+
+        private void textBox1_KeyDown(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 22)
+            {
+                e.Handled = true;
+            }
+        }
 
         private void TaskUserkSuccess(object sender, EventArgs e)
         {
