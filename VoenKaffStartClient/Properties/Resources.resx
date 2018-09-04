@@ -120,6 +120,12 @@
   <data name="ResultData" xml:space="preserve">
     <value>res.data</value>
   </data>
+  <data name="PathForPictures" xml:space="preserve">
+    <value>tests\\picture</value>
+  </data>
+  <data name="FileInformer" xml:space="preserve">
+    <value>file.info</value>
+  </data>
   <data name="PathForTest" xml:space="preserve">
     <value>tests</value>
   </data>
@@ -127,10 +133,7 @@
   <data name="giphy" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\giphy1.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="PathForPictures" xml:space="preserve">
-    <value>tests\\picture</value>
-  </data>
-  <data name="FileInformer" xml:space="preserve">
-    <value>file.info</value>
+  <data name="57fd50a598d16157b58306fa" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\57fd50a598d16157b58306fa.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
